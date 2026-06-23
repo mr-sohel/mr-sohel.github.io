@@ -111,13 +111,25 @@ img {
    FOCUS & ACCESSIBILITY
    ============================================================ */
 :focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
   border-radius: var(--rounded-sm);
+  box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-primary);
 }
 
 :focus:not(:focus-visible) {
   outline: none;
+}
+
+/* Enhanced focus for specific interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--rounded-sm);
+  box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-primary);
 }
 
 @media (prefers-reduced-motion: reduce) {

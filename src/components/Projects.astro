@@ -12,7 +12,10 @@
     <!-- Project 1 -->
     <article class="project-card glass reveal">
       <div class="project-img">
-        <img src="/images/online-judge.jpg" alt="Online Judge System Dashboard" width="800" height="400" loading="lazy" />
+        <picture>
+          <source srcset="/images/online-judge.webp" type="image/webp" />
+          <img src="/images/online-judge.jpg" alt="Online Judge System Dashboard" width="800" height="400" loading="lazy" decoding="async" />
+        </picture>
         <div class="project-overlay">
           <span class="project-status in-progress">In Progress</span>
         </div>
@@ -38,7 +41,10 @@
     <!-- Project 2 -->
     <article class="project-card glass reveal">
       <div class="project-img">
-        <img src="/images/fruit-quality.jpg" alt="Fruit Quality Detection Dashboard" width="800" height="400" loading="lazy" />
+        <picture>
+          <source srcset="/images/fruit-quality.webp" type="image/webp" />
+          <img src="/images/fruit-quality.jpg" alt="Fruit Quality Detection Dashboard" width="800" height="400" loading="lazy" decoding="async" />
+        </picture>
         <div class="project-overlay">
           <span class="project-status completed">Completed</span>
         </div>
@@ -68,7 +74,10 @@
     <!-- Project 3 -->
     <article class="project-card glass reveal">
       <div class="project-img">
-        <img src="/images/autism-fer.jpg" alt="Autism Facial Emotion Recognition Dashboard" width="800" height="400" loading="lazy" />
+        <picture>
+          <source srcset="/images/autism-fer.webp" type="image/webp" />
+          <img src="/images/autism-fer.jpg" alt="Autism Facial Emotion Recognition Dashboard" width="800" height="400" loading="lazy" decoding="async" />
+        </picture>
         <div class="project-overlay">
           <span class="project-status completed">Completed</span>
         </div>
@@ -126,19 +135,25 @@
     height: 180px;
     overflow: hidden;
 
+    picture {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
     img { width: 100%; height: 100%; object-fit: cover; }
   }
 
   .project-overlay {
     position: absolute;
-    top: var(--spacing-sm);
+    bottom: var(--spacing-sm);
     right: var(--spacing-sm);
   }
 
   .project-status {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
-    padding: 3px 10px;
+    padding: 4px 12px;
     border-radius: var(--rounded-pill);
 
     &.in-progress {
@@ -183,9 +198,9 @@
   }
 
   .tag {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
-    padding: 3px 8px;
+    padding: 4px 10px;
     background: rgba(83, 58, 253, 0.1);
     border: 1px solid rgba(83, 58, 253, 0.2);
     color: var(--color-primary);
