@@ -37,6 +37,61 @@ const jsonLd = {
     "name": "Bangladesh University of Business & Technology"
   }
 };
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who is Md. Sohel Rana?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Md. Sohel Rana is a final-year Computer Science & Engineering student at Bangladesh University of Business & Technology (BUBT). He is a Software Engineer specializing in backend systems with C#, .NET, Docker, and Python, and a 3× ICPC Asia Dhaka Regionalist competitive programmer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What technologies does Sohel Rana work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sohel works with C#, ASP.NET Core, Python, Docker, PostgreSQL, Redis, PyTorch, and YOLOv8. His backend expertise includes .NET, REST APIs, and containerized deployments, while his ML work covers computer vision and deep learning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are Sohel Rana's competitive programming achievements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sohel is a 3× ICPC Asia Dhaka Regionalist, Codeforces Specialist (peak rating 1619), LeetCode Knight (top 5%), and CodeChef 3-Star rated programmer. He has solved 1500+ algorithmic problems across multiple platforms and won BUBT Intra University Programming Contest twice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What projects has Sohel Rana built?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sohel has built an Online Judge System (C#, .NET, Docker, PostgreSQL), a Real-Time Fruit Quality Detection system (98.97% mAP using YOLOv8), and a Facial Emotion Recognition for Autism system (89% accuracy using deep learning). All projects include impact metrics and source code."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Sohel Rana available for hire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Md. Sohel Rana is actively seeking full-time Software Engineering and .NET Developer positions. He is available for immediate hiring and can be contacted via email at mrsohelcse@gmail.com or through LinkedIn."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Sohel Rana's CGPA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Md. Sohel Rana has a CGPA of 3.52 out of 4.00 in his B.Sc. in Computer Science & Engineering program at Bangladesh University of Business & Technology (BUBT)."
+      }
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -74,6 +129,7 @@ const jsonLd = {
 
     <!-- JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -135,6 +191,9 @@ const jsonLd = {
             <p class="mobile-subtitle">Software Engineer · ICPC Regionalist</p>
           </div>
         </div>
+
+        <!-- Hidden h1 for SEO (visible to screen readers and search engines) -->
+        <h1 class="seo-h1 sr-only">Md. Sohel Rana — Software Engineer, Competitive Programmer, .NET Developer</h1>
 
         <!-- Page content injected here -->
         <div class="content-area">
@@ -205,6 +264,19 @@ const jsonLd = {
     font-size: 14px;
 
     &:focus { top: 16px; }
+  }
+
+  /* Screen reader only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   /* App shell */
