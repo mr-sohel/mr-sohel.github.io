@@ -1,0 +1,140 @@
+---
+---
+
+<section id="skills" class="skills section-padding">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="heading-lg">Technical Skills</h2>
+    </div>
+    
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3 class="heading-sm">Languages</h3>
+        <div class="chip-container">
+          <span class="skill-chip">C/C++</span>
+          <span class="skill-chip">C#</span>
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">JavaScript</span>
+          <span class="skill-chip">SQL</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3 class="heading-sm">Backend</h3>
+        <div class="chip-container">
+          <span class="skill-chip">ASP.NET Core MVC</span>
+          <span class="skill-chip">REST APIs</span>
+          <span class="skill-chip">FastAPI</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3 class="heading-sm">Frontend</h3>
+        <div class="chip-container">
+          <span class="skill-chip">Angular</span>
+          <span class="skill-chip">React.js</span>
+          <span class="skill-chip">HTML/CSS</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3 class="heading-sm">ML / Applied AI</h3>
+        <div class="chip-container">
+          <span class="skill-chip">PyTorch</span>
+          <span class="skill-chip">YOLOv8</span>
+          <span class="skill-chip">CNNs</span>
+          <span class="skill-chip">Transformers</span>
+          <span class="skill-chip">ONNX Runtime</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3 class="heading-sm">Core CS</h3>
+        <div class="chip-container">
+          <span class="skill-chip">Data Structures</span>
+          <span class="skill-chip">Algorithms</span>
+          <span class="skill-chip">OOP</span>
+          <span class="skill-chip">SOLID Principles</span>
+          <span class="skill-chip">Design Patterns</span>
+          <span class="skill-chip">DBMS</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3 class="heading-sm">Tools</h3>
+        <div class="chip-container">
+          <span class="skill-chip">Git</span>
+          <span class="skill-chip">Docker</span>
+          <span class="skill-chip">Linux</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .section-padding {
+    padding: var(--spacing-xxl) 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-xxl);
+    text-align: center;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xxl);
+    background-color: var(--color-canvas-soft);
+    padding: var(--spacing-xxl);
+    border-radius: var(--rounded-lg);
+    border: 1px solid var(--color-hairline);
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      padding: var(--spacing-xl);
+      gap: var(--spacing-xl);
+    }
+  }
+
+  .skill-category {
+    h3 {
+      color: var(--color-ink-secondary);
+      margin-bottom: var(--spacing-md);
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+  }
+
+  .chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .skill-chip {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    border: 1px solid var(--color-hairline);
+    padding: 6px 14px;
+    border-radius: var(--rounded-pill);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary-deep);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-level-1);
+    }
+  }
+</style>

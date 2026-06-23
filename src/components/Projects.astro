@@ -1,0 +1,226 @@
+---
+import Card from './Card.astro';
+import Button from './Button.astro';
+---
+
+<section id="projects" class="projects section-padding">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="heading-lg">Featured Projects</h2>
+      <p class="body-md text-muted">A selection of my recent work in backend, ML, and IoT.</p>
+    </div>
+    
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <Card variant="light" className="project-card">
+        <div class="project-image">
+          <img src="/images/online-judge.jpg" alt="Online Judge System Dashboard" width="800" height="400" loading="lazy" />
+        </div>
+        <div class="project-content">
+          <h3 class="heading-md">Online Judge System</h3>
+          <p class="body-md">Built a competitive programming judge platform to automate code evaluation for university contests.</p>
+          
+          <div class="project-stack">
+            <span class="stack-chip">C#</span>
+            <span class="stack-chip">ASP.NET Core</span>
+            <span class="stack-chip">Docker</span>
+            <span class="stack-chip">RabbitMQ</span>
+            <span class="stack-chip">PostgreSQL</span>
+          </div>
+          
+          <div class="project-impact">
+            <ul>
+              <li>Supports concurrent code submissions with isolated Docker-based sandboxed execution.</li>
+              <li>Async job processing via RabbitMQ for scalable verdict delivery.</li>
+              <li><em>(Currently in active development)</em></li>
+            </ul>
+          </div>
+          
+          <div class="project-actions">
+            <Button href="#" variant="primary" className="btn-sm">Demo (Coming Soon)</Button>
+            <Button href="https://github.com/mr-sohel" target="_blank" variant="secondary" className="btn-sm">GitHub</Button>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Project 2 -->
+      <Card variant="light" className="project-card">
+        <div class="project-image">
+          <img src="/images/fruit-quality.jpg" alt="Fruit Quality Detection Dashboard" width="800" height="400" loading="lazy" />
+        </div>
+        <div class="project-content">
+          <h3 class="heading-md">Real-Time Fruit Quality Detection</h3>
+          <p class="body-md">Built an end-to-end IoT + ML system that detects whether fruits are fresh or rotten using a budget ESP32-CAM and cloud-hosted AI.</p>
+          
+          <div class="project-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">FastAPI</span>
+            <span class="stack-chip">YOLOv8 Nano</span>
+            <span class="stack-chip">ONNX</span>
+            <span class="stack-chip">ESP32-CAM</span>
+          </div>
+          
+          <div class="project-impact">
+            <ul>
+              <li>Achieved <strong>98.97% mAP@50</strong> across 8 fruit classes using YOLOv8 Nano.</li>
+              <li>Improved inference latency by <strong>80%</strong> (reducing response time from 15s to 3s) via ONNX conversion for edge deployment.</li>
+              <li>Real-time alerts delivered to Telegram for quality monitoring.</li>
+            </ul>
+          </div>
+          
+          <div class="project-actions">
+            <Button href="https://github.com/mr-sohel/Fruit_Quality_Detection_Using_Deep_Learning" target="_blank" variant="primary" className="btn-sm">View Project</Button>
+            <Button href="#" variant="secondary" className="btn-sm">GitHub</Button>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Project 3 -->
+      <Card variant="light" className="project-card">
+        <div class="project-image">
+          <img src="/images/autism-fer.jpg" alt="Autism Facial Emotion Recognition Dashboard" width="800" height="400" loading="lazy" />
+        </div>
+        <div class="project-content">
+          <h3 class="heading-md">Facial Emotion Recognition for Autism</h3>
+          <p class="body-md">Developed a deep learning system to recognize facial expressions in individuals with autism, aiding therapeutic assessment.</p>
+          
+          <div class="project-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">PyTorch</span>
+            <span class="stack-chip">Swin Transformers</span>
+            <span class="stack-chip">Explainable AI</span>
+          </div>
+          
+          <div class="project-impact">
+            <ul>
+              <li>Achieved <strong>89% validation accuracy</strong>, outperforming 14 standard baselines using a novel Enhanced SE-Swin Transformer (ESSwin-6) architecture.</li>
+              <li>Applied Explainable AI (Grad-CAM) to visualize model attention regions for clinical interpretability and transparent predictions.</li>
+            </ul>
+          </div>
+          
+          <div class="project-actions">
+            <Button href="https://github.com/mr-sohel/Autism-Facial-Expression-Recognition" target="_blank" variant="primary" className="btn-sm">View Project</Button>
+            <Button href="#" variant="secondary" className="btn-sm">GitHub</Button>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .section-padding {
+    padding: var(--spacing-xxl) 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-xxl);
+    text-align: center;
+    
+    h2 {
+      margin-bottom: var(--spacing-xs);
+    }
+  }
+
+  .text-muted {
+    color: var(--color-ink-secondary);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+    
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Target the Card component internals */
+  :global(.project-card) {
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important; /* Remove default padding to allow image to span full width */
+  }
+
+  .project-image {
+    width: 100%;
+    height: 200px;
+    border-bottom: 1px solid var(--color-hairline);
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .project-content {
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  h3 {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin: var(--spacing-md) 0;
+  }
+
+  .stack-chip {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: var(--rounded-xs);
+    background-color: var(--color-canvas-soft);
+    color: var(--color-ink-secondary);
+    border: 1px solid var(--color-hairline);
+  }
+
+  .project-impact {
+    margin-bottom: var(--spacing-xl);
+    flex: 1; /* Push actions to bottom */
+    
+    ul {
+      padding-left: var(--spacing-lg);
+      margin: 0;
+      color: var(--color-ink-secondary);
+      font-size: 14px;
+      line-height: 1.5;
+      
+      li {
+        margin-bottom: var(--spacing-xs);
+      }
+      
+      strong {
+        color: var(--color-ink);
+      }
+    }
+  }
+
+  .project-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: auto;
+    
+    :global(.btn-sm) {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+  }
+</style>

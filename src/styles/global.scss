@@ -1,0 +1,149 @@
+:root {
+  /* Colors */
+  --color-primary: #533afd;
+  --color-primary-deep: #4434d4;
+  --color-primary-press: #2e2b8c;
+  --color-primary-soft: #665efd;
+  --color-primary-bg-subdued-hover: #b9b9f9;
+  
+  --color-brand-dark-900: #1c1e54;
+  
+  --color-ink: #0d253d;
+  --color-ink-secondary: #273951;
+  --color-ink-mute: #64748d;
+  --color-ink-mute-2: #61718a;
+  
+  --color-on-primary: #ffffff;
+  --color-canvas: #ffffff;
+  --color-canvas-soft: #f6f9fc;
+  --color-canvas-cream: #f5e9d4;
+  
+  --color-hairline: #e3e8ee;
+  --color-hairline-input: #a8c3de;
+  
+  /* Typography */
+  --font-family-display: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  
+  /* Spacing */
+  --spacing-xxs: 2px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
+  --spacing-huge: 64px;
+
+  /* Rounded */
+  --rounded-xs: 4px;
+  --rounded-sm: 6px;
+  --rounded-md: 8px;
+  --rounded-lg: 12px;
+  --rounded-xl: 16px;
+  --rounded-pill: 9999px;
+
+  /* Elevations */
+  --shadow-level-1: rgba(0, 55, 112, 0.08) 0px 1px 3px;
+  --shadow-level-2: rgba(0, 55, 112, 0.08) 0px 8px 24px, rgba(0, 55, 112, 0.04) 0px 2px 6px;
+}
+
+/* Dark Theme Variables */
+:root[data-theme="dark"] {
+  --color-canvas: #0d1117;
+  --color-canvas-soft: #161b22;
+  --color-canvas-cream: #1f242d;
+  
+  --color-ink: #c9d1d9;
+  --color-ink-secondary: #8b949e;
+  --color-ink-mute: #6e7681;
+  --color-ink-mute-2: #484f58;
+
+  --color-hairline: #30363d;
+  --color-hairline-input: #21262d;
+  
+  --shadow-level-1: rgba(0, 0, 0, 0.4) 0px 1px 3px;
+  --shadow-level-2: rgba(0, 0, 0, 0.4) 0px 8px 24px, rgba(0, 0, 0, 0.2) 0px 2px 6px;
+}
+
+html {
+  font-family: var(--font-family-body);
+  color: var(--color-ink);
+  background-color: var(--color-canvas);
+  font-feature-settings: "ss01" on;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 15px; /* Body MD */
+  font-weight: 400; /* Adjusted from 300 for better readability as per plan */
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Typography Classes */
+.display-xxl { font-size: 56px; font-weight: 300; line-height: 1.03; letter-spacing: -1.4px; text-wrap: balance; }
+.display-xl { font-size: 48px; font-weight: 300; line-height: 1.15; letter-spacing: -0.96px; text-wrap: balance; }
+.display-lg { font-size: 32px; font-weight: 300; line-height: 1.1; letter-spacing: -0.64px; text-wrap: balance; }
+.display-md { font-size: 26px; font-weight: 300; line-height: 1.12; letter-spacing: -0.26px; text-wrap: balance; }
+.heading-lg { font-size: 22px; font-weight: 300; line-height: 1.1; letter-spacing: -0.22px; text-wrap: balance; }
+.heading-md { font-size: 20px; font-weight: 400; line-height: 1.4; letter-spacing: -0.2px; text-wrap: balance; }
+.body-md { font-size: 15px; font-weight: 400; line-height: 1.5; }
+.body-tabular { font-feature-settings: "tnum" on, "ss01" on; }
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .display-xxl { font-size: 36px; letter-spacing: -0.8px; }
+  .display-xl { font-size: 32px; letter-spacing: -0.64px; }
+  .display-lg { font-size: 26px; letter-spacing: -0.26px; }
+}
+
+/* Base Styles */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-lg);
+  font-family: var(--font-family-display);
+  color: var(--color-ink);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-primary-deep);
+}
+
+/* Global focus-visible ring for keyboard navigation (not triggered on mouse click) */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--rounded-xs);
+}
+
+/* Remove default outline, replaced by :focus-visible above */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Honor prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  box-sizing: border-box;
+}

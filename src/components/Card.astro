@@ -1,0 +1,82 @@
+---
+interface Props {
+  variant?: 'light' | 'dark' | 'dashboard' | 'cream';
+  className?: string;
+  padding?: 'standard' | 'none';
+}
+
+const { 
+  variant = 'light',
+  className = '',
+  padding = 'standard'
+} = Astro.props;
+
+const baseClass = "card";
+const variantClass = `card-${variant}`;
+const paddingClass = padding === 'standard' ? 'p-standard' : 'p-none';
+const classes = `${baseClass} ${variantClass} ${paddingClass} ${className}`.trim();
+---
+
+<div class={classes}>
+  <slot />
+</div>
+
+<style lang="scss">
+  .card {
+    border-radius: var(--rounded-lg);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden; /* For images inside */
+  }
+
+  .p-standard {
+    padding: var(--spacing-xxl);
+    
+    @media (max-width: 768px) {
+      padding: var(--spacing-xl);
+    }
+  }
+
+  .p-none {
+    padding: 0;
+  }
+
+  .card-light {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    border: 1px solid var(--color-hairline);
+    box-shadow: var(--shadow-level-1);
+    
+    &:hover {
+      box-shadow: var(--shadow-level-2);
+      transform: translateY(-2px);
+    }
+  }
+
+  .card-dark {
+    background-color: var(--color-brand-dark-900);
+    color: var(--color-on-primary);
+    border: 1px solid transparent;
+    box-shadow: var(--shadow-level-1);
+    
+    &:hover {
+      box-shadow: var(--shadow-level-2);
+      transform: translateY(-2px);
+    }
+  }
+  
+  .card-cream {
+    background-color: var(--color-canvas-cream);
+    color: var(--color-ink);
+    border: 1px solid var(--color-hairline);
+    box-shadow: var(--shadow-level-1);
+  }
+
+  .card-dashboard {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-feature-settings: "tnum" on;
+    box-shadow: var(--shadow-level-2); /* Dashboards float higher */
+    border: 1px solid var(--color-hairline);
+    padding: var(--spacing-xl); /* Dashboards use xl padding instead of xxl */
+  }
+</style>

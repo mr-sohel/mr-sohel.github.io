@@ -1,0 +1,45 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+# Note: DO NOT ignore lockfiles (package-lock.json, yarn.lock, pnpm-lock.yaml).
+# They must be committed to ensure reproducible builds.
+
+# Build output
+dist/
+build/
+
+# Astro cache
+.astro/
+
+# IDE
+.vscode/
+.antigravitycli
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Skills/Agents folders (local dev tooling, not part of the site)
+.agents/
+.claude/
+skills-lock.json
+
+# Private reference notes (not for the public repo)
+.notes/
+
+# Patch artifacts
+*.orig
+*.rej
+
+# Wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example

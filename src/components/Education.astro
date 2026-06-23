@@ -1,0 +1,100 @@
+---
+import Card from './Card.astro';
+---
+
+<section id="education" class="education section-padding">
+  <div class="container">
+    <h2 class="heading-lg mb-md">Education</h2>
+    
+    <Card variant="cream" className="edu-card">
+      <div class="edu-header">
+        <div>
+          <h3 class="heading-md">B.Sc. in Computer Science & Engineering</h3>
+          <p class="university body-md">Bangladesh University of Business & Technology (BUBT)</p>
+        </div>
+        <div class="edu-meta">
+          <p class="body-tabular date">Graduation: December 2026</p>
+          <p class="body-tabular cgpa">CGPA: 3.52 / 4.00</p>
+        </div>
+      </div>
+      
+      <div class="edu-body">
+        <p class="coursework">
+          <strong>Relevant Coursework:</strong> Data Structures & Algorithms, Object-Oriented Programming, Database Systems, Operating Systems, Computer Networks, Software Engineering, Machine Learning.
+        </p>
+      </div>
+    </Card>
+  </div>
+</section>
+
+<style lang="scss">
+  .section-padding {
+    padding: var(--spacing-xxl) 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+  }
+
+  .mb-md {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .edu-card {
+    /* Cream variant handles background */
+  }
+
+  .edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  h3 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-ink);
+  }
+
+  .university {
+    color: var(--color-ink-secondary);
+    margin: 0;
+  }
+
+  .edu-meta {
+    text-align: right;
+    
+    @media (max-width: 768px) {
+      text-align: left;
+    }
+    
+    p {
+      margin: 0;
+      color: var(--color-ink-secondary);
+      font-weight: 500;
+    }
+    
+    .cgpa {
+      color: var(--color-primary-deep);
+      margin-top: var(--spacing-xs);
+    }
+  }
+
+  .coursework {
+    margin: 0;
+    color: var(--color-ink-secondary);
+    line-height: 1.5;
+    
+    strong {
+      color: var(--color-ink);
+    }
+  }
+</style>
