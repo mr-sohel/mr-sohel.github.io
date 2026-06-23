@@ -43,3 +43,9 @@ skills-lock.json
 .dev.vars*
 !.dev.vars.example
 !.env.example
+# Markdown files
+*.md
+!README.md
+
+# Claude files
+*CLAUDE.md
