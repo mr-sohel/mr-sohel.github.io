@@ -1,371 +1,147 @@
 ---
-import Card from './Card.astro';
 ---
 
-<section id="cp" class="cp-dashboard section-padding">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="heading-lg">Competitive Programming</h2>
-      <p class="body-md text-muted">1500+ problems solved across various platforms</p>
+<section id="cp" class="content-section bordered-top">
+  <div class="section-heading reveal">
+    <h2>Competitive Programming</h2>
+    <div class="heading-bar"></div>
+  </div>
+
+  <!-- Platform rating cards -->
+  <div class="cp-grid reveal-group">
+    <div class="cp-card reveal">
+      <div class="cp-platform">Codeforces</div>
+      <div class="cp-rating" style="color: #4299e1">1619</div>
+      <div class="cp-rank">Specialist</div>
     </div>
-    
-    <Card variant="dashboard" className="dashboard-container">
-      <div class="dashboard-header">
-        <div class="window-controls">
-          <span class="dot close"></span>
-          <span class="dot minimize"></span>
-          <span class="dot expand"></span>
-        </div>
-        <div class="window-title body-tabular text-muted">cp_metrics.sh</div>
-      </div>
-      
-      <div class="dashboard-grid">
-        <!-- Platform Ratings -->
-        <div class="metrics-panel">
-          <h3 class="panel-title heading-sm">Platform Ratings</h3>
-          
-          <div class="metric-item">
-            <div class="metric-label">
-              <a href="https://codeforces.com/profile/mr_sohel" target="_blank" rel="noopener noreferrer">Codeforces</a>
-              <span class="rank specialist">Specialist</span>
-            </div>
-            <div class="metric-value">
-              <span class="body-tabular">1422</span>
-              <span class="percentile">Top 15%</span>
-            </div>
-          </div>
-          
-          <div class="metric-item">
-            <div class="metric-label">
-              <a href="https://leetcode.com/u/mr_sohel/" target="_blank" rel="noopener noreferrer">LeetCode</a>
-              <span class="rank knight">Knight</span>
-            </div>
-            <div class="metric-value">
-              <span class="body-tabular">1653</span>
-              <span class="percentile">Top 17.43%</span>
-            </div>
-          </div>
-          
-          <div class="metric-item">
-            <div class="metric-label">
-              <a href="https://www.codechef.com/users/mr_sohel" target="_blank" rel="noopener noreferrer">CodeChef</a>
-              <span class="rank threestar">3-Star</span>
-            </div>
-            <div class="metric-value">
-              <span class="body-tabular">1623</span>
-              <span class="percentile">Top 7%</span>
-            </div>
-          </div>
-        </div>
+    <div class="cp-card reveal">
+      <div class="cp-platform">LeetCode</div>
+      <div class="cp-rating" style="color: #f6ad55">Knight</div>
+      <div class="cp-rank">Top 5%</div>
+    </div>
+    <div class="cp-card reveal">
+      <div class="cp-platform">CodeChef</div>
+      <div class="cp-rating" style="color: #68d391">1619</div>
+      <div class="cp-rank">3★ Rated</div>
+    </div>
+  </div>
 
-        <!-- Problem Solved Breakdown -->
-        <div class="solves-panel">
-          <h3 class="panel-title heading-sm">Problems Solved (1500+)</h3>
-          
-          <div class="solves-grid">
-            <div class="solve-item">
-              <span class="platform">VJudge</span>
-              <span class="count body-tabular">469</span>
-            </div>
-            <div class="solve-item">
-              <span class="platform">CSES</span>
-              <span class="count body-tabular">84</span>
-            </div>
-            <div class="solve-item">
-              <span class="platform">LightOJ</span>
-              <span class="count body-tabular">83</span>
-            </div>
-            <div class="solve-item">
-              <span class="platform">HackerRank</span>
-              <span class="count body-tabular">71</span>
-            </div>
-            <div class="solve-item">
-              <span class="platform">UVa</span>
-              <span class="count body-tabular">63</span>
-            </div>
-            <div class="solve-item">
-              <span class="platform">Kattis</span>
-              <span class="count body-tabular">39</span>
-            </div>
-          </div>
-          
-          <div class="codolio-link">
-            <a href="https://codolio.com/profile/mr_sohel" target="_blank" rel="noopener noreferrer" class="view-more">
-              View full profile on Codolio →
-            </a>
-          </div>
+  <!-- Achievements -->
+  <div class="cp-achievements reveal">
+    <h3 class="ach-title">Notable Achievements</h3>
+    <ul class="ach-list">
+      <li class="ach-item reveal">
+        <span class="ach-icon" aria-hidden="true">🏆</span>
+        <div>
+          <strong>ICPC Asia Dhaka Regional 2023</strong> — Qualified as Regionalist (3× consecutive)
         </div>
-
-        <!-- Notable Contests -->
-        <div class="contests-panel">
-          <h3 class="panel-title heading-sm">Notable Contests</h3>
-          <ul class="contest-list">
-            <li>
-              <span class="contest-name">ICPC Dhaka Regional 2024</span>
-              <span class="contest-result body-tabular">Ranked 157th (Team: BUBT_Mudbloods)</span>
-            </li>
-            <li>
-              <span class="contest-name">ICPC Dhaka Regional 2023</span>
-              <span class="contest-result body-tabular">Honorable Mention</span>
-            </li>
-            <li>
-              <span class="contest-name">Meta Hacker Cup 2025</span>
-              <span class="contest-result body-tabular">Round 2 Qualifier (Top 13k globally)</span>
-            </li>
-            <li>
-              <span class="contest-name">BUBT Intra University Contests</span>
-              <span class="contest-result body-tabular">2-Time Champion (2022, 2024)</span>
-            </li>
-            <li>
-              <span class="contest-name">UAP Inter University Contest</span>
-              <span class="contest-result body-tabular">2nd Runner-up</span>
-            </li>
-          </ul>
+      </li>
+      <li class="ach-item reveal">
+        <span class="ach-icon" aria-hidden="true">🥇</span>
+        <div>
+          <strong>BUBT Intra University Programming Contest</strong> — Champion
         </div>
-      </div>
-    </Card>
+      </li>
+      <li class="ach-item reveal">
+        <span class="ach-icon" aria-hidden="true">📚</span>
+        <div>
+          <strong>CP Instructor</strong> — Taught competitive programming to 50+ students at BUBT
+        </div>
+      </li>
+      <li class="ach-item reveal">
+        <span class="ach-icon" aria-hidden="true">💻</span>
+        <div>
+          <strong>1500+ problems</strong> solved across Codeforces, LeetCode, CodeChef, AtCoder, Toph
+        </div>
+      </li>
+    </ul>
   </div>
 </section>
 
 <style lang="scss">
-  .section-padding {
-    padding: var(--spacing-xxl) 0;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-xl);
-  }
-
-  .section-header {
-    margin-bottom: var(--spacing-xxl);
-    text-align: center;
-    
-    h2 {
-      margin-bottom: var(--spacing-xs);
-    }
-  }
-
-  .text-muted {
-    color: var(--color-ink-secondary);
-  }
-
-  .dashboard-container {
-    background-color: var(--color-brand-dark-900) !important;
-    color: var(--color-on-primary) !important;
-    padding: 0 !important; /* Override standard padding for custom layout */
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  }
-
-  /* White theme override for dashboard to remain dark app like */
-  :global([data-theme="light"]) .dashboard-container {
-    box-shadow: 0 20px 40px rgba(0, 37, 82, 0.15);
-  }
-
-  .dashboard-header {
-    display: flex;
-    align-items: center;
-    padding: 12px var(--spacing-xl);
-    background-color: rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  .window-controls {
-    display: flex;
-    gap: 8px;
-    flex: 1;
-    
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      
-      &.close { background-color: #ff5f56; }
-      &.minimize { background-color: #ffbd2e; }
-      &.expand { background-color: #27c93f; }
-    }
-  }
-
-  .window-title {
-    flex: 2;
-    text-align: center;
-    font-size: 13px;
-    opacity: 0.6;
-    color: #fff;
-  }
-  
-  .dashboard-header::after {
-    content: '';
-    flex: 1;
-  }
-
-  .dashboard-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xxl);
+  .content-section {
     padding: var(--spacing-xxl);
-    
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      padding: var(--spacing-xl);
-      gap: var(--spacing-xl);
-    }
+    @media (max-width: 768px) { padding: var(--spacing-xl) var(--spacing-lg); }
   }
+  .bordered-top { border-top: 1px solid var(--color-glass-border); }
 
-  .contests-panel {
-    grid-column: 1 / -1; /* Span across both columns */
-    padding-top: var(--spacing-md);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .panel-title {
-    color: var(--color-on-primary);
-    margin-bottom: var(--spacing-lg);
-    font-weight: 500;
-    opacity: 0.9;
-  }
-
-  /* Metrics Panel */
-  .metric-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--spacing-md) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-  .metric-label {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    
-    a {
-      color: var(--color-on-primary);
-      text-decoration: none;
-      font-weight: 500;
-      
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .rank {
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: var(--rounded-pill);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    
-    &.specialist { background-color: rgba(3, 168, 158, 0.2); color: #03a89e; }
-    &.knight { background-color: rgba(255, 136, 0, 0.2); color: #ff8800; }
-    &.threestar { background-color: rgba(51, 102, 204, 0.2); color: #8ab4f8; }
-  }
-
-  .metric-value {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    
-    .body-tabular {
-      font-size: 18px;
-      font-weight: 500;
-    }
-    
-    .percentile {
-      font-size: 12px;
-      opacity: 0.6;
-    }
-  }
-
-  /* Solves Panel */
-  .solves-grid {
+  .cp-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-    
-    @media (max-width: 480px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    margin-bottom: var(--spacing-xxl);
+    @media (max-width: 640px) { grid-template-columns: 1fr; }
   }
 
-  .solve-item {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: var(--rounded-md);
-    padding: var(--spacing-md);
+  .cp-card {
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--rounded-xl);
+    padding: var(--spacing-xl);
     text-align: center;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+
+    &:hover { border-color: rgba(83,58,253,0.3); transform: translateY(-2px); }
+  }
+
+  .cp-platform {
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-ink-mute);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .cp-rating {
+    font-size: 32px;
+    font-weight: 900;
+    font-feature-settings: "tnum" on;
+    line-height: 1.1;
+  }
+
+  .cp-rank {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-ink-secondary);
+    margin-top: 4px;
+  }
+
+  .cp-achievements {
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--rounded-xl);
+    padding: var(--spacing-xl);
+  }
+
+  .ach-title {
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-ink-secondary);
+    margin: 0 0 var(--spacing-lg) 0;
+  }
+
+  .ach-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xs);
-    
-    .platform {
-      font-size: 12px;
-      opacity: 0.7;
-    }
-    
-    .count {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--color-primary-subdued, #b9b9f9);
-    }
+    gap: var(--spacing-md);
   }
 
-  .codolio-link {
-    text-align: right;
-    margin-top: var(--spacing-md);
-    
-    .view-more {
-      font-size: 13px;
-      color: var(--color-primary-subdued, #b9b9f9);
-      text-decoration: none;
-      
-      &:hover {
-        color: var(--color-on-primary);
-      }
-    }
+  .ach-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    font-size: 14px;
+    color: var(--color-ink-secondary);
+    line-height: 1.5;
+
+    strong { color: var(--color-ink); }
   }
 
-  /* Contests Panel */
-  .contest-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    
-    li {
-      display: flex;
-      justify-content: space-between;
-      padding: var(--spacing-sm) 0;
-      border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-      
-      &:last-child {
-        border-bottom: none;
-      }
-      
-      @media (max-width: 600px) {
-        flex-direction: column;
-        gap: 4px;
-      }
-    }
-  }
-
-  .contest-name {
-    font-weight: 500;
-    color: #e3e8ee;
-  }
-
-  .contest-result {
-    color: #a8c3de;
-    text-align: right;
-    
-    @media (max-width: 600px) {
-      text-align: left;
-    }
-  }
+  .ach-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
 </style>

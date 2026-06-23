@@ -1,32 +1,34 @@
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
 :root {
-  /* Colors */
+  /* Brand */
   --color-primary: #533afd;
   --color-primary-deep: #4434d4;
   --color-primary-press: #2e2b8c;
-  --color-primary-soft: #665efd;
-  --color-primary-bg-subdued-hover: #b9b9f9;
-  
-  --color-brand-dark-900: #1c1e54;
-  
-  --color-ink: #0d253d;
-  --color-ink-secondary: #273951;
-  --color-ink-mute: #64748d;
-  --color-ink-mute-2: #61718a;
-  
-  --color-on-primary: #ffffff;
+  --color-primary-glow: rgba(83, 58, 253, 0.4);
+  --color-secondary: #22d3ee;   /* cyan accent for CP stats */
+  --color-accent: #a855f7;      /* purple for orbs */
+  --color-green: #4ade80;
+
+  /* Dark surfaces (default) */
+  --color-bg: #020617;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.10);
+  --color-glass-hover: rgba(255, 255, 255, 0.08);
+
+  /* Text */
+  --color-ink: #f8fafc;
+  --color-ink-secondary: #94a3b8;
+  --color-ink-mute: #475569;
+
+  /* Legacy canvas (kept for light mode) */
   --color-canvas: #ffffff;
   --color-canvas-soft: #f6f9fc;
   --color-canvas-cream: #f5e9d4;
-  
   --color-hairline: #e3e8ee;
-  --color-hairline-input: #a8c3de;
-  
-  /* Typography */
-  --font-family-display: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  
+
   /* Spacing */
-  --spacing-xxs: 2px;
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 12px;
@@ -36,76 +38,58 @@
   --spacing-huge: 64px;
 
   /* Rounded */
-  --rounded-xs: 4px;
   --rounded-sm: 6px;
   --rounded-md: 8px;
   --rounded-lg: 12px;
   --rounded-xl: 16px;
+  --rounded-2xl: 20px;
   --rounded-pill: 9999px;
 
-  /* Elevations */
-  --shadow-level-1: rgba(0, 55, 112, 0.08) 0px 1px 3px;
-  --shadow-level-2: rgba(0, 55, 112, 0.08) 0px 8px 24px, rgba(0, 55, 112, 0.04) 0px 2px 6px;
+  /* Sidebar width */
+  --sidebar-width: 300px;
+
+  /* Shadows */
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
-/* Dark Theme Variables */
-:root[data-theme="dark"] {
-  --color-canvas: #0d1117;
-  --color-canvas-soft: #161b22;
-  --color-canvas-cream: #1f242d;
-  
-  --color-ink: #c9d1d9;
-  --color-ink-secondary: #8b949e;
-  --color-ink-mute: #6e7681;
-  --color-ink-mute-2: #484f58;
+/* ============================================================
+   LIGHT MODE OVERRIDES
+   ============================================================ */
+:root[data-theme="light"] {
+  --color-bg: #f6f9fc;
+  --color-glass: rgba(255, 255, 255, 0.7);
+  --color-glass-border: rgba(0, 0, 0, 0.08);
+  --color-glass-hover: rgba(255, 255, 255, 0.9);
+  --color-ink: #0d253d;
+  --color-ink-secondary: #273951;
+  --color-ink-mute: #64748d;
+}
 
-  --color-hairline: #30363d;
-  --color-hairline-input: #21262d;
-  
-  --shadow-level-1: rgba(0, 0, 0, 0.4) 0px 1px 3px;
-  --shadow-level-2: rgba(0, 0, 0, 0.4) 0px 8px 24px, rgba(0, 0, 0, 0.2) 0px 2px 6px;
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 html {
-  font-family: var(--font-family-body);
-  color: var(--color-ink);
-  background-color: var(--color-canvas);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-feature-settings: "ss01" on;
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-size: 15px; /* Body MD */
-  font-weight: 400; /* Adjusted from 300 for better readability as per plan */
+  min-height: 100vh;
+  font-size: 15px;
+  font-weight: 400;
   line-height: 1.5;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Typography Classes */
-.display-xxl { font-size: 56px; font-weight: 300; line-height: 1.03; letter-spacing: -1.4px; text-wrap: balance; }
-.display-xl { font-size: 48px; font-weight: 300; line-height: 1.15; letter-spacing: -0.96px; text-wrap: balance; }
-.display-lg { font-size: 32px; font-weight: 300; line-height: 1.1; letter-spacing: -0.64px; text-wrap: balance; }
-.display-md { font-size: 26px; font-weight: 300; line-height: 1.12; letter-spacing: -0.26px; text-wrap: balance; }
-.heading-lg { font-size: 22px; font-weight: 300; line-height: 1.1; letter-spacing: -0.22px; text-wrap: balance; }
-.heading-md { font-size: 20px; font-weight: 400; line-height: 1.4; letter-spacing: -0.2px; text-wrap: balance; }
-.body-md { font-size: 15px; font-weight: 400; line-height: 1.5; }
-.body-tabular { font-feature-settings: "tnum" on, "ss01" on; }
-
-/* Responsive Typography */
-@media (max-width: 768px) {
-  .display-xxl { font-size: 36px; letter-spacing: -0.8px; }
-  .display-xl { font-size: 32px; letter-spacing: -0.64px; }
-  .display-lg { font-size: 26px; letter-spacing: -0.26px; }
-}
-
-/* Base Styles */
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: var(--spacing-lg);
-  font-family: var(--font-family-display);
   color: var(--color-ink);
+  background-color: var(--color-bg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
 a {
@@ -115,22 +99,27 @@ a {
 }
 
 a:hover {
-  color: var(--color-primary-deep);
+  color: var(--color-secondary);
 }
 
-/* Global focus-visible ring for keyboard navigation (not triggered on mouse click) */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   FOCUS & ACCESSIBILITY
+   ============================================================ */
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
-  border-radius: var(--rounded-xs);
+  border-radius: var(--rounded-sm);
 }
 
-/* Remove default outline, replaced by :focus-visible above */
 :focus:not(:focus-visible) {
   outline: none;
 }
 
-/* Honor prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -139,11 +128,112 @@ a:hover {
   }
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+/* ============================================================
+   TYPOGRAPHY SCALE
+   ============================================================ */
+.display-xxl { font-size: 56px; font-weight: 300; line-height: 1.03; letter-spacing: -1.4px; text-wrap: balance; }
+.display-xl  { font-size: 48px; font-weight: 300; line-height: 1.15; letter-spacing: -0.96px; text-wrap: balance; }
+.display-lg  { font-size: 32px; font-weight: 300; line-height: 1.1;  letter-spacing: -0.64px; text-wrap: balance; }
+.heading-lg  { font-size: 22px; font-weight: 300; line-height: 1.1;  letter-spacing: -0.22px; text-wrap: balance; }
+.heading-md  { font-size: 20px; font-weight: 400; line-height: 1.4;  letter-spacing: -0.2px;  text-wrap: balance; }
+.body-md     { font-size: 15px; font-weight: 400; line-height: 1.5; }
+.body-tabular { font-feature-settings: "tnum" on, "ss01" on; }
+
+@media (max-width: 768px) {
+  .display-xxl { font-size: 36px; letter-spacing: -0.8px; }
+  .display-xl  { font-size: 28px; letter-spacing: -0.5px; }
+  .display-lg  { font-size: 24px; letter-spacing: -0.3px; }
 }
 
-* {
-  box-sizing: border-box;
+/* ============================================================
+   GLASSMORPHISM UTILITY
+   ============================================================ */
+.glass {
+  background: var(--color-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+/* ============================================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for children */
+.reveal-group > *:nth-child(1) { transition-delay: 0.0s; }
+.reveal-group > *:nth-child(2) { transition-delay: 0.1s; }
+.reveal-group > *:nth-child(3) { transition-delay: 0.2s; }
+.reveal-group > *:nth-child(4) { transition-delay: 0.3s; }
+.reveal-group > *:nth-child(5) { transition-delay: 0.4s; }
+
+/* ============================================================
+   SCROLLBAR STYLING
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--color-glass-border);
+  border-radius: var(--rounded-pill);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+
+/* ============================================================
+   SECTION HEADING STYLE (shared across all sections)
+   ============================================================ */
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: var(--spacing-xxl);
+
+  h2 {
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--color-ink);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .heading-bar {
+    width: 80px;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: var(--rounded-pill);
+    box-shadow: 0 0 12px var(--color-primary-glow);
+  }
+}
+
+/* ============================================================
+   ANIMATED GRID BACKGROUND
+   ============================================================ */
+@keyframes grid-move {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(40px); }
+}
+
+@keyframes orb-pulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50%       { opacity: 0.25; transform: scale(1.05); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

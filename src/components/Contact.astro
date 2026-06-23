@@ -1,118 +1,76 @@
 ---
-import Button from './Button.astro';
 ---
 
-<section id="contact" class="contact section-padding">
-  <div class="container">
-    <div class="contact-wrapper">
-      <div class="contact-info">
-        <div class="availability-badge">
-          <span class="pulse-dot"></span>
-          Open to full-time SWE roles
-        </div>
-        
-        <h2 class="display-lg">Let's Connect</h2>
-        <p class="body-md text-muted">
-          I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
-        </p>
-        
-        <div class="contact-links">
-          <a href="mailto:mrsohelcse@gmail.com" class="contact-link">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            mrsohelcse@gmail.com
-          </a>
-          
-          <a href="https://www.linkedin.com/in/mrsohel/" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            linkedin.com/in/mrsohel
-          </a>
-          
-          <a href="https://github.com/mr-sohel" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            github.com/mr-sohel
-          </a>
-        </div>
-      </div>
-      
-      <div class="contact-cta">
-        <Button href="mailto:mrsohelcse@gmail.com" variant="primary" className="btn-large">Say Hello</Button>
+<section id="contact" class="content-section bordered-top">
+  <div class="section-heading reveal">
+    <h2>Contact</h2>
+    <div class="heading-bar"></div>
+  </div>
+
+  <div class="contact-wrapper">
+    <div class="contact-left reveal">
+      <p class="contact-intro">
+        I'm currently looking for full-time Software Engineering opportunities.
+        Whether you have a question, a role, or just want to say hi —
+        I'll get back to you!
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:mrsohelcse@gmail.com" class="contact-link">
+          <span class="link-icon" aria-hidden="true">✉️</span>
+          <span>mrsohelcse@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/mrsohel/" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="link-icon" aria-hidden="true">💼</span>
+          <span>linkedin.com/in/mrsohel</span>
+        </a>
+        <a href="https://github.com/mr-sohel" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="link-icon" aria-hidden="true">🐙</span>
+          <span>github.com/mr-sohel</span>
+        </a>
       </div>
     </div>
+
+    <div class="contact-right reveal">
+      <a href="mailto:mrsohelcse@gmail.com" class="say-hello-btn">
+        Say Hello 👋
+      </a>
+      <a href="/Md_Sohel_Rana_Resume.pdf" target="_blank" rel="noopener noreferrer" class="resume-dl-btn">
+        Download Resume
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-strip">
+    <p class="footer-text">Built with Astro · Deployed on GitHub Pages · © 2025 Md. Sohel Rana</p>
   </div>
 </section>
 
 <style lang="scss">
-  .section-padding {
-    padding: var(--spacing-huge) 0;
+  .content-section {
+    padding: var(--spacing-xxl);
+    @media (max-width: 768px) { padding: var(--spacing-xl) var(--spacing-lg); }
   }
-
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-xl);
-  }
+  .bordered-top { border-top: 1px solid var(--color-glass-border); }
 
   .contact-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--color-canvas);
-    border: 1px solid var(--color-hairline);
-    border-radius: var(--rounded-lg);
-    padding: var(--spacing-huge);
-    box-shadow: var(--shadow-level-1);
-    
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--spacing-xxl);
+    align-items: start;
+
     @media (max-width: 768px) {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--spacing-xxl);
-      padding: var(--spacing-xxl);
+      grid-template-columns: 1fr;
     }
   }
 
-  .contact-info {
-    max-width: 500px;
-    
-    h2 {
-      margin: var(--spacing-md) 0;
-    }
-  }
-
-  .text-muted {
+  .contact-intro {
+    font-size: 15px;
     color: var(--color-ink-secondary);
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .availability-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: rgba(39, 201, 63, 0.1);
-    color: #27c93f;
-    padding: 6px 12px;
-    border-radius: var(--rounded-pill);
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  .pulse-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #27c93f;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0% {
-      box-shadow: 0 0 0 0 rgba(39, 201, 63, 0.4);
-    }
-    70% {
-      box-shadow: 0 0 0 6px rgba(39, 201, 63, 0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgba(39, 201, 63, 0);
-    }
+    line-height: 1.7;
+    margin: 0 0 var(--spacing-xl) 0;
+    max-width: 500px;
   }
 
   .contact-links {
@@ -125,27 +83,81 @@ import Button from './Button.astro';
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-md);
-    color: var(--color-ink);
-    font-weight: 500;
-    
-    svg {
-      color: var(--color-ink-mute);
-      transition: color 0.2s ease;
-    }
-    
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-ink-secondary);
+    text-decoration: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--rounded-lg);
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+
     &:hover {
       color: var(--color-primary);
-      
-      svg {
-        color: var(--color-primary);
-      }
+      border-color: rgba(83, 58, 253, 0.3);
+      transform: translateX(4px);
     }
   }
 
-  .contact-cta {
-    :global(.btn-large) {
-      padding: 16px 32px;
-      font-size: 18px;
+  .link-icon { font-size: 16px; }
+
+  .contact-right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: stretch;
+    min-width: 180px;
+  }
+
+  .say-hello-btn {
+    display: block;
+    text-align: center;
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: var(--rounded-lg);
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      background: var(--color-primary-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--color-primary-glow);
     }
+  }
+
+  .resume-dl-btn {
+    display: block;
+    text-align: center;
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: var(--color-glass);
+    color: var(--color-ink);
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--rounded-lg);
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      border-color: rgba(83, 58, 253, 0.4);
+      color: var(--color-primary);
+    }
+  }
+
+  .footer-strip {
+    margin-top: var(--spacing-xxl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-glass-border);
+    text-align: center;
+  }
+
+  .footer-text {
+    font-size: 12px;
+    color: var(--color-ink-mute);
+    margin: 0;
   }
 </style>

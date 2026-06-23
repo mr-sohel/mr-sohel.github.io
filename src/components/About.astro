@@ -1,39 +1,166 @@
 ---
 ---
 
-<section id="about" class="about section-padding">
-  <div class="container">
-    <div class="about-content">
-      <h2 class="heading-lg mb-md">About Me</h2>
-      <p class="body-md">
-        I'm a final-year Computer Science & Engineering student at BUBT with a deep focus on backend systems, competitive programming, and applied machine learning. I've participated in 3 ICPC Dhaka Regionals, solved 1500+ algorithmic problems, and built full-stack products ranging from a containerized Online Judge to real-time computer vision systems. I'm actively seeking Software Engineer / .NET Developer roles where I can apply my problem-solving foundation to production systems.
-      </p>
+<section id="about" class="content-section">
+  <!-- Stat counters row -->
+  <div class="stats-grid reveal-group">
+    <div class="stat-card reveal">
+      <span class="stat-value" style="color: var(--color-primary)">1500+</span>
+      <span class="stat-label">Problems Solved</span>
+    </div>
+    <div class="stat-card reveal">
+      <span class="stat-value" style="color: var(--color-secondary)">3×</span>
+      <span class="stat-label">ICPC Regional</span>
+    </div>
+    <div class="stat-card reveal">
+      <span class="stat-value" style="color: var(--color-accent)">3.52</span>
+      <span class="stat-label">CGPA at BUBT</span>
+    </div>
+    <div class="stat-card reveal">
+      <span class="stat-value" style="color: var(--color-green)">5+</span>
+      <span class="stat-label">Years in CP</span>
+    </div>
+  </div>
+
+  <!-- About text -->
+  <div class="section-heading reveal">
+    <h2>About Me</h2>
+    <div class="heading-bar"></div>
+  </div>
+
+  <div class="about-body">
+    <p class="body-md reveal">
+      I'm a <span class="hl">final-year CSE student</span> at
+      <span class="hl">Bangladesh University of Business and Technology (BUBT)</span>,
+      passionate about building robust backend systems and solving hard algorithmic problems.
+    </p>
+    <p class="body-md reveal">
+      On the engineering side, I work primarily with <span class="hl">C# / .NET</span>,
+      <span class="hl">Python</span>, and <span class="hl">Docker</span> — building systems like
+      a full-featured <span class="hl">Online Judge</span> with real-time code execution,
+      and ML pipelines for <span class="hl">Fruit Quality Detection</span> (98.97% mAP)
+      and <span class="hl">Facial Emotion Recognition for Autism</span> (89% accuracy).
+    </p>
+    <p class="body-md reveal">
+      On the competitive side, I'm a <span class="hl">3× ICPC Asia Dhaka Regionalist</span>,
+      <span class="hl">Specialist on Codeforces</span> (peak 1619),
+      <span class="hl">Knight on LeetCode</span>, and <span class="hl">3-Star on CodeChef</span>.
+      I've solved 1500+ problems across platforms and taught CP as an instructor.
+    </p>
+
+    <!-- Availability banner -->
+    <div class="availability-banner reveal">
+      <span class="pulse-dot" aria-hidden="true"></span>
+      <p>Open to full-time Software Engineering roles</p>
     </div>
   </div>
 </section>
 
 <style lang="scss">
-  .section-padding {
-    padding: var(--spacing-huge) 0;
+  .content-section {
+    padding: var(--spacing-xxl) var(--spacing-xxl);
+
+    @media (max-width: 768px) {
+      padding: var(--spacing-xl) var(--spacing-lg);
+    }
   }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-xl);
+  /* Stats */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xxl);
+
+    @media (max-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
-  .about-content {
-    max-width: 800px;
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg) var(--spacing-md);
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--rounded-xl);
+    text-align: center;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      border-color: rgba(83, 58, 253, 0.3);
+      transform: translateY(-2px);
+    }
   }
 
-  .mb-md {
-    margin-bottom: var(--spacing-xl);
+  .stat-value {
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1;
+    font-feature-settings: "tnum" on;
   }
 
-  p.body-md {
+  .stat-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     color: var(--color-ink-secondary);
-    font-size: 16px; /* Slightly larger for the about paragraph */
-    line-height: 1.6;
+    margin-top: 4px;
+  }
+
+  /* About text */
+  .about-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+
+    .body-md {
+      color: var(--color-ink-secondary);
+      margin: 0;
+    }
+  }
+
+  /* Keyword highlight */
+  .hl {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  /* Availability */
+  .availability-banner {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: rgba(74, 222, 128, 0.05);
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    border-radius: var(--rounded-lg);
+    margin-top: var(--spacing-md);
+
+    p {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-green);
+    }
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-green);
+    flex-shrink: 0;
+    animation: pulse-green 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-green {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
+    50% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
   }
 </style>

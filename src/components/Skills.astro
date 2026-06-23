@@ -1,140 +1,115 @@
 ---
+const skillGroups = [
+  {
+    label: "Languages",
+    icon: "💻",
+    color: "var(--color-primary)",
+    skills: ["C#", "Python", "C++", "JavaScript", "SQL"]
+  },
+  {
+    label: "Backend & DevOps",
+    icon: "⚙️",
+    color: "var(--color-secondary)",
+    skills: [".NET / ASP.NET Core", "Docker", "PostgreSQL", "Redis", "REST APIs", "Git"]
+  },
+  {
+    label: "ML & CV",
+    icon: "🧠",
+    color: "var(--color-accent)",
+    skills: ["PyTorch", "TensorFlow", "YOLOv8", "OpenCV", "Scikit-learn", "Pandas"]
+  },
+  {
+    label: "Core CS",
+    icon: "📐",
+    color: "#f6ad55",
+    skills: ["Data Structures", "Algorithms", "OOP", "System Design", "Operating Systems"]
+  }
+];
 ---
 
-<section id="skills" class="skills section-padding">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="heading-lg">Technical Skills</h2>
-    </div>
-    
-    <div class="skills-grid">
-      <div class="skill-category">
-        <h3 class="heading-sm">Languages</h3>
-        <div class="chip-container">
-          <span class="skill-chip">C/C++</span>
-          <span class="skill-chip">C#</span>
-          <span class="skill-chip">Python</span>
-          <span class="skill-chip">JavaScript</span>
-          <span class="skill-chip">SQL</span>
+<section id="skills" class="content-section bordered-top">
+  <div class="section-heading reveal">
+    <h2>Skills</h2>
+    <div class="heading-bar"></div>
+  </div>
+
+  <div class="skills-grid">
+    {skillGroups.map((group) => (
+      <div class="skill-group glass reveal">
+        <div class="group-header">
+          <span class="group-icon" aria-hidden="true">{group.icon}</span>
+          <h3 class="group-label" style={`color: ${group.color}`}>{group.label}</h3>
+        </div>
+        <div class="skill-chips">
+          {group.skills.map((skill) => (
+            <span class="chip">{skill}</span>
+          ))}
         </div>
       </div>
-      
-      <div class="skill-category">
-        <h3 class="heading-sm">Backend</h3>
-        <div class="chip-container">
-          <span class="skill-chip">ASP.NET Core MVC</span>
-          <span class="skill-chip">REST APIs</span>
-          <span class="skill-chip">FastAPI</span>
-        </div>
-      </div>
-      
-      <div class="skill-category">
-        <h3 class="heading-sm">Frontend</h3>
-        <div class="chip-container">
-          <span class="skill-chip">Angular</span>
-          <span class="skill-chip">React.js</span>
-          <span class="skill-chip">HTML/CSS</span>
-        </div>
-      </div>
-      
-      <div class="skill-category">
-        <h3 class="heading-sm">ML / Applied AI</h3>
-        <div class="chip-container">
-          <span class="skill-chip">PyTorch</span>
-          <span class="skill-chip">YOLOv8</span>
-          <span class="skill-chip">CNNs</span>
-          <span class="skill-chip">Transformers</span>
-          <span class="skill-chip">ONNX Runtime</span>
-        </div>
-      </div>
-      
-      <div class="skill-category">
-        <h3 class="heading-sm">Core CS</h3>
-        <div class="chip-container">
-          <span class="skill-chip">Data Structures</span>
-          <span class="skill-chip">Algorithms</span>
-          <span class="skill-chip">OOP</span>
-          <span class="skill-chip">SOLID Principles</span>
-          <span class="skill-chip">Design Patterns</span>
-          <span class="skill-chip">DBMS</span>
-        </div>
-      </div>
-      
-      <div class="skill-category">
-        <h3 class="heading-sm">Tools</h3>
-        <div class="chip-container">
-          <span class="skill-chip">Git</span>
-          <span class="skill-chip">Docker</span>
-          <span class="skill-chip">Linux</span>
-        </div>
-      </div>
-    </div>
+    ))}
   </div>
 </section>
 
 <style lang="scss">
-  .section-padding {
-    padding: var(--spacing-xxl) 0;
+  .content-section {
+    padding: var(--spacing-xxl);
+    @media (max-width: 768px) { padding: var(--spacing-xl) var(--spacing-lg); }
   }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-xl);
-  }
-
-  .section-header {
-    margin-bottom: var(--spacing-xxl);
-    text-align: center;
-  }
+  .bordered-top { border-top: 1px solid var(--color-glass-border); }
 
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-xxl);
-    background-color: var(--color-canvas-soft);
-    padding: var(--spacing-xxl);
-    border-radius: var(--rounded-lg);
-    border: 1px solid var(--color-hairline);
-    
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      padding: var(--spacing-xl);
-      gap: var(--spacing-xl);
-    }
+    gap: var(--spacing-lg);
+
+    @media (max-width: 640px) { grid-template-columns: 1fr; }
   }
 
-  .skill-category {
-    h3 {
-      color: var(--color-ink-secondary);
-      margin-bottom: var(--spacing-md);
-      text-transform: uppercase;
-      font-size: 13px;
-      letter-spacing: 1px;
-    }
+  .skill-group {
+    border-radius: var(--rounded-xl);
+    padding: var(--spacing-xl);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+
+    &:hover { border-color: rgba(83,58,253,0.25); transform: translateY(-2px); }
   }
 
-  .chip-container {
+  .group-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .group-icon { font-size: 20px; }
+
+  .group-label {
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0;
+  }
+
+  .skill-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-sm);
+    gap: 6px;
   }
 
-  .skill-chip {
-    background-color: var(--color-canvas);
-    color: var(--color-ink);
-    border: 1px solid var(--color-hairline);
-    padding: 6px 14px;
+  .chip {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
     border-radius: var(--rounded-pill);
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    
+    color: var(--color-ink-secondary);
+    transition: color 0.2s ease, border-color 0.2s ease;
+    cursor: default;
+
     &:hover {
-      border-color: var(--color-primary);
-      color: var(--color-primary-deep);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-level-1);
+      color: var(--color-ink);
+      border-color: rgba(83, 58, 253, 0.3);
     }
   }
 </style>

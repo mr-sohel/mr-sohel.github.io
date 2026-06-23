@@ -1,100 +1,132 @@
 ---
-import Card from './Card.astro';
 ---
 
-<section id="education" class="education section-padding">
-  <div class="container">
-    <h2 class="heading-lg mb-md">Education</h2>
-    
-    <Card variant="cream" className="edu-card">
+<section id="education" class="content-section bordered-top">
+  <div class="section-heading reveal">
+    <h2>Education</h2>
+    <div class="heading-bar"></div>
+  </div>
+
+  <div class="edu-card glass reveal">
+    <div class="edu-icon" aria-hidden="true">🎓</div>
+    <div class="edu-body">
       <div class="edu-header">
-        <div>
-          <h3 class="heading-md">B.Sc. in Computer Science & Engineering</h3>
-          <p class="university body-md">Bangladesh University of Business & Technology (BUBT)</p>
+        <h3 class="edu-degree">B.Sc. in Computer Science & Engineering</h3>
+        <span class="edu-badge">Expected Dec 2025</span>
+      </div>
+      <p class="edu-uni">Bangladesh University of Business &amp; Technology (BUBT)</p>
+      <div class="edu-meta reveal-group">
+        <div class="meta-chip reveal">
+          <span class="meta-label">CGPA</span>
+          <span class="meta-value" style="color: var(--color-primary)">3.52 / 4.00</span>
         </div>
-        <div class="edu-meta">
-          <p class="body-tabular date">Graduation: December 2026</p>
-          <p class="body-tabular cgpa">CGPA: 3.52 / 4.00</p>
+        <div class="meta-chip reveal">
+          <span class="meta-label">Thesis</span>
+          <span class="meta-value">Autism Facial Emotion Recognition</span>
+        </div>
+        <div class="meta-chip reveal">
+          <span class="meta-label">Awards</span>
+          <span class="meta-value">Merit Scholarship</span>
         </div>
       </div>
-      
-      <div class="edu-body">
-        <p class="coursework">
-          <strong>Relevant Coursework:</strong> Data Structures & Algorithms, Object-Oriented Programming, Database Systems, Operating Systems, Computer Networks, Software Engineering, Machine Learning.
-        </p>
-      </div>
-    </Card>
+    </div>
   </div>
 </section>
 
 <style lang="scss">
-  .section-padding {
-    padding: var(--spacing-xxl) 0;
+  .content-section {
+    padding: var(--spacing-xxl);
+
+    @media (max-width: 768px) {
+      padding: var(--spacing-xl) var(--spacing-lg);
+    }
   }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-xl);
-  }
-
-  .mb-md {
-    margin-bottom: var(--spacing-xl);
+  .bordered-top {
+    border-top: 1px solid var(--color-glass-border);
   }
 
   .edu-card {
-    /* Cream variant handles background */
-  }
-
-  .edu-header {
     display: flex;
-    justify-content: space-between;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    border-radius: var(--rounded-xl);
     align-items: flex-start;
-    flex-wrap: wrap;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
-    
-    @media (max-width: 768px) {
+
+    @media (max-width: 640px) {
       flex-direction: column;
     }
   }
 
-  h3 {
-    margin-bottom: var(--spacing-xs);
-    color: var(--color-ink);
+  .edu-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    line-height: 1;
   }
 
-  .university {
-    color: var(--color-ink-secondary);
+  .edu-body { flex: 1; }
+
+  .edu-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .edu-degree {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-ink);
     margin: 0;
+    text-wrap: balance;
+  }
+
+  .edu-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    background: rgba(83, 58, 253, 0.15);
+    border: 1px solid rgba(83, 58, 253, 0.3);
+    color: var(--color-primary);
+    border-radius: var(--rounded-pill);
+    white-space: nowrap;
+  }
+
+  .edu-uni {
+    font-size: 14px;
+    color: var(--color-ink-secondary);
+    margin: 0 0 var(--spacing-lg) 0;
   }
 
   .edu-meta {
-    text-align: right;
-    
-    @media (max-width: 768px) {
-      text-align: left;
-    }
-    
-    p {
-      margin: 0;
-      color: var(--color-ink-secondary);
-      font-weight: 500;
-    }
-    
-    .cgpa {
-      color: var(--color-primary-deep);
-      margin-top: var(--spacing-xs);
-    }
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
   }
 
-  .coursework {
-    margin: 0;
-    color: var(--color-ink-secondary);
-    line-height: 1.5;
-    
-    strong {
-      color: var(--color-ink);
-    }
+  .meta-chip {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--rounded-lg);
+    gap: 2px;
+  }
+
+  .meta-label {
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-ink-mute);
+  }
+
+  .meta-value {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-ink);
   }
 </style>
