@@ -6,30 +6,93 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Md. Sohel Rana - Software Engineer, Backend Developer, and Competitive Programmer." } = Astro.props;
+const {
+  title,
+  description = "Final-year CSE student at BUBT | Competitive Programmer (3× ICPC Regionalist) | Building backend systems with C#, .NET, Docker, and Python ML."
+} = Astro.props;
+
+const siteUrl = "https://mr-sohel.github.io";
+const ogImage = `${siteUrl}/og-preview.jpg`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Md. Sohel Rana",
+  "url": siteUrl,
+  "image": ogImage,
+  "jobTitle": "Software Engineer",
+  "description": description,
+  "email": "mailto:mrsohelcse@gmail.com",
+  "sameAs": [
+    "https://github.com/mr-sohel",
+    "https://www.linkedin.com/in/mrsohel/",
+    "https://codeforces.com/profile/mr_sohel",
+    "https://leetcode.com/u/mr_sohel/",
+    "https://codolio.com/profile/mr_sohel"
+  ],
+  "knowsAbout": [
+    "Software Engineering",
+    "Backend Development",
+    "C#",
+    ".NET",
+    "Competitive Programming",
+    "Machine Learning",
+    "Docker",
+    "Python"
+  ],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Bangladesh University of Business & Technology",
+    "sameAs": "https://www.bubt.edu.bd"
+  }
+};
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- SEO -->
+
+    <!-- Primary SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content="Md. Sohel Rana" />
+    <meta name="keywords" content="Sohel Rana, Software Engineer, Backend Developer, Competitive Programmer, ICPC, .NET, C#, Python, Machine Learning, BUBT, Bangladesh" />
+    <link rel="canonical" href={siteUrl} />
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp previews) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Md. Sohel Rana — Software Engineer Portfolio" />
+    <meta property="og:site_name" content="Md. Sohel Rana" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={siteUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Md. Sohel Rana — Software Engineer Portfolio" />
+
+    <!-- JSON-LD Structured Data (Person schema) -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Theme Script -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Theme Script (runs before paint to prevent flash) -->
     <script is:inline>
       const getThemePreference = () => {
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
@@ -37,11 +100,10 @@ const { title, description = "Md. Sohel Rana - Software Engineer, Backend Develo
         }
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       };
-      
+
       const theme = getThemePreference();
       document.documentElement.setAttribute('data-theme', theme);
-      
-      // Update theme if OS preference changes and no local storage override
+
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
         if (!localStorage.getItem('theme')) {
           document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
