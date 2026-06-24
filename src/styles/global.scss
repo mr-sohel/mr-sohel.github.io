@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter.woff2') format('woff2');
+  font-weight: 400 700;
+  font-display: swap;
+}
+
 :root {
   /* Primary — Teal */
   --color-primary: #0d9488;
@@ -21,7 +28,7 @@
   /* Text */
   --color-ink: #1c1917;
   --color-ink-secondary: #57534e;
-  --color-ink-mute: #a8a29e;
+  --color-ink-mute: #78716c;
   --color-on-primary: #ffffff;
 
   /* Semantic */
@@ -189,7 +196,7 @@ img {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: var(--color-primary);
+  color: var(--color-primary-press);
   margin: 0 0 var(--spacing-sm);
 }
 
