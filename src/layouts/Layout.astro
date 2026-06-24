@@ -8,32 +8,119 @@ interface Props {
 
 const {
   title,
-  description = "Final-year CSE student at BUBT | Competitive Programmer (3× ICPC Regionalist) | Building backend systems with C#, .NET, Docker, and Python ML."
+  description = "Md. Sohel Rana — Final-year CSE student at BUBT. Full-stack ASP.NET Core developer, 3× ICPC Regionalist, 1500+ problems solved. Seeking SWE & .NET Developer roles."
 } = Astro.props;
 
 const siteUrl = "https://mr-sohel.github.io";
 const ogImage = `${siteUrl}/og-preview.jpg`;
 
-const jsonLd = {
+const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Md. Sohel Rana",
+  "alternateName": ["mr_sohel", "mr-sohel", "mrsohel", "mrsohelcse", "Taalpatar_Shepai", "md-sohel-rana"],
+  "givenName": "Md. Sohel",
+  "familyName": "Rana",
   "url": siteUrl,
   "image": ogImage,
   "jobTitle": "Software Engineer",
   "description": description,
   "email": "mailto:mrsohelcse@gmail.com",
+  "address": { "@type": "PostalAddress", "addressCountry": "BD" },
+  "birthPlace": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "BD" } },
+  "nationality": { "@type": "Country", "name": "Bangladesh" },
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Bangladesh University of Business and Technology",
+      "sameAs": "https://www.bubt.edu.bd/"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Sylhet Polytechnic Institute",
+      "sameAs": "https://spi.edu.bd/"
+    }
+  ],
+  "award": [
+    "3× ICPC Asia Dhaka Regional Contest Participant",
+    "ICPC Asia Dhaka Regional Contest 2024 — Rank 157",
+    "ICPC Asia Dhaka Regional Contest 2023 — Honorable Mention",
+    "Meta Hacker Cup 2025 — Round 2 Qualifier",
+    "BUBT Intra University Champion 2022, 2024",
+    "UAP Inter University Programming Contest — 2nd Runner-up",
+    "UIU Inter University Programming Contest 2025 — Participant",
+    "BACS High School Programming Contest 2018 — 2nd Runner-up, Rajshahi Region",
+    "SPI Tech Festival 2018 — Champion"
+  ],
+  "knowsAbout": [
+    "Full Stack Development", "ASP.NET Core", "Web API", "Entity Framework Core", "LINQ", "SignalR", "JWT",
+    "Angular", "React", "TypeScript", "Bootstrap", "Kendo UI",
+    "SQL Server", "MySQL", "PostgreSQL", "MongoDB", "Redis",
+    "Docker", "Azure", "CI/CD", "GitHub Actions", "Linux",
+    "Clean Architecture", "Microservices", "Design Patterns", "CQRS",
+    "Backend Engineering", "Competitive Programming",
+    "C#", "Python", "C++", "Java", "REST APIs", "OOP", "SOLID Principles", "System Design", "Computer Networking"
+  ],
+  "knowsLanguage": [
+    { "@type": "Language", "name": "Bengali" },
+    { "@type": "Language", "name": "English" }
+  ],
+  "hasCredential": [
+    { "@type": "EducationalOccupationalCredential", "name": "Problem Solving (Intermediate)", "issuedBy": { "@type": "Organization", "name": "HackerRank", "sameAs": "https://www.hackerrank.com/" } },
+    { "@type": "EducationalOccupationalCredential", "name": "Problem Solving (Basic)", "issuedBy": { "@type": "Organization", "name": "HackerRank", "sameAs": "https://www.hackerrank.com/" } },
+    { "@type": "EducationalOccupationalCredential", "name": "NDG Linux Unhatched", "issuedBy": { "@type": "Organization", "name": "Cisco Networking Academy", "sameAs": "https://www.netacad.com/" } }
+  ],
   "sameAs": [
     "https://github.com/mr-sohel",
     "https://www.linkedin.com/in/mrsohel/",
     "https://codeforces.com/profile/mr_sohel",
     "https://leetcode.com/u/mr_sohel/",
+    "https://www.hackerrank.com/profile/taalpatar_shepai",
+    "https://www.codechef.com/users/mr_sohel",
     "https://codolio.com/profile/mr_sohel"
-  ],
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "Bangladesh University of Business & Technology"
-  }
+  ]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Md. Sohel Rana — Portfolio",
+  "url": siteUrl,
+  "description": description,
+  "author": { "@type": "Person", "name": "Md. Sohel Rana", "url": siteUrl },
+  "about": { "@type": "Person", "name": "Md. Sohel Rana" },
+  "keywords": "Md. Sohel Rana, Sohel Rana, software engineer portfolio, backend developer, .NET developer, ASP.NET Core, competitive programmer, ICPC, C#, React, Angular, Bangladesh, BUBT, frontend developer, problem solving, algorithms"
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who is Md. Sohel Rana?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Md. Sohel Rana is a final-year CSE student at BUBT, a competitive programmer (3× ICPC Regionalist), and a backend developer specializing in C# / .NET. He has solved 1500+ algorithmic problems and built projects spanning containerized backends, computer vision, and deep learning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What technologies does Md. Sohel Rana use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Md. Sohel Rana works with C#, .NET, ASP.NET Core, Docker, PostgreSQL, Python, PyTorch, YOLOv8, and C++ for competitive programming."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Md. Sohel Rana available for software engineering roles?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Md. Sohel Rana is actively seeking full-time Software Engineer and .NET Developer roles, starting after graduation in December 2025."
+      }
+    }
+  ]
 };
 ---
 
@@ -49,7 +136,7 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Md. Sohel Rana" />
-    <meta name="keywords" content="Sohel Rana, Software Engineer, Backend Developer, Competitive Programmer, ICPC, .NET, C#, Python, Machine Learning, BUBT, Bangladesh" />
+    <meta name="keywords" content="Md. Sohel Rana, Sohel Rana, Md Sohel Rana, md-sohel-rana, mr-sohel, mrsohel, mrsohelcse, mr_sohel, Taalpatar_Shepai, Sohel Rana Software Engineer, Sohel Rana competitive programming, md-sohel-rana github, mrsohel github, Software Engineer, Full Stack Developer, Backend Developer, .NET Developer, ASP.NET Core Developer, C# Developer, Frontend Developer, React Developer, Competitive Programmer, software engineer Dhaka, React developer Bangladesh, algorithmic developer Bangladesh, ASP.NET Core, C#, .NET, Web API, Entity Framework Core, Angular, React, TypeScript, SQL Server, MySQL, Docker, Azure, Microservices, Clean Architecture, REST APIs, LINQ, SignalR, BUBT, BUBT CSE, Bangladesh, Dhaka, ICPC Regionalist, ICPC, Problem Solving, Data Structures, Algorithms, Codeforces, computer science student, BUBT CSE portfolio, Final Year CSE, Junior Software Engineer, Entry Level SWE, Hire .NET Developer, Backend Developer Portfolio, github-pages, c-plus-plus, frontend-developer, competitive-programming, software-engineer, cse, bubt" />
     <link rel="canonical" href={siteUrl} />
 
     <meta property="og:type" content="website" />
@@ -61,13 +148,19 @@ const jsonLd = {
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Md. Sohel Rana — Software Engineer Portfolio" />
     <meta property="og:site_name" content="Md. Sohel Rana" />
+    <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mrsohel" />
+    <meta name="twitter:creator" content="@mrsohel" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Md. Sohel Rana — Software Engineer Portfolio" />
 
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
