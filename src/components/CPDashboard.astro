@@ -21,6 +21,13 @@
       </div>
     </div>
 
+    <div class="cp-cta reveal">
+      <a href="https://codolio.com/profile/mr_sohel" target="_blank" rel="noopener noreferrer" class="cp-cta-link">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        View full CP profile on Codolio
+      </a>
+    </div>
+
     <div class="cp-achievements reveal">
       <h3 class="cp-ach-title">Contest Highlights &amp; Awards</h3>
       <ul class="cp-ach-list">
@@ -125,6 +132,31 @@
     font-weight: 500;
     color: var(--color-ink-secondary);
     margin-top: 4px;
+  }
+
+  .cp-cta {
+    text-align: center;
+    margin-bottom: var(--spacing-xxl);
+  }
+
+  .cp-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-ink-secondary);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-pill);
+    touch-action: manipulation;
+    transition: color 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+    }
   }
 
   .cp-achievements {

@@ -6,10 +6,11 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <p itemprop="description">
-          I'm a final-year CSE student at BUBT who believes the best way to
+          I'm a final-year CSE student who believes the best way to
           learn systems is to build them — and the best way to stay sharp is
           to compete. I've spent years solving <strong>1500+ algorithmic
-          problems</strong>, competing in <strong>3 ICPC Dhaka Regionals</strong>,
+          problems</strong>, competing in <strong>3 ICPC Dhaka Regionals</strong>
+          and <strong>10+ national IUPCs</strong>,
           and shipping projects that span containerized backends, computer vision
           pipelines, and deep learning research.
         </p>
@@ -23,10 +24,6 @@
 
       <div class="about-stats reveal">
         <div class="about-stat">
-          <span class="about-stat-value">3.52</span>
-          <span class="about-stat-label">CGPA / 4.00</span>
-        </div>
-        <div class="about-stat">
           <span class="about-stat-value">3×</span>
           <span class="about-stat-label">ICPC Dhaka Regional</span>
         </div>
@@ -35,8 +32,8 @@
           <span class="about-stat-label">Years in CP</span>
         </div>
         <div class="about-stat">
-          <span class="about-stat-value">89%</span>
-          <span class="about-stat-label">Thesis Accuracy</span>
+          <span class="about-stat-value">5+</span>
+          <span class="about-stat-label">Projects Shipped</span>
         </div>
       </div>
     </div>
@@ -73,13 +70,18 @@
     strong {
       color: var(--color-ink);
       font-weight: 600;
+      padding: 0 2px;
     }
   }
 
   .about-stats {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-md);
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .about-stat {

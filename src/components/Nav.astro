@@ -11,29 +11,54 @@
     </div>
 
     <div class="nav-actions">
-      <a href="/Md_Sohel_Rana_Resume.pdf" class="nav-cv-btn">Download CV</a>
+      <a href="/Md_Sohel_Rana_Resume.pdf" class="nav-cv-btn">Download Resume</a>
     </div>
 
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-      <svg class="sun-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <svg class="moon-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
-      <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-    </button>
+    <div class="nav-mobile-group">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <svg class="sun-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="moon-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
 
 <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
   <div class="mobile-menu-backdrop"></div>
   <nav class="mobile-menu-panel" aria-label="Mobile navigation">
-    <a href="#about" class="mobile-link">About</a>
-    <a href="#projects" class="mobile-link">Projects</a>
-    <a href="#skills" class="mobile-link">Skills</a>
-    <a href="#experience" class="mobile-link">Experience</a>
-    <a href="#contact" class="mobile-link">Contact</a>
+    <div class="mobile-header">
+      <span class="mobile-logo">SR</span>
+      <button id="mobile-close-btn" class="mobile-close-btn" aria-label="Close menu">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="#about" class="mobile-link" data-section="about">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        About
+      </a>
+      <a href="#projects" class="mobile-link" data-section="projects">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Projects
+      </a>
+      <a href="#skills" class="mobile-link" data-section="skills">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        Skills
+      </a>
+      <a href="#experience" class="mobile-link" data-section="experience">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
+        Experience
+      </a>
+      <a href="#contact" class="mobile-link" data-section="contact">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Contact
+      </a>
+    </div>
     <div class="mobile-menu-footer">
-      <a href="/Md_Sohel_Rana_Resume.pdf" class="mobile-cv-btn">Download CV</a>
+      <a href="/Md_Sohel_Rana_Resume.pdf" class="mobile-cv-btn">Download Resume</a>
     </div>
   </nav>
 </div>
@@ -68,14 +93,22 @@
 
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  const updateActiveSection = (id) => {
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+    });
+    mobileLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('data-section') === id);
+    });
+  };
 
   if (sections.length && navLinks.length) {
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
-          });
+          updateActiveSection(entry.target.id);
         }
       });
     }, { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' });
@@ -86,12 +119,13 @@
   const menuBtn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   const backdrop = menu?.querySelector('.mobile-menu-backdrop');
+  const closeBtn = document.getElementById('mobile-close-btn');
 
   const open = () => {
     if (!menu || !menuBtn) return;
     menu.setAttribute('aria-hidden', 'false');
     menuBtn.setAttribute('aria-expanded', 'true');
-    menuBtn.setAttribute('aria-label', 'Close menu');
+    menuBtn.classList.add('menu-open');
     document.body.style.overflow = 'hidden';
   };
 
@@ -99,7 +133,7 @@
     if (!menu || !menuBtn) return;
     menu.setAttribute('aria-hidden', 'true');
     menuBtn.setAttribute('aria-expanded', 'false');
-    menuBtn.setAttribute('aria-label', 'Open menu');
+    menuBtn.classList.remove('menu-open');
     document.body.style.overflow = '';
   };
 
@@ -107,6 +141,7 @@
     menu.getAttribute('aria-hidden') === 'false' ? close() : open();
   });
 
+  closeBtn?.addEventListener('click', close);
   backdrop?.addEventListener('click', close);
 
   menu?.querySelectorAll('.mobile-link').forEach(link => {
@@ -175,6 +210,20 @@
     text-decoration: none;
     transition: color 0.2s ease;
     position: relative;
+    padding: 2px 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 50%;
+      width: 5px;
+      height: 5px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      transform: translateY(-50%) scale(0);
+      transition: transform 0.2s ease;
+    }
 
     &::after {
       content: '';
@@ -194,6 +243,8 @@
 
     &.active {
       color: var(--color-primary);
+      font-weight: 600;
+      &::before { transform: translateY(-50%) scale(1); }
       &::after { transform: scaleX(1); }
     }
   }
@@ -260,6 +311,12 @@
     }
   }
 
+  .nav-mobile-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+  }
+
   .mobile-menu-btn {
     display: flex;
     background: none;
@@ -272,6 +329,23 @@
 
     @media (min-width: 768px) {
       display: none;
+    }
+
+    &.menu-open {
+      svg line:first-child {
+        transform-origin: center;
+        transform: rotate(45deg) translate(0, 0);
+      }
+      svg line:nth-child(2) { opacity: 0; }
+      svg line:last-child {
+        transform-origin: center;
+        transform: rotate(-45deg) translate(0, 0);
+      }
+    }
+
+    svg line {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
     }
   }
 
@@ -307,50 +381,121 @@
     top: 0;
     right: 0;
     bottom: 0;
-    width: 280px;
-    max-width: 80vw;
+    width: 300px;
+    max-width: 85vw;
     background: var(--color-surface);
-    padding: var(--spacing-huge) var(--spacing-xl) var(--spacing-xl);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-lg);
     transform: translateX(100%);
-    transition: transform 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     border-left: 1px solid var(--color-border);
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.06);
   }
 
   .mobile-menu[aria-hidden="false"] .mobile-menu-panel {
     transform: translateX(0);
   }
 
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .mobile-logo {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-ink);
+    letter-spacing: -0.5px;
+  }
+
+  .mobile-close-btn {
+    display: flex;
+    background: none;
+    border: none;
+    color: var(--color-ink-secondary);
+    cursor: pointer;
+    padding: 8px;
+    margin: -8px;
+    border-radius: var(--rounded-md);
+    transition: color 0.2s ease, background 0.2s ease;
+
+    &:hover {
+      color: var(--color-ink);
+      background: var(--color-surface-hover);
+    }
+  }
+
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-sm) 0;
+    flex: 1;
+    overflow-y: auto;
+  }
+
   .mobile-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
     font-size: 16px;
     font-weight: 500;
     color: var(--color-ink-secondary);
     text-decoration: none;
-    padding: var(--spacing-lg) 0;
-    transition: color 0.2s ease;
+    padding: var(--spacing-md) var(--spacing-xl);
+    margin: 1px var(--spacing-sm);
+    border-radius: var(--rounded-lg);
+    transition: color 0.2s ease, background 0.2s ease;
 
-    &:hover { color: var(--color-primary); }
+    svg {
+      flex-shrink: 0;
+      color: var(--color-ink-mute);
+      transition: color 0.2s ease;
+    }
+
+    &:hover {
+      color: var(--color-ink);
+      background: var(--color-surface-hover);
+
+      svg { color: var(--color-primary); }
+    }
+
+    &.active {
+      color: var(--color-primary);
+      background: var(--color-primary-soft);
+      font-weight: 600;
+
+      svg { color: var(--color-primary); }
+    }
   }
 
   .mobile-menu-footer {
-    margin-top: auto;
-    padding-top: var(--spacing-lg);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-top: 1px solid var(--color-border-light);
   }
 
   .mobile-cv-btn {
     display: block;
     text-align: center;
-    padding: var(--spacing-md);
-    background: var(--color-primary);
+    padding: 14px;
+    background: var(--color-primary-press);
     color: var(--color-on-primary);
     font-weight: 600;
     font-size: 15px;
     border-radius: var(--rounded-lg);
     text-decoration: none;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
 
-    &:hover { background: var(--color-primary-deep); }
+    &:hover {
+      background: var(--color-primary-press);
+      color: var(--color-on-primary);
+      filter: brightness(1.15);
+      transform: translateY(-1px);
+    }
   }
+
 </style>

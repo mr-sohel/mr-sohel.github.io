@@ -1,34 +1,46 @@
 # mr-sohel.github.io
 
-Personal portfolio website for [Md. Sohel Rana](https://mr-sohel.github.io).
+Personal portfolio website for [Md. Sohel Rana](https://mr-sohel.github.io) — a CS graduate targeting first SWE / .NET Developer roles.
+
+Built with **Astro** (static site) and **SCSS** with a Stripi-inspired design system.
 
 ## Structure
 
 ```
 .
 ├── src/
-│   ├── components/     # Reusable Astro components (Nav, Hero, Projects, etc.)
-│   ├── layouts/        # Page layout wrappers (Layout.astro)
-│   ├── pages/          # Route pages (index.astro)
-│   └── styles/         # Global SCSS styles & design tokens
-├── public/             # Static assets (images, resume PDF, favicon)
-├── dist/               # Generated build output (auto-deployed by CI)
-├── .github/workflows/  # GitHub Actions — builds & deploys on push to main
-├── astro.config.mjs    # Astro configuration
-├── package.json        # Node dependencies
-├── CLAUDE.md           # AI assistant guidance for this repo
-├── DESIGN.md           # Stripi design system spec (reference)
-└── plan.md             # Portfolio redesign plan & content decisions
+│   ├── components/       # Astro components per section (Nav, Hero, About, Projects, etc.)
+│   ├── layouts/          # Layout.astro (global HTML shell)
+│   ├── pages/            # index.astro (single-page portfolio)
+│   └── styles/           # global.scss (design tokens, typography, utilities)
+├── public/               # Static assets (images, fonts, favicon, resume PDF)
+├── dist/                 # Build output (auto-deployed)
+├── .github/workflows/    # GitHub Actions deploy workflow
+├── astro.config.mjs      # Astro configuration
+├── package.json          # Dependencies
+├── CLAUDE.md             # Claude Code guidance
+├── AGENTS.md             # AI agent guidance
+├── DESIGN.md             # Stripi design tokens (reference)
+└── plan.md               # Content plan & implementation phases
 ```
 
-## Development
+## Commands
 
 ```bash
 npm install
-npm run dev      # Start local dev server at http://localhost:4321
-npm run build    # Build for production
+npm run dev      # Local dev at http://localhost:4321
+npm run build    # Production build to dist/
+npm run preview  # Preview production build
 ```
 
 ## Deployment
 
-Pushing to `main` automatically triggers the GitHub Actions workflow in `.github/workflows/deploy.yml`, which builds the Astro site and deploys it to GitHub Pages.
+Push to `main` triggers GitHub Actions, building the Astro site and deploying to GitHub Pages.
+
+## Key Decisions
+
+- Single-page layout optimized for recruiter conversion (~30s scan)
+- Projects ordered by SWE relevance: Online Judge System → Fruit Quality → FER Autism
+- "Download Resume" button in Nav (not CV)
+- WhatsApp placeholder `8801700000000` — must update before launch
+- Live Demo URLs are placeholders (`*-demo.vercel.app`)

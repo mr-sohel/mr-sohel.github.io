@@ -183,7 +183,7 @@ img {
   font-weight: 600;
   letter-spacing: -0.5px;
   color: var(--color-ink);
-  margin: 0 0 56px;
+  margin: 0 0 48px;
   text-wrap: balance;
 
   @media (max-width: 480px) {
@@ -198,6 +198,12 @@ img {
   letter-spacing: 1.5px;
   color: var(--color-primary-press);
   margin: 0 0 var(--spacing-sm);
+}
+
+@media (max-width: 1024px) {
+  .section-title {
+    margin-bottom: 40px;
+  }
 }
 
 @media (max-width: 768px) {

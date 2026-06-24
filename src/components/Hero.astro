@@ -9,18 +9,13 @@ import Nav from './Nav.astro';
     <h1 class="hero-name">Md. Sohel Rana</h1>
 
     <p class="hero-tagline">
-      Full-stack ASP.NET Core developer · Final-year CSE ·
-      <span class="hl">3× ICPC Regionalist</span> — 1500+ problems solved
+      ASP.NET Core Developer <span class="sep">•</span> ICPC Regionalist <span class="sep">•</span> Codeforces Specialist
     </p>
 
     <div class="metrics-strip">
       <div class="metric">
         <span class="metric-value">1500+</span>
         <span class="metric-label">Problems Solved</span>
-      </div>
-      <div class="metric">
-        <span class="metric-value">3×</span>
-        <span class="metric-label">ICPC Regional</span>
       </div>
       <div class="metric">
         <span class="metric-value">140+</span>
@@ -33,7 +28,7 @@ import Nav from './Nav.astro';
     </div>
 
     <div class="hero-actions">
-      <a href="/Md_Sohel_Rana_Resume.pdf" class="btn-primary">Download CV</a>
+      <a href="/Md_Sohel_Rana_Resume.pdf" class="btn-primary">Download Resume</a>
       <a href="#contact" class="btn-outline">Contact Me</a>
     </div>
 
@@ -67,12 +62,30 @@ import Nav from './Nav.astro';
     min-height: 85vh;
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(ellipse at 30% 40%, rgba(83, 58, 253, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 60%, rgba(234, 34, 97, 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 30%, rgba(249, 107, 238, 0.03) 0%, transparent 45%);
+    pointer-events: none;
+    z-index: 0;
   }
 
   .hero-inner {
     max-width: 1100px;
     margin: 0 auto;
     width: 100%;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-name {
@@ -93,9 +106,9 @@ import Nav from './Nav.astro';
     line-height: 1.6;
   }
 
-  .hl {
-    color: var(--color-primary-press);
-    font-weight: 500;
+  .sep {
+    margin: 0 6px;
+    color: var(--color-ink-mute);
   }
 
   /* Metrics strip */
