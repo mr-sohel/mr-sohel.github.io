@@ -1,7 +1,5 @@
 ---
 import '../styles/global.scss';
-import AnimatedBackground from '../components/AnimatedBackground.astro';
-import Sidebar from '../components/Sidebar.astro';
 
 interface Props {
   title: string;
@@ -37,61 +35,6 @@ const jsonLd = {
     "name": "Bangladesh University of Business & Technology"
   }
 };
-
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Who is Md. Sohel Rana?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Md. Sohel Rana is a final-year Computer Science & Engineering student at Bangladesh University of Business & Technology (BUBT). He is a Software Engineer specializing in backend systems with C#, .NET, Docker, and Python, and a 3× ICPC Asia Dhaka Regionalist competitive programmer."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What technologies does Sohel Rana work with?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sohel works with C#, ASP.NET Core, Python, Docker, PostgreSQL, Redis, PyTorch, and YOLOv8. His backend expertise includes .NET, REST APIs, and containerized deployments, while his ML work covers computer vision and deep learning."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are Sohel Rana's competitive programming achievements?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sohel is a 3× ICPC Asia Dhaka Regionalist, Codeforces Specialist (peak rating 1619), LeetCode Knight (top 5%), and CodeChef 3-Star rated programmer. He has solved 1500+ algorithmic problems across multiple platforms and won BUBT Intra University Programming Contest twice."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What projects has Sohel Rana built?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sohel has built an Online Judge System (C#, .NET, Docker, PostgreSQL), a Real-Time Fruit Quality Detection system (98.97% mAP using YOLOv8), and a Facial Emotion Recognition for Autism system (89% accuracy using deep learning). All projects include impact metrics and source code."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Sohel Rana available for hire?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, Md. Sohel Rana is actively seeking full-time Software Engineering and .NET Developer positions. He is available for immediate hiring and can be contacted via email at mrsohelcse@gmail.com or through LinkedIn."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is Sohel Rana's CGPA?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Md. Sohel Rana has a CGPA of 3.52 out of 4.00 in his B.Sc. in Computer Science & Engineering program at Bangladesh University of Business & Technology (BUBT)."
-      }
-    }
-  ]
-};
 ---
 
 <!doctype html>
@@ -103,14 +46,12 @@ const faqJsonLd = {
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Primary SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Md. Sohel Rana" />
     <meta name="keywords" content="Sohel Rana, Software Engineer, Backend Developer, Competitive Programmer, ICPC, .NET, C#, Python, Machine Learning, BUBT, Bangladesh" />
     <link rel="canonical" href={siteUrl} />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={siteUrl} />
     <meta property="og:title" content={title} />
@@ -121,22 +62,17 @@ const faqJsonLd = {
     <meta property="og:image:alt" content="Md. Sohel Rana — Software Engineer Portfolio" />
     <meta property="og:site_name" content="Md. Sohel Rana" />
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- Theme Script (before paint to prevent flash) -->
     <script is:inline>
       const theme = (() => {
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
@@ -148,84 +84,13 @@ const faqJsonLd = {
     </script>
   </head>
   <body>
-    <!-- Skip to main content (accessibility) -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Animated background (fixed, behind everything) -->
-    <AnimatedBackground />
+    <main id="main-content">
+      <slot />
+    </main>
 
-    <!-- Two-panel layout -->
-    <div class="app-shell">
-      <!-- Left: sticky sidebar (hidden on mobile) -->
-      <div class="sidebar-wrapper">
-        <Sidebar />
-      </div>
-
-      <!-- Right: scrollable main content -->
-      <main id="main-content" class="main-panel">
-        <!-- Top navigation strip -->
-        <nav class="panel-nav glass" aria-label="Section navigation">
-          <a href="#about" class="nav-link active" data-section="about">About</a>
-          <a href="#education" class="nav-link" data-section="education">Education</a>
-          <a href="#cp" class="nav-link" data-section="cp">CP</a>
-          <a href="#projects" class="nav-link" data-section="projects">Projects</a>
-          <a href="#experience" class="nav-link" data-section="experience">Experience</a>
-          <a href="#skills" class="nav-link" data-section="skills">Skills</a>
-          <a href="#contact" class="nav-link" data-section="contact">Contact</a>
-
-          <!-- Mobile: hamburger + theme toggle -->
-          <div class="mobile-nav-actions">
-            <button id="mobile-menu-toggle" class="icon-btn hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">
-              <svg class="hamburger-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-              <svg class="close-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-            <button id="mobile-theme-toggle" class="icon-btn" aria-label="Toggle theme">
-              <svg class="sun-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-              <svg class="moon-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            </button>
-            <a href="/Md_Sohel_Rana_Resume.pdf" class="resume-btn" target="_blank" rel="noopener noreferrer">Resume</a>
-          </div>
-        </nav>
-
-        <!-- Mobile drawer -->
-        <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
-          <div class="mobile-drawer-backdrop"></div>
-          <nav class="mobile-drawer-panel" aria-label="Mobile navigation">
-            <a href="#about" class="drawer-link" data-section="about">About</a>
-            <a href="#education" class="drawer-link" data-section="education">Education</a>
-            <a href="#cp" class="drawer-link" data-section="cp">CP</a>
-            <a href="#projects" class="drawer-link" data-section="projects">Projects</a>
-            <a href="#experience" class="drawer-link" data-section="experience">Experience</a>
-            <a href="#skills" class="drawer-link" data-section="skills">Skills</a>
-            <a href="#contact" class="drawer-link" data-section="contact">Contact</a>
-            <div class="drawer-footer">
-              <a href="/Md_Sohel_Rana_Resume.pdf" class="drawer-resume-btn" target="_blank" rel="noopener noreferrer">Download CV</a>
-            </div>
-          </nav>
-        </div>
-
-        <!-- Mobile profile card (visible only on small screens) -->
-        <div class="mobile-profile glass">
-          <img src="/avatar.jpg" alt="Md. Sohel Rana" width="64" height="64" class="mobile-avatar" loading="eager" />
-          <div>
-            <h1 class="mobile-name">Md. Sohel Rana</h1>
-            <p class="mobile-subtitle">Software Engineer · ICPC Regionalist</p>
-          </div>
-        </div>
-
-        <!-- Hidden h1 for SEO (visible to screen readers and search engines) -->
-        <h1 class="seo-h1 sr-only">Md. Sohel Rana — Software Engineer, Competitive Programmer, .NET Developer</h1>
-
-        <!-- Page content injected here -->
-        <div class="content-area">
-          <slot />
-        </div>
-      </main>
-    </div>
-
-    <!-- Scroll reveal script -->
     <script>
-      // Scroll reveal
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -236,72 +101,6 @@ const faqJsonLd = {
 
       document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-      // Active nav link on scroll
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('.nav-link[data-section]');
-
-      const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            const active = document.querySelector(`.nav-link[data-section="${entry.target.id}"]`);
-            if (active) active.classList.add('active');
-          }
-        });
-      }, { threshold: 0.4 });
-
-      sections.forEach(s => navObserver.observe(s));
-
-      // Mobile menu toggle
-      const menuToggle = document.getElementById('mobile-menu-toggle');
-      const mobileDrawer = document.getElementById('mobile-drawer');
-      const drawerBackdrop = mobileDrawer?.querySelector('.mobile-drawer-backdrop');
-      const drawerLinks = mobileDrawer?.querySelectorAll('.drawer-link');
-
-      const openMenu = () => {
-        if (!mobileDrawer || !menuToggle) return;
-        mobileDrawer.setAttribute('aria-hidden', 'false');
-        menuToggle.setAttribute('aria-expanded', 'true');
-        menuToggle.setAttribute('aria-label', 'Close navigation menu');
-        document.body.style.overflow = 'hidden';
-      };
-
-      const closeMenu = () => {
-        if (!mobileDrawer || !menuToggle) return;
-        mobileDrawer.setAttribute('aria-hidden', 'true');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.setAttribute('aria-label', 'Open navigation menu');
-        document.body.style.overflow = '';
-      };
-
-      menuToggle?.addEventListener('click', () => {
-        const isOpen = mobileDrawer?.getAttribute('aria-hidden') === 'false';
-        if (isOpen) closeMenu();
-        else openMenu();
-      });
-
-      drawerBackdrop?.addEventListener('click', closeMenu);
-
-      drawerLinks?.forEach(link => {
-        link.addEventListener('click', closeMenu);
-      });
-
-      // Close on Escape
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileDrawer?.getAttribute('aria-hidden') === 'false') {
-          closeMenu();
-        }
-      });
-
-      // Mobile theme toggle
-      document.getElementById('mobile-theme-toggle')?.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-      });
-
-      // OS theme change (no localStorage override)
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
         if (!localStorage.getItem('theme')) {
           document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
@@ -312,7 +111,6 @@ const faqJsonLd = {
 </html>
 
 <style lang="scss" is:global>
-  /* Skip link */
   .skip-link {
     position: absolute;
     top: -100%;
@@ -322,13 +120,12 @@ const faqJsonLd = {
     background: var(--color-primary);
     color: #fff;
     border-radius: var(--rounded-md);
-    font-weight: 700;
+    font-weight: 600;
     font-size: 14px;
 
     &:focus { top: 16px; }
   }
 
-  /* Screen reader only */
   .sr-only {
     position: absolute;
     width: 1px;
@@ -339,260 +136,5 @@ const faqJsonLd = {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
-  }
-
-  /* App shell */
-  .app-shell {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    gap: 12px;
-    padding: 12px;
-    min-height: 100vh;
-    max-width: 1600px;
-    margin: 0 auto;
-    align-items: flex-start;
-  }
-
-  /* Sidebar wrapper: sticky on desktop, hidden on mobile */
-  .sidebar-wrapper {
-    display: none;
-    width: var(--sidebar-width);
-    flex-shrink: 0;
-    position: sticky;
-    top: 12px;
-    height: calc(100vh - 24px);
-
-    @media (min-width: 1024px) {
-      display: block;
-    }
-
-    .sidebar {
-      height: 100%;
-      width: 100%;
-    }
-  }
-
-  /* Main panel */
-  .main-panel {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    min-width: 0;
-    min-height: calc(100vh - 24px);
-  }
-
-  /* Top nav strip */
-  .panel-nav {
-    border-radius: var(--rounded-2xl);
-    height: 48px;
-    padding: 0 var(--spacing-xl);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xl);
-    flex-shrink: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar { display: none; }
-  }
-
-  .nav-link {
-    font-size: 14px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--color-ink-secondary);
-    text-decoration: none;
-    white-space: nowrap;
-    padding: 6px 0;
-    border-bottom: 2px solid transparent;
-    transition: color 0.2s ease, border-color 0.2s ease;
-    &:hover { color: var(--color-ink); }
-    &.active {
-      color: var(--color-ink);
-      border-bottom-color: var(--color-primary);
-      text-shadow: 0 0 12px var(--color-primary-glow);
-    }
-  }
-
-  .mobile-nav-actions {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    flex-shrink: 0;
-
-    @media (min-width: 1024px) {
-      display: none;
-    }
-  }
-
-  /* Hamburger / close icons for mobile menu */
-  .hamburger-icon { display: block; }
-  .close-icon { display: none; }
-
-  /* Mobile drawer */
-  .mobile-drawer {
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    pointer-events: none;
-    @media (min-width: 1024px) { display: none; }
-  }
-
-  .mobile-drawer[aria-hidden="false"] {
-    pointer-events: all;
-  }
-
-  .mobile-drawer-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .mobile-drawer[aria-hidden="false"] .mobile-drawer-backdrop {
-    opacity: 1;
-  }
-
-  .mobile-drawer-panel {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 280px;
-    max-width: 80vw;
-    background: var(--color-bg);
-    border-left: 1px solid var(--color-glass-border);
-    padding: var(--spacing-huge) var(--spacing-xl) var(--spacing-xl);
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    overflow-y: auto;
-  }
-
-  .mobile-drawer[aria-hidden="false"] .mobile-drawer-panel {
-    transform: translateX(0);
-  }
-
-  .drawer-link {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--color-ink-secondary);
-    text-decoration: none;
-    padding: var(--spacing-md) 0;
-    border-bottom: 1px solid var(--color-glass-border);
-    transition: color 0.2s ease;
-    &:hover { color: var(--color-primary); }
-  }
-
-  .drawer-footer {
-    margin-top: auto;
-    padding-top: var(--spacing-lg);
-  }
-
-  .drawer-resume-btn {
-    display: block;
-    text-align: center;
-    padding: var(--spacing-md);
-    background: var(--color-primary);
-    color: #fff;
-    font-weight: 700;
-    font-size: 15px;
-    border-radius: var(--rounded-lg);
-    text-decoration: none;
-    transition: background 0.2s ease;
-    &:hover { background: var(--color-primary-deep); }
-  }
-
-  .icon-btn {
-    background: var(--color-glass);
-    border: 1px solid var(--color-glass-border);
-    color: var(--color-ink-secondary);
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-    border-radius: var(--rounded-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.2s ease;
-
-    &:hover { color: var(--color-primary); }
-  }
-
-  .sun-icon { display: none; }
-  .moon-icon { display: block; }
-  [data-theme="light"] .sun-icon { display: block; }
-  [data-theme="light"] .moon-icon { display: none; }
-
-  .hamburger-icon { display: block; }
-  .close-icon { display: none; }
-  .mobile-drawer[aria-hidden="false"] ~ * .hamburger-icon { display: none; }
-  .mobile-drawer[aria-hidden="false"] ~ * .close-icon { display: block; }
-
-  .resume-btn {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 5px 12px;
-    background: var(--color-primary);
-    color: #fff;
-    border-radius: var(--rounded-md);
-    text-decoration: none;
-    transition: background 0.2s ease;
-
-    &:hover { background: var(--color-primary-deep); }
-  }
-
-  /* Mobile profile card */
-  .mobile-profile {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-lg);
-    padding: var(--spacing-lg) var(--spacing-xl);
-    border-radius: var(--rounded-2xl);
-
-    @media (min-width: 1024px) { display: none; }
-  }
-
-  .mobile-avatar {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--color-glass-border);
-    flex-shrink: 0;
-  }
-
-  .mobile-name {
-    font-size: 16px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -0.3px;
-    color: var(--color-ink);
-    margin: 0 0 4px 0;
-  }
-
-  .mobile-subtitle {
-    font-size: 12px;
-    color: var(--color-ink-secondary);
-    margin: 0;
-  }
-
-  /* Content area */
-  .content-area {
-    flex: 1;
-    border-radius: var(--rounded-2xl);
-    background: var(--color-glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--color-glass-border);
-    box-shadow: var(--shadow-glass);
-    overflow: hidden;
   }
 </style>

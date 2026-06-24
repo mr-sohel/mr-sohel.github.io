@@ -1,100 +1,79 @@
 ---
-const skillIcons = {
-  code: '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
-  gear: '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>',
-  brain: '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5V16a1 1 0 0 1-2 0v-2.5A4 4 0 0 1 12 6z"/><path d="M12 2a7 7 0 0 0-7 7c0 2.4 1.2 4.5 3 5.7V20a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-5.3c1.8-1.2 3-3.3 3-5.7a7 7 0 0 0-7-7z"/></svg>',
-  ruler: '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16h20V4H2z"/><path d="M2 9h20"/><path d="M2 14h20"/><path d="M2 19h20"/><path d="M8 4v15"/><path d="M16 4v5"/><path d="M12 4v5"/></svg>'
-};
-
-const skillGroups = [
+const sections = [
   {
     label: "Languages",
-    icon: skillIcons.code,
-    color: "var(--color-primary)",
     skills: ["C#", "Python", "C++", "JavaScript", "SQL"]
   },
   {
     label: "Backend & DevOps",
-    icon: skillIcons.gear,
-    color: "var(--color-secondary)",
     skills: [".NET / ASP.NET Core", "Docker", "PostgreSQL", "Redis", "REST APIs", "Git"]
   },
   {
-    label: "ML & CV",
-    icon: skillIcons.brain,
-    color: "var(--color-accent)",
-    skills: ["PyTorch", "TensorFlow", "YOLOv8", "OpenCV", "Scikit-learn", "Pandas"]
+    label: "ML & Computer Vision",
+    skills: ["PyTorch", "YOLOv8", "OpenCV", "ONNX Runtime", "Scikit-learn", "Pandas"]
   },
   {
     label: "Core CS",
-    icon: skillIcons.ruler,
-    color: "#f6ad55",
-    skills: ["Data Structures", "Algorithms", "OOP", "System Design", "Operating Systems"]
+    skills: ["Data Structures", "Algorithms", "OOP", "SOLID", "System Design"]
   }
 ];
 ---
 
-<section id="skills" class="content-section bordered-top">
-  <div class="section-heading reveal">
-    <h2>Skills</h2>
-    <div class="heading-bar"></div>
-  </div>
+<section id="skills" class="section section-alt">
+  <div class="section-inner">
+    <span class="section-title-sm">Skills</span>
+    <h2 class="section-title">Tools &amp; technologies</h2>
 
-  <div class="skills-grid">
-    {skillGroups.map((group) => (
-      <div class="skill-group glass reveal">
-        <div class="group-header">
-          <span class="group-icon" aria-hidden="true" set:html={group.icon} />
-          <h3 class="group-label" style={`color: ${group.color}`}>{group.label}</h3>
+    <div class="skills-list">
+      {sections.map((s) => (
+        <div class="skill-row reveal">
+          <span class="skill-label">{s.label}</span>
+          <div class="skill-chips">
+            {s.skills.map((skill) => (
+              <span class="chip">{skill}</span>
+            ))}
+          </div>
         </div>
-        <div class="skill-chips">
-          {group.skills.map((skill) => (
-            <span class="chip">{skill}</span>
-          ))}
-        </div>
-      </div>
-    ))}
+      ))}
+    </div>
   </div>
 </section>
 
 <style lang="scss">
-  .content-section {
-    padding: var(--spacing-xxl);
-    @media (max-width: 768px) { padding: var(--spacing-xl) var(--spacing-lg); }
-  }
-  .bordered-top { border-top: 1px solid var(--color-glass-border); }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
-
-    @media (max-width: 640px) { grid-template-columns: 1fr; }
-  }
-
-  .skill-group {
-    border-radius: var(--rounded-xl);
-    padding: var(--spacing-xl);
-    transition: border-color 0.2s ease, transform 0.2s ease;
-
-    &:hover { border-color: rgba(83,58,253,0.25); transform: translateY(-2px); }
-  }
-
-  .group-header {
+  .skills-list {
     display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-lg);
+    flex-direction: column;
+    gap: var(--spacing-lg);
   }
 
-  .group-icon { font-size: 20px; }
+  .skill-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-xl);
+    box-shadow: var(--shadow-sm);
 
-  .group-label {
+    @media (max-width: 640px) {
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+  }
+
+  .skill-label {
+    flex-shrink: 0;
+    width: 160px;
     font-size: 12px;
-    font-weight: 900;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin: 0;
+    letter-spacing: 1.2px;
+    color: var(--color-primary);
+
+    @media (max-width: 640px) {
+      width: auto;
+    }
   }
 
   .skill-chips {
@@ -104,19 +83,19 @@ const skillGroups = [
   }
 
   .chip {
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 12px;
-    background: var(--color-glass);
-    border: 1px solid var(--color-glass-border);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px 14px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border-light);
     border-radius: var(--rounded-pill);
     color: var(--color-ink-secondary);
-    transition: color 0.2s ease, border-color 0.2s ease;
     cursor: default;
+    transition: border-color 0.2s ease, color 0.2s ease;
 
     &:hover {
+      border-color: var(--color-primary);
       color: var(--color-ink);
-      border-color: rgba(83, 58, 253, 0.3);
     }
   }
 </style>

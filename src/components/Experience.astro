@@ -1,84 +1,38 @@
----
----
+<section id="experience" class="section">
+  <div class="section-inner">
+    <span class="section-title-sm">Experience</span>
+    <h2 class="section-title">Teaching &amp; leadership</h2>
 
-<section id="experience" class="content-section bordered-top">
-  <div class="section-heading reveal">
-    <h2>Experience</h2>
-    <div class="heading-bar"></div>
-  </div>
-
-  <div class="timeline">
-    <div class="timeline-item reveal">
-      <div class="timeline-dot" aria-hidden="true"></div>
-      <div class="timeline-card glass">
-        <div class="exp-header">
-          <div>
-            <h3 class="exp-role">Competitive Programming Instructor</h3>
-            <p class="exp-org">BUBT Programming Club — Bangladesh University of Business &amp; Technology</p>
-          </div>
-          <span class="exp-date">2022 – Present</span>
+    <div class="exp-card reveal">
+      <div class="exp-header">
+        <div>
+          <h3 class="exp-role">Competitive Programming Instructor</h3>
+          <p class="exp-org">BUBT Programming Club</p>
         </div>
-        <ul class="exp-bullets">
-          <li>Mentored 50+ students in competitive programming fundamentals, data structures, and algorithms</li>
-          <li>Conducted weekly training sessions and mock contests to prepare teams for ICPC regionals</li>
-          <li>Designed problem sets and editorial write-ups for intra-university programming contests</li>
-        </ul>
-        <div class="exp-tags">
-          <span class="tag">Teaching</span>
-          <span class="tag">Algorithms</span>
-          <span class="tag">ICPC Prep</span>
-          <span class="tag">Problem Setting</span>
-        </div>
+        <span class="exp-date">2022 – Present</span>
+      </div>
+      <ul class="exp-list">
+        <li>Mentored 50+ students in data structures, algorithms, and contest strategy</li>
+        <li>Conducted weekly training sessions and mock ICPC contests</li>
+        <li>Designed problem sets and editorial write-ups for intra-university competitions</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="xtag">Teaching</span>
+        <span class="xtag">Algorithms</span>
+        <span class="xtag">ICPC Prep</span>
+        <span class="xtag">Problem Setting</span>
       </div>
     </div>
   </div>
 </section>
 
 <style lang="scss">
-  .content-section {
+  .exp-card {
     padding: var(--spacing-xxl);
-    @media (max-width: 768px) { padding: var(--spacing-xl) var(--spacing-lg); }
-  }
-  .bordered-top { border-top: 1px solid var(--color-glass-border); }
-
-  .timeline {
-    position: relative;
-    padding-left: 24px;
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: 6px;
-      top: 12px;
-      bottom: 0;
-      width: 2px;
-      background: var(--color-glass-border);
-      border-radius: var(--rounded-pill);
-    }
-  }
-
-  .timeline-item {
-    position: relative;
-    margin-bottom: var(--spacing-xl);
-
-    &:last-child { margin-bottom: 0; }
-  }
-
-  .timeline-dot {
-    position: absolute;
-    left: -21px;
-    top: 20px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--color-primary);
-    border: 2px solid var(--color-bg);
-    box-shadow: 0 0 8px var(--color-primary-glow);
-  }
-
-  .timeline-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: var(--rounded-xl);
-    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
   }
 
   .exp-header {
@@ -91,40 +45,39 @@
   }
 
   .exp-role {
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
     color: var(--color-ink);
-    margin: 0 0 4px 0;
+    margin: 0 0 4px;
   }
 
   .exp-org {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--color-ink-secondary);
     margin: 0;
   }
 
   .exp-date {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 10px;
-    background: rgba(83, 58, 253, 0.1);
-    border: 1px solid rgba(83, 58, 253, 0.2);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    background: var(--color-primary-soft);
     color: var(--color-primary);
     border-radius: var(--rounded-pill);
     white-space: nowrap;
   }
 
-  .exp-bullets {
-    margin: 0 0 var(--spacing-lg) 0;
+  .exp-list {
+    margin: 0 0 var(--spacing-lg);
     padding-left: var(--spacing-xl);
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
 
     li {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--color-ink-secondary);
-      line-height: 1.6;
+      line-height: 1.7;
     }
   }
 
@@ -134,12 +87,11 @@
     gap: 6px;
   }
 
-  .tag {
+  .xtag {
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 500;
     padding: 4px 10px;
-    background: rgba(83, 58, 253, 0.1);
-    border: 1px solid rgba(83, 58, 253, 0.2);
+    background: var(--color-primary-soft);
     color: var(--color-primary);
     border-radius: var(--rounded-pill);
   }

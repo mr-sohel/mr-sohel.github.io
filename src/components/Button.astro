@@ -1,21 +1,19 @@
 ---
 interface Props {
-  variant?: 'primary' | 'secondary' | 'on-dark';
+  variant?: 'primary' | 'secondary';
   href?: string;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
 }
 
-const { 
-  variant = 'primary', 
-  href, 
+const {
+  variant = 'primary',
+  href,
   className = '',
   type = 'button'
 } = Astro.props;
 
-const baseClass = "btn";
-const variantClass = `btn-${variant}`;
-const classes = `${baseClass} ${variantClass} ${className}`.trim();
+const classes = `btn btn-${variant} ${className}`.trim();
 ---
 
 {href ? (
@@ -33,21 +31,18 @@ const classes = `${baseClass} ${variantClass} ${className}`.trim();
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-family-display);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.0;
-    font-feature-settings: "ss01" on;
-    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 12px 24px;
     border-radius: var(--rounded-pill);
     cursor: pointer;
     transition: all 0.2s ease;
     border: none;
     text-decoration: none;
-    
+
     &:active {
       transform: scale(0.97);
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     &:disabled,
@@ -57,41 +52,25 @@ const classes = `${baseClass} ${variantClass} ${className}`.trim();
       pointer-events: none;
     }
   }
-  }
 
   .btn-primary {
-    background-color: var(--color-primary);
+    background: var(--color-primary);
     color: var(--color-on-primary);
-    
+
     &:hover {
-      background-color: var(--color-primary-deep);
+      background: var(--color-primary-deep);
       color: var(--color-on-primary);
-    }
-    
-    &:active {
-      background-color: var(--color-primary-press);
     }
   }
 
   .btn-secondary {
-    background-color: var(--color-canvas);
-    color: var(--color-primary);
-    border: 1px solid var(--color-primary);
-    
-    &:hover {
-      background-color: var(--color-canvas-soft);
-      color: var(--color-primary-deep);
-      border-color: var(--color-primary-deep);
-    }
-  }
+    background: var(--color-surface);
+    color: var(--color-ink);
+    border: 1px solid var(--color-border);
 
-  .btn-on-dark {
-    background-color: var(--color-brand-dark-900);
-    color: var(--color-on-primary);
-    
     &:hover {
-      background-color: var(--color-ink);
-      color: var(--color-on-primary);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
     }
   }
 </style>

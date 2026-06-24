@@ -1,166 +1,105 @@
----
----
+<section id="about" class="section">
+  <div class="section-inner">
+    <span class="section-title-sm">About</span>
+    <h2 class="section-title">Engineer by mindset, competitor by training</h2>
 
-<section id="about" class="content-section">
-  <!-- Stat counters row -->
-  <div class="stats-grid reveal-group">
-    <div class="stat-card reveal">
-      <span class="stat-value" style="color: var(--color-primary)">1500+</span>
-      <span class="stat-label">Problems Solved</span>
-    </div>
-    <div class="stat-card reveal">
-      <span class="stat-value" style="color: var(--color-secondary)">3×</span>
-      <span class="stat-label">ICPC Regional</span>
-    </div>
-    <div class="stat-card reveal">
-      <span class="stat-value" style="color: var(--color-accent)">3.52</span>
-      <span class="stat-label">CGPA at BUBT</span>
-    </div>
-    <div class="stat-card reveal">
-      <span class="stat-value" style="color: var(--color-green)">5+</span>
-      <span class="stat-label">Years in CP</span>
-    </div>
-  </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          I'm a final-year CSE student at BUBT who believes the best way to
+          learn systems is to build them — and the best way to stay sharp is
+          to compete. I've spent years solving <strong>1500+ algorithmic
+          problems</strong>, competing in <strong>3 ICPC Dhaka Regionals</strong>,
+          and shipping projects that span containerized backends, computer vision
+          pipelines, and deep learning research.
+        </p>
+        <p>
+          Right now I'm focused on <strong>C# / .NET</strong> and backend
+          infrastructure. I'm looking for a Software Engineering role where I
+          can apply my problem-solving foundation to production systems that
+          matter.
+        </p>
+      </div>
 
-  <!-- About text -->
-  <div class="section-heading reveal">
-    <h2>About Me</h2>
-    <div class="heading-bar"></div>
-  </div>
-
-  <div class="about-body">
-    <p class="body-md reveal">
-      I'm a <span class="hl">final-year CSE student</span> at
-      <span class="hl">Bangladesh University of Business and Technology (BUBT)</span>,
-      passionate about building robust backend systems and solving hard algorithmic problems.
-    </p>
-    <p class="body-md reveal">
-      On the engineering side, I work primarily with <span class="hl">C# / .NET</span>,
-      <span class="hl">Python</span>, and <span class="hl">Docker</span> — building systems like
-      a full-featured <span class="hl">Online Judge</span> with real-time code execution,
-      and ML pipelines for <span class="hl">Fruit Quality Detection</span> (98.97% mAP)
-      and <span class="hl">Facial Emotion Recognition for Autism</span> (89% accuracy).
-    </p>
-    <p class="body-md reveal">
-      On the competitive side, I'm a <span class="hl">3× ICPC Asia Dhaka Regionalist</span>,
-      <span class="hl">Specialist on Codeforces</span> (peak 1619),
-      <span class="hl">Knight on LeetCode</span>, and <span class="hl">3-Star on CodeChef</span>.
-      I've solved 1500+ problems across platforms and taught CP as an instructor.
-    </p>
-
-    <!-- Availability banner -->
-    <div class="availability-banner reveal">
-      <span class="pulse-dot" aria-hidden="true"></span>
-      <p>Open to full-time Software Engineering roles</p>
+      <div class="about-stats reveal">
+        <div class="about-stat">
+          <span class="about-stat-value">3.52</span>
+          <span class="about-stat-label">CGPA / 4.00</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat-value">3×</span>
+          <span class="about-stat-label">ICPC Dhaka Regional</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat-value">5+</span>
+          <span class="about-stat-label">Years in CP</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat-value">89%</span>
+          <span class="about-stat-label">Thesis Accuracy</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <style lang="scss">
-  .content-section {
-    padding: var(--spacing-xxl) var(--spacing-xxl);
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: var(--spacing-huge);
+    align-items: start;
 
     @media (max-width: 768px) {
-      padding: var(--spacing-xl) var(--spacing-lg);
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xxl);
     }
   }
 
-  /* Stats */
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-xxl);
-
-    @media (max-width: 640px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  .stat-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: var(--spacing-lg) var(--spacing-md);
-    background: var(--color-glass);
-    border: 1px solid var(--color-glass-border);
-    border-radius: var(--rounded-xl);
-    text-align: center;
-    transition: border-color 0.2s ease, transform 0.2s ease;
-
-    &:hover {
-      border-color: rgba(83, 58, 253, 0.3);
-      transform: translateY(-2px);
-    }
-  }
-
-  .stat-value {
-    font-size: 28px;
-    font-weight: 900;
-    line-height: 1;
-    font-feature-settings: "tnum" on;
-  }
-
-  .stat-label {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--color-ink-secondary);
-    margin-top: 4px;
-  }
-
-  /* About text */
-  .about-body {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-lg);
-
-    .body-md {
-      color: var(--color-ink-secondary);
-      margin: 0;
-    }
-  }
-
-  /* Keyword highlight */
-  .hl {
-    color: var(--color-primary);
-    font-weight: 700;
-  }
-
-  /* Availability */
-  .availability-banner {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    padding: var(--spacing-md) var(--spacing-lg);
-    background: rgba(74, 222, 128, 0.05);
-    border: 1px solid rgba(74, 222, 128, 0.2);
-    border-radius: var(--rounded-lg);
-    margin-top: var(--spacing-md);
-
+  .about-text {
     p {
-      margin: 0;
-      font-size: 13px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--color-green);
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--color-ink-secondary);
+      margin: 0 0 var(--spacing-xl);
+
+      &:last-child { margin-bottom: 0; }
+    }
+
+    strong {
+      color: var(--color-ink);
+      font-weight: 600;
     }
   }
 
-  .pulse-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--color-green);
-    flex-shrink: 0;
-    animation: pulse-green 2s ease-in-out infinite;
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
   }
 
-  @keyframes pulse-green {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
-    50% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+  .about-stat {
+    padding: var(--spacing-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-lg);
+    text-align: center;
+  }
+
+  .about-stat-value {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--color-primary);
+    line-height: 1.1;
+  }
+
+  .about-stat-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-ink-mute);
+    margin-top: 4px;
   }
 </style>
