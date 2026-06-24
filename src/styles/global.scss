@@ -91,6 +91,7 @@
 html {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
   height: 100%;
 }
 
@@ -107,6 +108,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {
@@ -175,6 +177,11 @@ img {
   letter-spacing: -0.5px;
   color: var(--color-ink);
   margin: 0 0 56px;
+  text-wrap: balance;
+
+  @media (max-width: 480px) {
+    text-wrap: pretty;
+  }
 }
 
 .section-title-sm {
@@ -200,6 +207,12 @@ img {
 @media (max-width: 480px) {
   .section-title {
     margin-bottom: var(--spacing-xl);
+  }
+}
+
+@media (max-width: 380px) {
+  .section {
+    padding: var(--spacing-huge) var(--spacing-md);
   }
 }
 
