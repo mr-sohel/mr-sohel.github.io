@@ -1,22 +1,22 @@
 <section id="cp" class="section">
   <div class="section-inner">
     <span class="section-title-sm">Competitive Programming</span>
-    <h2 class="section-title">Data &amp; achievements</h2>
+    <h2 class="section-title">Rated across 3 platforms · 1500+ problems</h2>
 
     <div class="cp-platforms reveal-group">
       <div class="cp-card reveal">
         <div class="cp-platform-name">Codeforces</div>
-        <div class="cp-rating" style="color: #4299e1">1619</div>
+        <div class="cp-rating cp-rating--cf">1619</div>
         <div class="cp-rank">Specialist</div>
       </div>
       <div class="cp-card reveal">
         <div class="cp-platform-name">LeetCode</div>
-        <div class="cp-rating" style="color: #f6ad55">1653</div>
+        <div class="cp-rating cp-rating--lc">1653</div>
         <div class="cp-rank">Knight · Top 5%</div>
       </div>
       <div class="cp-card reveal">
         <div class="cp-platform-name">CodeChef</div>
-        <div class="cp-rating" style="color: #68d391">1623</div>
+        <div class="cp-rating cp-rating--cc">1623</div>
         <div class="cp-rank">3★ Rated</div>
       </div>
     </div>
@@ -92,9 +92,15 @@
     }
   }
 
+  .cp-platforms.reveal-group {
+    > .cp-card:nth-child(1) { transition-delay: 0.12s; }
+    > .cp-card:nth-child(2) { transition-delay: 0.24s; }
+    > .cp-card:nth-child(3) { transition-delay: 0.36s; }
+  }
+
   .cp-card {
     padding: var(--spacing-xl);
-    background: var(--color-surface);
+    background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-tint) 100%);
     border: 1px solid var(--color-border);
     border-radius: var(--rounded-xl);
     text-align: center;
@@ -125,7 +131,26 @@
     font-weight: 700;
     letter-spacing: -0.5px;
     line-height: 1.1;
+    font-variant-numeric: tabular-nums;
   }
+
+  /* Platform-specific rating colours — light and dark mode aware */
+  .cp-rating--cf {
+    --_rating-color: #3b82f6;
+    color: var(--_rating-color);
+  }
+  .cp-rating--lc {
+    --_rating-color: #f59e0b;
+    color: var(--_rating-color);
+  }
+  .cp-rating--cc {
+    --_rating-color: #10b981;
+    color: var(--_rating-color);
+  }
+
+  :global([data-theme="dark"]) .cp-rating--cf { --_rating-color: #60a5fa; }
+  :global([data-theme="dark"]) .cp-rating--lc { --_rating-color: #fbbf24; }
+  :global([data-theme="dark"]) .cp-rating--cc { --_rating-color: #34d399; }
 
   .cp-rank {
     font-size: 13px;

@@ -21,20 +21,20 @@
             <span class="ptag">RabbitMQ</span>
           </div>
           <h3 class="project-title">Online Judge System</h3>
-          <p class="project-desc">Full-featured competitive programming judge with isolated Docker-based sandboxed code execution, async job processing, and multi-language support.</p>
+          <p class="project-desc">A containerized competitive programming judge with Docker-sandboxed code execution, RabbitMQ async job processing, and support for C++, Python, and Java — built to the same core architecture as Codeforces and LeetCode.</p>
           <div class="project-metrics">
             <span class="pmetric">
-              <strong>10+ req/s</strong> Throughput
+              <strong>10+ req/s</strong> under concurrent load
             </span>
             <span class="pmetric">
-              <strong>&lt;500ms</strong> Avg verdict
+              <strong>&lt;500ms</strong> avg verdict
             </span>
             <span class="pmetric">
-              <strong>3+</strong> Languages supported
+              <strong>3 languages</strong> supported
             </span>
           </div>
           <div class="project-links">
-            <a href="https://online-judge-demo.vercel.app" target="_blank" rel="noopener noreferrer" class="plink">
+            <a href="https://online-judge-demo.vercel.app" target="_blank" rel="noopener noreferrer" class="plink plink-primary">
               <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               Live Demo
             </a>
@@ -62,20 +62,20 @@
             <span class="ptag">ESP32-CAM</span>
           </div>
           <h3 class="project-title">Real-Time Fruit Quality Detection</h3>
-          <p class="project-desc">End-to-end IoT + ML system that detects fresh vs rotten fruit using a $5 ESP32-CAM and a cloud-hosted YOLOv8 model.</p>
+          <p class="project-desc">End-to-end IoT + ML system that detects fresh vs rotten fruit using a $5 ESP32-CAM and a cloud-hosted YOLOv8 model streamed over WiFi.</p>
           <div class="project-metrics">
             <span class="pmetric">
               <strong>98.97%</strong> mAP@50
             </span>
             <span class="pmetric">
-              <strong>80%</strong> Faster inference
+              <strong>80%</strong> faster vs YOLOv8n baseline
             </span>
             <span class="pmetric">
-              <strong>3s</strong> Response time
+              <strong>3s</strong> end-to-end over WiFi
             </span>
           </div>
           <div class="project-links">
-            <a href="https://fruit-quality-demo.vercel.app" target="_blank" rel="noopener noreferrer" class="plink">
+            <a href="https://fruit-quality-demo.vercel.app" target="_blank" rel="noopener noreferrer" class="plink plink-primary">
               <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               Live Demo
             </a>
@@ -103,7 +103,7 @@
             <span class="ptag">Grad-CAM</span>
           </div>
           <h3 class="project-title">Facial Emotion Recognition for Autism</h3>
-          <p class="project-desc">Deep learning system for recognizing facial expressions in autistic individuals, aiding therapeutic assessment. Undergraduate thesis.</p>
+          <p class="project-desc">Swin Transformer model classifying 7 facial emotions in autistic individuals — outperforming 14 published baselines. Undergraduate thesis project.</p>
           <div class="project-metrics">
             <span class="pmetric">
               <strong>89%</strong> Accuracy
@@ -116,7 +116,7 @@
             </span>
           </div>
           <div class="project-links">
-            <a href="https://fer-autism-demo.vercel.app" target="_blank" rel="noopener noreferrer" class="plink">
+            <a href="https://fer-autism-demo.vercel.app" target="_blank" rel="noopener noreferrer" class="plink plink-primary">
               <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               Live Demo
             </a>
@@ -156,7 +156,7 @@
 
   .project-media {
     position: relative;
-    height: 190px;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
 
     picture, img {
@@ -256,10 +256,24 @@
     font-weight: 500;
     color: var(--color-ink-secondary);
     text-decoration: none;
-    padding: 6px 0;
+    padding: 6px 12px;
+    border-radius: var(--rounded-md);
     touch-action: manipulation;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, background 0.2s ease;
 
-    &:hover { color: var(--color-primary); }
+    &:hover {
+      color: var(--color-primary);
+      background: var(--color-primary-soft);
+    }
+  }
+
+  .plink-primary {
+    color: var(--color-on-primary);
+    background: var(--color-primary);
+
+    &:hover {
+      color: var(--color-on-primary);
+      background: var(--color-primary-deep);
+    }
   }
 </style>

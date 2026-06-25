@@ -117,7 +117,7 @@ const faqSchema = {
       "name": "Is Md. Sohel Rana available for software engineering roles?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, Md. Sohel Rana is actively seeking full-time Software Engineer and .NET Developer roles, starting after graduation in December 2025."
+        "text": "Yes, Md. Sohel Rana is actively seeking full-time Software Engineer and .NET Developer roles, starting after graduation in December 2026."
       }
     }
   ]
@@ -184,6 +184,7 @@ const faqSchema = {
     </script>
   </head>
   <body>
+    <div class="scroll-progress"></div>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <main id="main-content">
@@ -206,6 +207,16 @@ const faqSchema = {
           document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
         }
       });
+
+      const progressBar = document.querySelector('.scroll-progress');
+      if (progressBar) {
+        window.addEventListener('scroll', () => {
+          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          progressBar.style.width = scrolled + '%';
+        }, { passive: true });
+      }
     </script>
   </body>
 </html>
@@ -224,6 +235,17 @@ const faqSchema = {
     font-size: 14px;
 
     &:focus { top: 16px; }
+  }
+
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--color-primary);
+    z-index: 9999;
+    transition: width 0.1s ease-out;
   }
 
   .sr-only {

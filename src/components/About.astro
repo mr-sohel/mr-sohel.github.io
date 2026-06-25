@@ -6,19 +6,19 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <p itemprop="description">
-          I'm a final-year CSE student who believes the best way to
-          learn systems is to build them — and the best way to stay sharp is
-          to compete. I've spent years solving <strong>1500+ algorithmic
-          problems</strong>, competing in <strong>3 ICPC Dhaka Regionals</strong>
-          and <strong>10+ national IUPCs</strong>,
-          and shipping projects that span containerized backends, computer vision
-          pipelines, and deep learning research.
+          I build backend systems that handle real constraints —
+          <strong>Docker-sandboxed code execution</strong>, async job queues,
+          computer vision pipelines — and I sharpen my problem-solving through
+          competitive programming at the national level. I've solved
+          <strong>1500+ algorithmic problems</strong>, competed in
+          <strong>3 ICPC Dhaka Regionals</strong> and
+          <strong>10+ national IUPCs</strong>, and shipped
+          projects spanning containerized backends and deep learning research.
         </p>
         <p>
           Right now I'm focused on <strong>C# / .NET</strong> and backend
           infrastructure. I'm looking for a Software Engineering role where I
-          can apply my problem-solving foundation to production systems that
-          matter.
+          can apply my problem-solving foundation to production systems.
         </p>
       </div>
 
@@ -28,12 +28,12 @@
           <span class="about-stat-label">ICPC Dhaka Regional</span>
         </div>
         <div class="about-stat">
-          <span class="about-stat-value">5+</span>
-          <span class="about-stat-label">Years in CP</span>
+          <span class="about-stat-value">Top&nbsp;12%</span>
+          <span class="about-stat-label">on Codeforces</span>
         </div>
         <div class="about-stat">
-          <span class="about-stat-value">5+</span>
-          <span class="about-stat-label">Projects Shipped</span>
+          <span class="about-stat-value">3</span>
+          <span class="about-stat-label">End-to-End Systems</span>
         </div>
       </div>
     </div>
@@ -43,22 +43,24 @@
 <style lang="scss">
   .about-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: var(--spacing-huge);
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--spacing-xxl);
     align-items: start;
 
-    @media (max-width: 768px) {
+    @media (max-width: 820px) {
       grid-template-columns: 1fr;
-      gap: var(--spacing-xxl);
     }
   }
 
   .about-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--color-ink-secondary);
+    border-left: 3px solid var(--color-primary);
+    padding-left: var(--spacing-md);
+
     p {
-      font-size: 17px;
-      line-height: 1.8;
-      color: var(--color-ink-secondary);
-      margin: 0 0 var(--spacing-xl);
+      margin: 0 0 var(--spacing-md);
 
       &:last-child { margin-bottom: 0; }
 
@@ -94,11 +96,12 @@
 
   .about-stat-value {
     display: block;
-    font-size: 28px;
+    font-size: 36px;
     font-weight: 700;
     letter-spacing: -0.5px;
     color: var(--color-primary);
     line-height: 1.1;
+    font-variant-numeric: tabular-nums;
   }
 
   .about-stat-label {

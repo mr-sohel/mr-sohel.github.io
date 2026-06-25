@@ -1,6 +1,9 @@
 <footer class="footer">
   <div class="footer-inner">
-    <p class="footer-copy">© 2026 Md. Sohel Rana</p>
+    <div class="footer-info">
+      <p class="footer-copy">© 2026 Md. Sohel Rana</p>
+      <p class="footer-avail">Available for SWE roles · <a href="mailto:mrsohelcse@gmail.com">mrsohelcse@gmail.com</a></p>
+    </div>
     <p class="footer-tech">Built with Astro · Deployed on GitHub Pages</p>
     <div class="footer-social">
       <a href="https://github.com/mr-sohel" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -43,6 +46,18 @@
     font-size: 12px;
     color: var(--color-ink-mute);
     margin: 0;
+  }
+
+  .footer-avail {
+    font-size: 12px;
+    color: var(--color-ink-mute);
+    margin: 2px 0 0;
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
   }
 
   .footer-social {
