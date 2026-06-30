@@ -1,0 +1,21 @@
+{
+  "name": "Md. Sohel Rana — Portfolio",
+  "short_name": "Sohel Rana",
+  "description": "Portfolio of Md. Sohel Rana — Software Engineer, ICPC Regionalist, CSE student at BUBT.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafaf9",
+  "theme_color": "#0d9488",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

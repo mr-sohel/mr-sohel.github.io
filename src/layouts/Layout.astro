@@ -8,7 +8,8 @@ interface Props {
 
 const {
   title,
-  description = "Md. Sohel Rana — Final-year CSE student at BUBT. Full-stack ASP.NET Core developer, 3× ICPC Regionalist, 1500+ problems solved. Seeking SWE & .NET Developer roles."
+  description = "Md. Sohel Rana (Mr Sohel | mrsohel | Sohel Rana) — .NET Developer & 3× ICPC Regionalist, Codeforces Specialist, BUBT CSE. Hire me for software engineering.",
+  ogDescription = "Md. Sohel Rana (also known as Sohel Rana, Mr Sohel, mr_sohel) is a final-year CSE student at BUBT (Bangladesh University of Business & Technology), Dhaka. ASP.NET Core & C# backend developer, 3× ICPC Asia Dhaka Regionalist, Codeforces Specialist, and competitive programmer with 1500+ problems solved. Actively seeking Software Engineer and .NET Developer roles."
 } = Astro.props;
 
 const siteUrl = "https://mr-sohel.github.io";
@@ -17,8 +18,26 @@ const ogImage = `${siteUrl}/og-preview.jpg`;
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "#sohel-rana",
   "name": "Md. Sohel Rana",
-  "alternateName": ["mr_sohel", "mr-sohel", "mrsohel", "mrsohelcse", "Taalpatar_Shepai", "md-sohel-rana"],
+  "alternateName": [
+    "Sohel",
+    "Sohel Rana",
+    "Mr Sohel",
+    "Mr. Sohel",
+    "Md Sohel Rana",
+    "Sohel BUBT",
+    "Sohel CSE",
+    "Sohel Developer",
+    "Sohel Programmer",
+    "Sohel Software Engineer",
+    "mr_sohel",
+    "mr-sohel",
+    "mrsohel",
+    "mrsohelcse",
+    "Taalpatar_Shepai",
+    "md-sohel-rana"
+  ],
   "givenName": "Md. Sohel",
   "familyName": "Rana",
   "url": siteUrl,
@@ -86,10 +105,29 @@ const websiteSchema = {
   "@type": "WebSite",
   "name": "Md. Sohel Rana — Portfolio",
   "url": siteUrl,
-  "description": description,
+  "description": ogDescription,
+  "datePublished": "2025-06-01",
+  "dateModified": "2026-06-30",
   "author": { "@type": "Person", "name": "Md. Sohel Rana", "url": siteUrl },
   "about": { "@type": "Person", "name": "Md. Sohel Rana" },
-  "keywords": "Md. Sohel Rana, Sohel Rana, software engineer portfolio, backend developer, .NET developer, ASP.NET Core, competitive programmer, ICPC, C#, React, Angular, Bangladesh, BUBT, frontend developer, problem solving, algorithms"
+  "keywords": "Md. Sohel Rana, Sohel Rana, Sohel, Mr Sohel, mrsohel, mr_sohel, Md Sohel Rana, Sohel BUBT, Sohel CSE, Sohel Developer, Sohel Programmer, Sohel Software Engineer, software engineer portfolio, backend developer, .NET developer, ASP.NET Core, competitive programmer, ICPC, C#, React, Angular, Bangladesh, BUBT, frontend developer, problem solving, algorithms",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".hero-name", ".hero-tagline", "[itemprop='description']"]
+  }
+};
+
+const profilePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "dateCreated": "2025-06-01",
+  "dateModified": "2026-06-30",
+  "mainEntity": {
+    "@id": "#sohel-rana",
+    "@type": "Person",
+    "name": "Md. Sohel Rana",
+    "url": siteUrl
+  }
 };
 
 const faqSchema = {
@@ -119,7 +157,135 @@ const faqSchema = {
         "@type": "Answer",
         "text": "Yes, Md. Sohel Rana is actively seeking full-time Software Engineer and .NET Developer roles, starting after graduation in December 2026."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Sohel Rana's Codeforces rating?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Md. Sohel Rana (Codeforces handle: mr_sohel) is a Specialist on Codeforces, ranked in the top 12% globally. He has participated in 140+ online contests and solved 1500+ algorithmic problems across platforms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where did Sohel Rana study?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sohel Rana is pursuing a B.Sc. in Computer Science & Engineering (CSE) at Bangladesh University of Business & Technology (BUBT), Dhaka, with an expected graduation in December 2026. He previously studied at Sylhet Polytechnic Institute."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What projects has Md. Sohel Rana built?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Md. Sohel Rana has built an Online Judge System (similar to Codeforces/LeetCode) using ASP.NET Core, Docker, and RabbitMQ; a Real-Time Fruit Quality Detection system using YOLOv8 and ESP32-CAM; and a Facial Emotion Recognition model for Autism using Swin Transformer that outperformed 14 published baselines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are Sohel Rana's ICPC achievements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sohel Rana is a 3× ICPC Asia Dhaka Regional participant. He achieved Rank 157 in the 2024 Regional and an Honorable Mention in 2023. He also qualified for Meta Hacker Cup 2025 Round 2 and has been a 2× BUBT Intra University Programming Champion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to contact Md. Sohel Rana?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can contact Md. Sohel Rana via email at mrsohelcse@gmail.com, through LinkedIn at linkedin.com/in/mrsohel, or on GitHub at github.com/mr-sohel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What programming languages does Sohel Rana know?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sohel Rana is proficient in C#, C++, Python, and Java. He specializes in backend development with ASP.NET Core, and uses C++ for competitive programming. He also works with TypeScript, Angular, and React for frontend development."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Sohel Rana a competitive programmer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Md. Sohel Rana (also known as mr_sohel, Mr Sohel) is an active competitive programmer with 5+ years of experience. He is a Codeforces Specialist, 3× ICPC Regionalist, and has solved over 1500 problems across Codeforces, LeetCode, CodeChef, and HackerRank."
+      }
     }
+  ]
+};
+
+const projectsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Projects by Md. Sohel Rana",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Online Judge System",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "author": { "@type": "Person", "name": "Md. Sohel Rana" },
+        "description": "A containerized competitive programming judge with Docker-sandboxed code execution, RabbitMQ async job processing, and support for C++, Python, and Java.",
+        "programmingLanguage": ["C#", "ASP.NET Core", "Docker", "PostgreSQL", "RabbitMQ"],
+        "url": "https://github.com/mr-sohel/online-judge-system"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Real-Time Fruit Quality Detection",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web",
+        "author": { "@type": "Person", "name": "Md. Sohel Rana" },
+        "description": "End-to-end IoT + ML system that detects fresh vs rotten fruit using ESP32-CAM and a cloud-hosted YOLOv8 model.",
+        "programmingLanguage": ["Python", "YOLOv8", "FastAPI"],
+        "url": "https://github.com/mr-sohel/fruit-quality-detection"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Facial Emotion Recognition for Autism",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web",
+        "author": { "@type": "Person", "name": "Md. Sohel Rana" },
+        "description": "Swin Transformer model classifying 7 facial emotions in autistic individuals, outperforming 14 published baselines.",
+        "programmingLanguage": ["Python", "PyTorch", "Swin Transformer"],
+        "url": "https://github.com/mr-sohel/fer-autism"
+      }
+    }
+  ]
+};
+
+const educationSchema = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOccupationalCredential",
+  "credentialCategory": "degree",
+  "name": "B.Sc. in Computer Science & Engineering (CSE)",
+  "educationalLevel": "Bachelor's",
+  "about": "Computer Science & Engineering",
+  "recognizedBy": {
+    "@type": "CollegeOrUniversity",
+    "name": "Bangladesh University of Business & Technology (BUBT)",
+    "sameAs": "https://www.bubt.edu.bd/"
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl }
   ]
 };
 ---
@@ -139,23 +305,32 @@ const faqSchema = {
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="author" content="Md. Sohel Rana" />
     <meta name="google-site-verification" content="x0yS52AZbrOXKragN9i9imUy3F-XxivvV4ZUtEA5ovk" />
     <meta name="keywords" content="Md. Sohel Rana, Sohel Rana, Md Sohel Rana, md-sohel-rana, mr-sohel, mrsohel, mrsohelcse, mr_sohel, Taalpatar_Shepai, Sohel Rana Software Engineer, Sohel Rana competitive programming, md-sohel-rana github, mrsohel github, Software Engineer, Full Stack Developer, Backend Developer, .NET Developer, ASP.NET Core Developer, C# Developer, Frontend Developer, React Developer, Competitive Programmer, software engineer Dhaka, React developer Bangladesh, algorithmic developer Bangladesh, ASP.NET Core, C#, .NET, Web API, Entity Framework Core, Angular, React, TypeScript, SQL Server, MySQL, Docker, Azure, Microservices, Clean Architecture, REST APIs, LINQ, SignalR, BUBT, BUBT CSE, Bangladesh, Dhaka, ICPC Regionalist, ICPC, Problem Solving, Data Structures, Algorithms, Codeforces, computer science student, BUBT CSE portfolio, Final Year CSE, Junior Software Engineer, Entry Level SWE, Hire .NET Developer, Backend Developer Portfolio, github-pages, c-plus-plus, frontend-developer, competitive-programming, software-engineer, cse, bubt" />
     <link rel="canonical" href={siteUrl} />
+    <link rel="me" href="https://github.com/mr-sohel" />
+    <link rel="me" href="https://www.linkedin.com/in/mrsohel/" />
+    <link rel="me" href="https://codeforces.com/profile/mr_sohel" />
+    <link rel="me" href="https://leetcode.com/u/mr_sohel/" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="profile" />
+    <meta property="profile:first_name" content="Md. Sohel" />
+    <meta property="profile:last_name" content="Rana" />
+    <meta property="profile:username" content="mr-sohel" />
     <meta property="og:url" content={siteUrl} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={ogDescription} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Md. Sohel Rana — Software Engineer Portfolio" />
+    <meta property="og:image:alt" content="Md. Sohel Rana (Sohel Rana) — Software Engineer, CSE student at BUBT, ICPC Regionalist" />
     <meta property="og:site_name" content="Md. Sohel Rana" />
     <meta property="og:locale" content="en_US" />
 
@@ -165,11 +340,15 @@ const faqSchema = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="Md. Sohel Rana — Software Engineer Portfolio" />
+    <meta name="twitter:image:alt" content="Md. Sohel Rana (Sohel Rana) — Software Engineer, CSE student at BUBT, ICPC Regionalist" />
 
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(projectsSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(educationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
 
     <script is:inline>

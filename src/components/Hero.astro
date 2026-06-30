@@ -7,9 +7,10 @@ import Nav from './Nav.astro';
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-content">
-      <h1 class="hero-name">Md. Sohel Rana</h1>
+      <h1 class="hero-name" itemprop="name">Md. Sohel Rana</h1>
+      <span class="sr-only">Also known as: Sohel, Sohel Rana, Mr Sohel, Mr. Sohel, Md Sohel Rana, mr_sohel, mrsohelcse, Taalpatar Shepai. CSE student at BUBT, Bangladesh.</span>
 
-      <p class="hero-tagline">
+      <p class="hero-tagline" itemprop="jobTitle">
         ASP.NET Core Developer <span class="sep">•</span> 3× ICPC Regionalist <span class="sep">•</span> Top 12% on Codeforces
       </p>
 
@@ -56,9 +57,10 @@ import Nav from './Nav.astro';
       </div>
     </div>
 
-    <div class="hero-photo">
-      <img src="/images/profile-v2.jpg" alt="Md. Sohel Rana — Software Engineer" width="400" height="400" fetchpriority="high" />
-    </div>
+    <figure class="hero-photo">
+      <img src="/images/profile-v2.jpg" alt="Md. Sohel Rana — Software Engineer, CSE student at BUBT, competitive programmer and ICPC Regionalist" width="400" height="400" fetchpriority="high" itemprop="image" />
+      <figcaption class="sr-only">Md. Sohel Rana, known online as Mr Sohel, mrsohel, and mr_sohel — a software engineer and competitive programmer from Dhaka, Bangladesh. CSE student at BUBT.</figcaption>
+    </figure>
   </div>
 </section>
 
