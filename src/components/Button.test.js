@@ -1,9 +1,14 @@
-import { expect, test } from 'vitest';
+import { expect, test, beforeAll } from 'vitest';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import Button from './Button.astro';
 
+let container;
+
+beforeAll(async () => {
+  container = await AstroContainer.create();
+});
+
 test('Button renders with default props', async () => {
-  const container = await AstroContainer.create();
   const result = await container.renderToString(Button);
 
   expect(result).toContain('class="btn btn-primary"');
@@ -11,7 +16,6 @@ test('Button renders with default props', async () => {
 });
 
 test('Button renders with secondary variant', async () => {
-  const container = await AstroContainer.create();
   const result = await container.renderToString(Button, {
     props: { variant: 'secondary' }
   });
@@ -20,7 +24,6 @@ test('Button renders with secondary variant', async () => {
 });
 
 test('Button renders as an anchor link when href is provided', async () => {
-  const container = await AstroContainer.create();
   const result = await container.renderToString(Button, {
     props: { href: 'https://example.com' }
   });
@@ -30,7 +33,6 @@ test('Button renders as an anchor link when href is provided', async () => {
 });
 
 test('Button accepts custom className', async () => {
-  const container = await AstroContainer.create();
   const result = await container.renderToString(Button, {
     props: { className: 'custom-class' }
   });

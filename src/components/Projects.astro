@@ -1,6 +1,57 @@
 ---
 import IconExternal from './icons/IconExternal.astro';
 import IconGithub from './icons/IconGithub.astro';
+
+const projects = [
+  {
+    image: "/images/online-judge.webp",
+    alt: "Online Judge System built with ASP.NET Core and Docker showing code submission interface",
+    status: "In Progress",
+    statusClass: "status-progress",
+    tags: ["C#", "ASP.NET Core", "Docker", "PostgreSQL", "RabbitMQ"],
+    title: "Online Judge System",
+    desc: "A containerized competitive programming judge with Docker-sandboxed code execution, RabbitMQ async job processing, and support for C++, Python, and Java — built to the same core architecture as Codeforces and LeetCode.",
+    metrics: [
+      "<strong>10+ req/s</strong> under concurrent load",
+      "<strong>&lt;500ms</strong> avg verdict",
+      "<strong>3 languages</strong> supported"
+    ],
+    demoLink: "https://online-judge-demo.vercel.app",
+    repoLink: "https://github.com/mr-sohel/online-judge-system"
+  },
+  {
+    image: "/images/fruit-quality.webp",
+    alt: "Real-Time Fruit Quality Detection system using YOLOv8 showing fresh vs rotten fruit classification",
+    status: "Completed",
+    statusClass: "status-done",
+    tags: ["Python", "YOLOv8", "FastAPI", "ESP32-CAM"],
+    title: "Real-Time Fruit Quality Detection",
+    desc: "End-to-end IoT + ML system that detects fresh vs rotten fruit using a $5 ESP32-CAM and a cloud-hosted YOLOv8 model streamed over WiFi.",
+    metrics: [
+      "<strong>98.97%</strong> mAP@50",
+      "<strong>80%</strong> faster vs YOLOv8n baseline",
+      "<strong>3s</strong> end-to-end over WiFi"
+    ],
+    demoLink: "https://fruit-quality-demo.vercel.app",
+    repoLink: "https://github.com/mr-sohel/fruit-quality-detection"
+  },
+  {
+    image: "/images/autism-fer.webp",
+    alt: "Facial Emotion Recognition for Autism using Swin Transformer deep learning model",
+    status: "Completed",
+    statusClass: "status-done",
+    tags: ["Python", "PyTorch", "Swin Transformer", "Grad-CAM"],
+    title: "Facial Emotion Recognition for Autism",
+    desc: "Swin Transformer model classifying 7 facial emotions in autistic individuals — outperforming 14 published baselines. Undergraduate thesis project.",
+    metrics: [
+      "<strong>89%</strong> Accuracy",
+      "<strong>7</strong> Emotion classes",
+      "<strong>14</strong> Baselines beaten"
+    ],
+    demoLink: "https://fer-autism-demo.vercel.app",
+    repoLink: "https://github.com/mr-sohel/fer-autism"
+  }
+];
 ---
 <section id="projects" class="section section-alt">
   <div class="section-inner">
@@ -8,129 +59,41 @@ import IconGithub from './icons/IconGithub.astro';
     <h2 class="section-title">What I've built</h2>
 
     <div class="projects-grid">
-      <article class="project-card reveal">
-        <div class="project-media">
-          <picture>
-            <source srcset="/images/online-judge.webp" type="image/webp" />
-            <img src="/images/online-judge.webp" alt="Online Judge System built with ASP.NET Core and Docker showing code submission interface" width="800" height="400" loading="lazy" decoding="async" />
-          </picture>
-          <span class="project-status status-progress">In Progress</span>
-        </div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="ptag">C#</span>
-            <span class="ptag">ASP.NET Core</span>
-            <span class="ptag">Docker</span>
-            <span class="ptag">PostgreSQL</span>
-            <span class="ptag">RabbitMQ</span>
+      {projects.map(project => (
+        <article class="project-card reveal">
+          <div class="project-media">
+            <picture>
+              <source srcset={project.image} type="image/webp" />
+              <img src={project.image} alt={project.alt} width="800" height="400" loading="lazy" decoding="async" />
+            </picture>
+            <span class={`project-status ${project.statusClass}`}>{project.status}</span>
           </div>
-          <h3 class="project-title">Online Judge System</h3>
-          <p class="project-desc">A containerized competitive programming judge with Docker-sandboxed code execution, RabbitMQ async job processing, and support for C++, Python, and Java — built to the same core architecture as Codeforces and LeetCode.</p>
-          <div class="project-metrics">
-            <span class="pmetric">
-              <strong>10+ req/s</strong> under concurrent load
-            </span>
-            <span class="pmetric">
-              <strong>&lt;500ms</strong> avg verdict
-            </span>
-            <span class="pmetric">
-              <strong>3 languages</strong> supported
-            </span>
+          <div class="project-body">
+            <div class="project-tags">
+              {project.tags.map(tag => (
+                <span class="ptag">{tag}</span>
+              ))}
+            </div>
+            <h3 class="project-title">{project.title}</h3>
+            <p class="project-desc">{project.desc}</p>
+            <div class="project-metrics">
+              {project.metrics.map(metric => (
+                <span class="pmetric" set:html={metric}></span>
+              ))}
+            </div>
+            <div class="project-links">
+              <a href={project.demoLink} target="_blank" rel="noopener noreferrer" class="plink plink-primary">
+                <IconExternal />
+                Live Demo
+              </a>
+              <a href={project.repoLink} target="_blank" rel="noopener noreferrer" class="plink">
+                <IconGithub />
+                Source Code
+              </a>
+            </div>
           </div>
-          <div class="project-links">
-            <a href="https://online-judge-demo.vercel.app" target="_blank" rel="noopener noreferrer" class="plink plink-primary">
-              <IconExternal />
-              Live Demo
-            </a>
-            <a href="https://github.com/mr-sohel/online-judge-system" target="_blank" rel="noopener noreferrer" class="plink">
-              <IconGithub />
-              Source Code
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="project-card reveal">
-        <div class="project-media">
-          <picture>
-            <source srcset="/images/fruit-quality.webp" type="image/webp" />
-            <img src="/images/fruit-quality.webp" alt="Real-Time Fruit Quality Detection system using YOLOv8 showing fresh vs rotten fruit classification" width="800" height="400" loading="lazy" decoding="async" />
-          </picture>
-          <span class="project-status status-done">Completed</span>
-        </div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="ptag">Python</span>
-            <span class="ptag">YOLOv8</span>
-            <span class="ptag">FastAPI</span>
-            <span class="ptag">ESP32-CAM</span>
-          </div>
-          <h3 class="project-title">Real-Time Fruit Quality Detection</h3>
-          <p class="project-desc">End-to-end IoT + ML system that detects fresh vs rotten fruit using a $5 ESP32-CAM and a cloud-hosted YOLOv8 model streamed over WiFi.</p>
-          <div class="project-metrics">
-            <span class="pmetric">
-              <strong>98.97%</strong> mAP@50
-            </span>
-            <span class="pmetric">
-              <strong>80%</strong> faster vs YOLOv8n baseline
-            </span>
-            <span class="pmetric">
-              <strong>3s</strong> end-to-end over WiFi
-            </span>
-          </div>
-          <div class="project-links">
-            <a href="https://fruit-quality-demo.vercel.app" target="_blank" rel="noopener noreferrer" class="plink plink-primary">
-              <IconExternal />
-              Live Demo
-            </a>
-            <a href="https://github.com/mr-sohel/fruit-quality-detection" target="_blank" rel="noopener noreferrer" class="plink">
-              <IconGithub />
-              Source Code
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="project-card reveal">
-        <div class="project-media">
-          <picture>
-            <source srcset="/images/autism-fer.webp" type="image/webp" />
-            <img src="/images/autism-fer.webp" alt="Facial Emotion Recognition for Autism using Swin Transformer deep learning model" width="800" height="400" loading="lazy" decoding="async" />
-          </picture>
-          <span class="project-status status-done">Completed</span>
-        </div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="ptag">Python</span>
-            <span class="ptag">PyTorch</span>
-            <span class="ptag">Swin Transformer</span>
-            <span class="ptag">Grad-CAM</span>
-          </div>
-          <h3 class="project-title">Facial Emotion Recognition for Autism</h3>
-          <p class="project-desc">Swin Transformer model classifying 7 facial emotions in autistic individuals — outperforming 14 published baselines. Undergraduate thesis project.</p>
-          <div class="project-metrics">
-            <span class="pmetric">
-              <strong>89%</strong> Accuracy
-            </span>
-            <span class="pmetric">
-              <strong>7</strong> Emotion classes
-            </span>
-            <span class="pmetric">
-              <strong>14</strong> Baselines beaten
-            </span>
-          </div>
-          <div class="project-links">
-            <a href="https://fer-autism-demo.vercel.app" target="_blank" rel="noopener noreferrer" class="plink plink-primary">
-              <IconExternal />
-              Live Demo
-            </a>
-            <a href="https://github.com/mr-sohel/fer-autism" target="_blank" rel="noopener noreferrer" class="plink">
-              <IconGithub />
-              Source Code
-            </a>
-          </div>
-        </div>
-      </article>
+        </article>
+      ))}
     </div>
   </div>
 </section>

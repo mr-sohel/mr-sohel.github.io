@@ -287,6 +287,7 @@ const breadcrumbSchema = {
     { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl }
   ]
 };
+const safeJsonLd = (data: any) => JSON.stringify(data).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
 ---
 
 <!doctype html>
@@ -341,7 +342,7 @@ const breadcrumbSchema = {
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content="Md. Sohel Rana (Sohel Rana) — Software Engineer, CSE student at BUBT, ICPC Regionalist" />
 
-    <script type="application/ld+json" set:html={JSON.stringify([personSchema, websiteSchema, faqSchema, profilePageSchema, projectsSchema, educationSchema, breadcrumbSchema]).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026')} />
+    <script type="application/ld+json" set:html={safeJsonLd([personSchema, websiteSchema, faqSchema, profilePageSchema, projectsSchema, educationSchema, breadcrumbSchema])} />
 
 
     <script is:inline>
@@ -383,12 +384,17 @@ const breadcrumbSchema = {
       const progressBar = document.querySelector('.scroll-progress');
       if (progressBar) {
         let ticking = false;
+        let documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+        window.addEventListener('resize', () => {
+          documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        }, { passive: true });
+
         window.addEventListener('scroll', () => {
           if (!ticking) {
             window.requestAnimationFrame(() => {
               const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-              const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-              const scrolled = (winScroll / height) * 100;
+              const scrolled = documentHeight > 0 ? (winScroll / documentHeight) * 100 : 0;
               progressBar.style.width = scrolled + '%';
               ticking = false;
             });

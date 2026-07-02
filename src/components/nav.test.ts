@@ -2,16 +2,18 @@
  * @vitest-environment jsdom
  */
 import { expect, test, describe, beforeEach } from 'vitest';
-import { updateActiveSection, openMenu, closeMenu } from './nav.ts';
+import { initNav, updateActiveSection, openMenu, closeMenu } from './nav.ts';
 
 describe('Nav scripts', () => {
   beforeEach(() => {
     document.body.innerHTML = `
-      <nav>
+      <nav class="nav">
         <a href="#about" class="nav-link">About</a>
         <a href="#projects" class="nav-link">Projects</a>
       </nav>
       <div id="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-backdrop"></div>
+        <button id="mobile-close-btn"></button>
         <a href="#about" class="mobile-link" data-section="about">About</a>
         <a href="#projects" class="mobile-link" data-section="projects">Projects</a>
       </div>
@@ -19,6 +21,8 @@ describe('Nav scripts', () => {
     `;
     // Reset body style
     document.body.style.overflow = '';
+    // Re-initialize module state to grab new DOM elements
+    initNav();
   });
 
   test('updateActiveSection toggles active class correctly', () => {
