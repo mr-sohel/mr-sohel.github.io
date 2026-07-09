@@ -83,8 +83,8 @@ export const initNav = () => {
 };
 
 export const updateActiveSection = (id: string) => {
-  if (!navLinks) navLinks = document.querySelectorAll('.nav-link');
-  if (!mobileLinks) mobileLinks = document.querySelectorAll('.mobile-link');
+  if (!navLinks?.length) navLinks = document.querySelectorAll('.nav-link');
+  if (!mobileLinks?.length) mobileLinks = document.querySelectorAll('.mobile-link');
 
   navLinks.forEach(link => {
     link.classList.toggle('active', link.getAttribute('href') === `#${id}`);

@@ -138,7 +138,7 @@ const faqSchema = {
       "name": "Who is Md. Sohel Rana?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Md. Sohel Rana is a final-year CSE student at BUBT, a competitive programmer (3× ICPC Regionalist), and a backend developer specializing in C# / .NET. He has solved 1500+ algorithmic problems and built projects spanning containerized backends, computer vision, and deep learning."
+        "text": "Md. Sohel Rana is a final-year CSE student at BUBT, a competitive programmer (3× ICPC Regionalist), and a backend developer specializing in C# / .NET. He has solved 1500+ algorithmic problems and built projects spanning computer vision and deep learning."
       }
     },
     {
@@ -178,7 +178,7 @@ const faqSchema = {
       "name": "What projects has Md. Sohel Rana built?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Md. Sohel Rana has built an Online Judge System (similar to Codeforces/LeetCode) using ASP.NET Core, Docker, and RabbitMQ; a Real-Time Fruit Quality Detection system using YOLOv8 and ESP32-CAM; and a Facial Emotion Recognition model for Autism using Swin Transformer that outperformed 14 published baselines."
+        "text": "Md. Sohel Rana has built a Real-Time Fruit Quality Detection system using YOLOv8 and ESP32-CAM; and a Facial Emotion Recognition model for Autism using Swin Transformer that outperformed 14 published baselines."
       }
     },
     {
@@ -226,20 +226,6 @@ const projectsSchema = {
       "position": 1,
       "item": {
         "@type": "SoftwareApplication",
-        "name": "Online Judge System",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Web",
-        "author": { "@type": "Person", "name": "Md. Sohel Rana" },
-        "description": "A containerized competitive programming judge with Docker-sandboxed code execution, RabbitMQ async job processing, and support for C++, Python, and Java.",
-        "programmingLanguage": ["C#", "ASP.NET Core", "Docker", "PostgreSQL", "RabbitMQ"],
-        "url": "https://github.com/mr-sohel/online-judge-system"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "SoftwareApplication",
         "name": "Real-Time Fruit Quality Detection",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "Web",
@@ -251,7 +237,7 @@ const projectsSchema = {
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 2,
       "item": {
         "@type": "SoftwareApplication",
         "name": "Facial Emotion Recognition for Autism",
@@ -369,6 +355,7 @@ const safeJsonLd = (data: any) => JSON.stringify(data).replace(/</g, '\\u003c').
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
           }
         });
       }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
@@ -392,9 +379,9 @@ const safeJsonLd = (data: any) => JSON.stringify(data).replace(/</g, '\\u003c').
 
         window.addEventListener('scroll', () => {
           if (!ticking) {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const scrolled = documentHeight > 0 ? (winScroll / documentHeight) * 100 : 0;
             window.requestAnimationFrame(() => {
-              const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-              const scrolled = documentHeight > 0 ? (winScroll / documentHeight) * 100 : 0;
               progressBar.style.width = scrolled + '%';
               ticking = false;
             });

@@ -40,7 +40,7 @@ Push to `main` triggers GitHub Actions, building the Astro site and deploying to
 ## Key Decisions
 
 - Single-page layout optimized for recruiter conversion (~30s scan)
-- Projects ordered by SWE relevance: Online Judge System → Fruit Quality → FER Autism
+- Projects ordered by SWE relevance: Fruit Quality → FER Autism
 - "Download Resume" button in Nav (not CV)
 - WhatsApp placeholder `8801700000000` — must update before launch
 - Live Demo URLs are placeholders (`*-demo.vercel.app`)

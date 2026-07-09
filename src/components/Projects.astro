@@ -4,21 +4,6 @@ import IconGithub from './icons/IconGithub.astro';
 
 const projects = [
   {
-    image: "/images/online-judge.webp",
-    alt: "Online Judge System built with ASP.NET Core showing code submission interface",
-    status: "In Progress",
-    statusClass: "status-progress",
-    tags: ["C#", "ASP.NET Core", "Entity Framework Core", "PostgreSQL"],
-    title: "Online Judge System",
-    desc: "Currently developing a backend competitive programming judge to evaluate algorithmic submissions. Designing the core architecture to securely execute code and support multiple languages like C++, Python, and Java.",
-    metrics: [
-      "<strong>Secure</strong> Code Execution",
-      "<strong>RESTful API</strong> Architecture",
-      "<strong>3 Languages</strong> Supported"
-    ],
-    repoLink: "https://github.com/mr-sohel/online-judge-system"
-  },
-  {
     image: "/images/fruit-quality.webp",
     alt: "Real-Time Fruit Quality Detection system using YOLOv8 showing fresh vs rotten fruit classification",
     status: "Completed",
@@ -150,11 +135,6 @@ const projects = [
       background: var(--color-green-soft);
       color: var(--color-green);
     }
-
-    &.status-progress {
-      background: var(--color-accent-soft);
-      color: var(--color-accent);
-    }
   }
 
   .project-body {
@@ -207,7 +187,7 @@ const projects = [
 
     strong {
       color: var(--color-primary);
-      font-weight: 700;
+      font-weight: 600;
     }
   }
 
@@ -227,7 +207,7 @@ const projects = [
     color: var(--color-ink-secondary);
     text-decoration: none;
     padding: 6px 12px;
-    border-radius: var(--rounded-md);
+    border-radius: var(--rounded-pill);
     touch-action: manipulation;
     transition: color 0.2s ease, background 0.2s ease;
 
