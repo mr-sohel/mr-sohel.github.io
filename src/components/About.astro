@@ -1,102 +1,97 @@
-<section id="about" class="section">
-  <div class="section-inner">
-    <span class="section-title-sm">About</span>
-    <h2 class="section-title">Engineer by mindset, competitor by training</h2>
+---
+import { person, sellwise } from '../data/profile';
 
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>
-          I'm <strong>Sohel Rana</strong> (also known as <strong>Mr Sohel</strong> online) — a final-year <strong>CSE student at BUBT</strong> with a deep passion for algorithms and problem-solving. Through competitive programming at the national level, I've solved <strong>1500+ algorithmic problems</strong>, competed in <strong>3 ICPC Dhaka Regionals</strong>, and participated in <strong>10+ national IUPCs</strong>.
-        </p>
-      </div>
+const now = [
+  { label: 'Studying', body: `BSc in CSE at ${person.universityShort}. Graduating ${person.graduation}.` },
+  { label: 'Learning', body: 'ASP.NET Core MVC course at DevSkill.' },
+  { label: 'Built', body: `${sellwise.name}, a retail SaaS on ASP.NET Core and SQL Server.` },
+  { label: 'Looking for', body: 'A first full-time .NET or backend role.' },
+];
+---
 
-      <div class="about-stats reveal">
-        <div class="about-stat">
-          <span class="about-stat-value">3×</span>
-          <span class="about-stat-label">ICPC Dhaka Regional</span>
-        </div>
-        <div class="about-stat">
-          <span class="about-stat-value">Specialist</span>
-          <span class="about-stat-label">on Codeforces</span>
-        </div>
-        <div class="about-stat">
-          <span class="about-stat-value">2+</span>
-          <span class="about-stat-label">End-to-End Systems</span>
-        </div>
+<section id="about" class="now" aria-label="About">
+  <dl class="now-grid">
+    {now.map((item) => (
+      <div class="now-item">
+        <dt class="label">{item.label}</dt>
+        <dd>{item.body}</dd>
       </div>
-    </div>
-  </div>
+    ))}
+  </dl>
 </section>
 
 <style lang="scss">
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: var(--spacing-xxl);
-    align-items: start;
+  .now {
+    padding: 0 var(--gutter);
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
 
-    @media (max-width: 820px) {
-      grid-template-columns: 1fr;
+  .now-grid {
+    max-width: var(--measure);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .now-item {
+    padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-xl) 0;
+
+    & + & {
+      padding-left: var(--spacing-xl);
+      border-left: 1px solid var(--color-border);
+    }
+
+    dt {
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    dd {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.4;
     }
   }
 
-  .about-text {
-    font-size: 16px;
-    line-height: 1.8;
-    color: var(--color-ink-secondary);
-    border-left: 3px solid var(--color-primary);
-    padding-left: var(--spacing-md);
+  @media (max-width: 900px) {
+    .now-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
-    p {
-      margin: 0 0 var(--spacing-md);
+    .now-item {
+      padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg) 0;
 
-      &:last-child { margin-bottom: 0; }
+      & + & {
+        padding-left: 0;
+        border-left: 0;
+      }
 
-      @media (max-width: 480px) {
-        font-size: 15px;
+      &:nth-child(even) {
+        padding-left: var(--spacing-lg);
+        border-left: 1px solid var(--color-border);
+      }
+
+      &:nth-child(n + 3) {
+        border-top: 1px solid var(--color-border);
       }
     }
+  }
 
-    strong {
-      color: var(--color-ink);
-      font-weight: 600;
-      padding: 0 2px;
+  @media (max-width: 480px) {
+    .now-grid {
+      grid-template-columns: minmax(0, 1fr);
     }
-  }
 
-  .about-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-md);
-
-    @media (max-width: 640px) {
-      grid-template-columns: 1fr;
+    .now-item,
+    .now-item:nth-child(even) {
+      padding-inline: 0;
+      border-left: 0;
     }
-  }
 
-  .about-stat {
-    padding: var(--spacing-lg);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--rounded-xl);
-    text-align: center;
-  }
-
-  .about-stat-value {
-    display: block;
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--color-primary);
-    line-height: 1.1;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .about-stat-label {
-    display: block;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--color-ink-mute);
-    margin-top: 4px;
+    .now-item + .now-item {
+      border-top: 1px solid var(--color-border);
+    }
   }
 </style>

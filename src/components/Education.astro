@@ -1,133 +1,65 @@
-<section id="education" class="section section-alt">
-  <div class="section-inner">
-    <span class="section-title-sm">Education</span>
-    <h2 class="section-title">Academic foundation</h2>
+---
+import { education, person } from '../data/profile';
+---
 
-    <div class="edu-card reveal">
-      <div class="edu-icon" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
-      </div>
-      <div class="edu-body">
-        <div class="edu-row">
-          <div>
-            <h3 class="edu-degree">B.Sc. in Computer Science &amp; Engineering</h3>
-            <p class="edu-uni">Bangladesh University of Business &amp; Technology (BUBT)</p>
-          </div>
-          <time datetime="2026-12" class="edu-badge">Expected Dec 2026</time>
-        </div>
-        <div class="edu-meta">
-          <div class="edu-chip edu-chip--award">
-            <span class="edu-chip-label">Award</span>
-            <span class="edu-chip-value">Merit Scholarship</span>
-          </div>
-          <div class="edu-chip">
-            <span class="edu-chip-label">Thesis</span>
-            <span class="edu-chip-value">Facial Emotion Recognition for Autism</span>
-          </div>
-          <div class="edu-chip">
-            <span class="edu-chip-label">Coursework</span>
-            <span class="edu-chip-value">DSA, OOP, OS, Networks, DBMS, ML</span>
-          </div>
-        </div>
-      </div>
+<section id="education" class="block">
+  <h2 class="section-title">Education</h2>
+
+  <h3 class="degree">{education.degree}</h3>
+  <p class="school">{person.university}</p>
+
+  <dl class="facts">
+    <div>
+      <dt class="label">CGPA</dt>
+      <dd>{education.cgpa}</dd>
     </div>
-  </div>
+    <div>
+      <dt class="label">Expected graduation</dt>
+      <dd><time datetime="2026-12">{person.graduation}</time></dd>
+    </div>
+    <div class="facts-wide">
+      <dt class="label">Coursework</dt>
+      <dd>{education.coursework}</dd>
+    </div>
+  </dl>
 </section>
 
 <style lang="scss">
-  .edu-card {
-    display: flex;
-    gap: var(--spacing-xl);
-    padding: var(--spacing-xxl);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--rounded-xl);
-    align-items: flex-start;
-    box-shadow: var(--shadow-sm);
-
-    @media (max-width: 640px) {
-      flex-direction: column;
-      padding: var(--spacing-xl);
-    }
+  .section-title {
+    margin-bottom: var(--spacing-xl);
   }
 
-  .edu-icon {
-    flex-shrink: 0;
-    color: var(--color-primary);
-    line-height: 1;
-    margin-top: 2px;
-  }
-
-  .edu-body { flex: 1; }
-
-  .edu-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--spacing-md);
-    flex-wrap: wrap;
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .edu-degree {
-    font-size: 18px;
+  .degree {
+    font-size: 1.25rem;
     font-weight: 600;
-    color: var(--color-ink);
-    margin: 0 0 4px;
-    text-wrap: balance;
-  }
-
-  .edu-uni {
-    font-size: 14px;
-    color: var(--color-ink-secondary);
+    line-height: 1.3;
     margin: 0;
   }
 
-  .edu-badge {
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 12px;
-    background: var(--color-primary-soft);
-    color: var(--color-primary);
-    border-radius: var(--rounded-pill);
-    white-space: nowrap;
-  }
-
-  .edu-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-sm);
-  }
-
-  .edu-chip {
-    display: flex;
-    flex-direction: column;
-    padding: var(--spacing-sm) var(--spacing-md);
-    background: var(--color-bg);
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--rounded-lg);
-    gap: 2px;
-  }
-
-  .edu-chip-label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--color-ink-mute);
-  }
-
-  .edu-chip-value {
-    font-size: 13px;
+  .school {
+    margin: 2px 0 var(--spacing-lg);
     font-weight: 500;
-    color: var(--color-ink);
   }
 
-  .edu-chip--award {
-    background: var(--color-green-soft);
-    border-color: transparent;
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-lg);
+    margin: 0;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-border);
 
-    .edu-chip-label { color: var(--color-green); }
-    .edu-chip-value { color: var(--color-green); font-weight: 600; }
+    dt {
+      color: var(--color-ink-mute);
+    }
+
+    dd {
+      margin: 0;
+      font-weight: 500;
+    }
+  }
+
+  .facts-wide {
+    grid-column: 1 / -1;
   }
 </style>

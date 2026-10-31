@@ -8,8 +8,15 @@ beforeAll(async () => {
   container = await AstroContainer.create();
 });
 
-test('Projects component renders correctly', async () => {
+test('Projects shows SellWise with its real repo and interactive map', async () => {
   const result = await container.renderToString(Projects);
-  expect(result).toContain('Projects');
-  expect(result).toContain('class="project-card');
+  expect(result).toContain('SellWise');
+  expect(result).toContain('https://github.com/mr-sohel/SellWise');
+  expect(result).toContain('data-sysmap-toggle');
+});
+
+test('Projects describes the code, not the outdated resume wording', async () => {
+  const result = await container.renderToString(Projects);
+  expect(result).not.toMatch(/redis|ewma/i);
+  expect(result).toContain('24-hour forecast cache');
 });

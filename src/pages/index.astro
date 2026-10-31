@@ -3,22 +3,40 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Projects from '../components/Projects.astro';
-import Skills from '../components/Skills.astro';
 import CPDashboard from '../components/CPDashboard.astro';
+import Skills from '../components/Skills.astro';
 import Experience from '../components/Experience.astro';
 import Education from '../components/Education.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Md. Sohel Rana (Sohel Rana | mrsohel | mr-sohel) — Software Engineer & .NET Developer | BUBT CSE">
+<Layout title="Md. Sohel Rana (mr-sohel) — .NET Backend Developer | BUBT CSE">
   <Hero />
   <About />
   <Projects />
-  <Skills />
   <CPDashboard />
-  <Experience />
-  <Education />
+  <Skills />
+  <div class="pair section">
+    <div class="section-inner pair-inner">
+      <Experience />
+      <Education />
+    </div>
+  </div>
   <Contact />
   <Footer />
 </Layout>
+
+<style>
+  .pair-inner {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 64px var(--spacing-massive);
+  }
+
+  @media (max-width: 860px) {
+    .pair-inner {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>
