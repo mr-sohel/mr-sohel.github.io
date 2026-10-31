@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'primary' | 'secondary' | 'accent' | 'ghost';
+  variant?: 'primary' | 'secondary';
   href?: string;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
@@ -33,14 +33,15 @@ const classes = `btn btn-${variant} ${className}`.trim();
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 48px;
-    padding: 12px 24px;
+    gap: var(--spacing-sm);
+    min-height: 46px;
+    padding: 12px 20px;
     font-family: var(--font-sans);
-    font-size: 16px;
+    font-size: 0.9375rem;
     font-weight: 600;
     line-height: 1;
-    border: 1.5px solid transparent;
-    border-radius: var(--rounded-pill);
+    border: 1px solid transparent;
+    border-radius: var(--rounded-md);
     cursor: pointer;
     touch-action: manipulation;
     text-decoration: none;
@@ -62,35 +63,13 @@ const classes = `btn btn-${variant} ${className}`.trim();
   }
 
   .btn-secondary {
-    background: transparent;
+    background: var(--color-surface);
     color: var(--color-ink);
-    border-color: var(--color-ink);
+    border-color: var(--color-border-strong);
 
     &:hover {
-      background: var(--color-ink);
-      color: var(--color-bg);
-    }
-  }
-
-  /* For the violet bands */
-  .btn-accent {
-    background: var(--balloon-intra);
-    color: #17123a;
-
-    &:hover {
-      background: #ffd466;
-      color: #17123a;
-    }
-  }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--on-field);
-    border-color: var(--on-field);
-
-    &:hover {
-      background: var(--on-field);
-      color: var(--field);
+      border-color: var(--color-ink);
+      color: var(--color-ink);
     }
   }
 </style>

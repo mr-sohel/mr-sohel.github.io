@@ -16,8 +16,9 @@ test('Hero renders the name and a working resume download', async () => {
   expect(result).not.toContain('alert(');
 });
 
-test('Hero shows one balloon per contest result', async () => {
+test('Hero code panel shows the live ratings from profile data', async () => {
   const result = await container.renderToString(Hero);
-  const balloons = result.match(/class="drift/g) ?? [];
-  expect(balloons).toHaveLength(6);
+  expect(result).toContain('Engineer.cs');
+  expect(result).toMatch(/Codeforces = <span class="n"[^>]*>1422<\/span>/);
+  expect(result).toContain('OpenToWork');
 });

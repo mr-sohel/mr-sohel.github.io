@@ -5,12 +5,12 @@ import { links, person } from '../data/profile';
 const mailto = `mailto:${person.email}?subject=${encodeURIComponent('Software engineering role')}`;
 ---
 
-<section id="contact" class="contact">
+<section id="contact" class="section">
   <div class="section-inner">
-    <h2 class="section-title">Hiring a junior .NET developer?</h2>
-
-    <div class="contact-body">
-      <div>
+    <div class="contact-card">
+      <div class="contact-copy">
+        <span class="eyebrow">Contact</span>
+        <h2 class="section-title">Hiring a junior .NET developer?</h2>
         <p class="contact-intro">
           I'm based in {person.location} and open to on-site, remote and relocation roles,
           starting after I graduate in {person.graduation}.
@@ -19,8 +19,8 @@ const mailto = `mailto:${person.email}?subject=${encodeURIComponent('Software en
       </div>
 
       <div class="contact-actions">
-        <Button href={mailto} variant="accent">Email me</Button>
-        <Button href={person.resume} download={person.resumeFilename} variant="ghost">Download resume</Button>
+        <Button href={mailto} variant="primary">Email me</Button>
+        <Button href={person.resume} download={person.resumeFilename} variant="secondary">Download resume</Button>
         <ul class="contact-links label">
           <li><a href={links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           <li><a href={links.github} target="_blank" rel="noopener noreferrer">GitHub</a></li>
@@ -31,45 +31,27 @@ const mailto = `mailto:${person.email}?subject=${encodeURIComponent('Software en
 </section>
 
 <style lang="scss">
-  .contact {
-    --focus: var(--on-field);
-    padding: var(--spacing-massive) var(--gutter);
-    background: var(--field);
-    color: var(--on-field);
-
-    a:not(:global(.btn)) {
-      color: var(--on-field);
-
-      &:hover {
-        color: var(--balloon-intra);
-      }
-    }
-
-    .section-title {
-      font-size: clamp(3.5rem, 11vw, 8.5rem);
-      line-height: 0.88;
-      max-width: 9em;
-      margin-bottom: var(--spacing-huge);
-    }
-  }
-
-  .contact-body {
+  .contact-card {
     display: grid;
-    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
     gap: var(--spacing-xxl) var(--spacing-huge);
     align-items: end;
+    padding: clamp(28px, 5vw, 56px);
+    background: var(--color-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-xl);
   }
 
   .contact-intro {
-    font-size: 1.25rem;
-    line-height: 1.4;
-    max-width: 30em;
-    margin: 0 0 var(--spacing-lg);
+    max-width: 32em;
+    margin: var(--spacing-md) 0 var(--spacing-lg);
+    font-size: 1.0625rem;
+    color: var(--color-ink-secondary);
   }
 
   .contact-email {
     font-family: var(--font-mono);
-    font-size: clamp(1rem, 2.4vw, 1.375rem);
+    font-size: clamp(0.9375rem, 2.2vw, 1.125rem);
     font-weight: 500;
     overflow-wrap: anywhere;
   }
@@ -94,11 +76,7 @@ const mailto = `mailto:${person.email}?subject=${encodeURIComponent('Software en
   }
 
   @media (max-width: 860px) {
-    .contact {
-      padding-block: 64px;
-    }
-
-    .contact-body {
+    .contact-card {
       grid-template-columns: minmax(0, 1fr);
     }
 

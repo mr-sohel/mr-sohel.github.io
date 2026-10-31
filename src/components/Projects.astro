@@ -1,400 +1,175 @@
 ---
 import IconGithub from './icons/IconGithub.astro';
-import { sellwise } from '../data/profile';
+import IconExternal from './icons/IconExternal.astro';
+import { projects } from '../data/profile';
 ---
 
 <section id="projects" class="section">
   <div class="section-inner">
     <header class="work-head">
-      <h2 class="section-title">{sellwise.name}</h2>
-      <div class="work-intro">
-        <p class="work-summary">{sellwise.summary}</p>
-        <a class="work-repo" href={sellwise.repo} target="_blank" rel="noopener noreferrer">
-          <IconGithub width="18" height="18" />
-          View the source on GitHub
-        </a>
-        <p class="work-credit label">{sellwise.credit}</p>
-      </div>
+      <span class="eyebrow">Projects</span>
+      <h2 class="section-title">What I'm building</h2>
     </header>
 
-    <figure class="sysmap" data-sysmap data-ml="up">
-      <figcaption class="sysmap-bar">
-        <span class="label">What happens when forecasting goes down</span>
-        <button type="button" class="sysmap-toggle" data-sysmap-toggle aria-pressed="false">Stop the forecast service</button>
-      </figcaption>
+    <ul class="project-grid">
+      {projects.map((project) => (
+        <li class:list={['project', 'card', { 'is-placeholder': project.placeholder }]}>
+          <div class="project-top">
+            <h3 class="project-name">{project.name}</h3>
+            {project.placeholder && <span class="badge label">In progress</span>}
+          </div>
 
-      <div class="sysmap-grid">
-        <div class="node node-browser">
-          <span class="node-name">Browser</span>
-          <span class="node-note label">Razor, Bootstrap, Chart.js</span>
-        </div>
+          <p class="project-summary">{project.summary}</p>
 
-        <div class="wire wire-browser"><span class="label">HTTPS</span></div>
+          {project.role && <p class="project-role label">{project.role}</p>}
 
-        <div class="node node-web">
-          <span class="node-name">ASP.NET Core MVC</span>
-          <span class="node-note label">Identity, roles, POS, RFM, QuestPDF</span>
-        </div>
+          {project.highlights && project.highlights.length > 0 && (
+            <ul class="highlights">
+              {project.highlights.map((item) => (
+                <li>
+                  <h4>{item.title}</h4>
+                  <p>{item.body}</p>
+                </li>
+              ))}
+            </ul>
+          )}
 
-        <div class="wire wire-db"><span class="label">EF Core</span></div>
+          {project.stack.length > 0 && (
+            <ul class="stack label" aria-label="Stack">
+              {project.stack.map((item) => <li>{item}</li>)}
+            </ul>
+          )}
 
-        <div class="node node-db">
-          <span class="node-name">SQL Server 2022</span>
-          <span class="node-note label">Orders, stock, 24-hour forecast cache</span>
-        </div>
-
-        <div class="wire wire-ml"><span class="label">REST / JSON</span></div>
-
-        <div class="node node-ml">
-          <span class="node-name">FastAPI + Prophet</span>
-          <span class="node-note label" data-sysmap-state>Online</span>
-        </div>
-      </div>
-
-      <p class="sysmap-status" data-sysmap-status aria-live="polite">
-        Prophet predicts 30 days of demand from 90 days of sales. Results are cached in SQL Server for 24 hours.
-      </p>
-    </figure>
-
-    <ul class="features">
-      {sellwise.features.map((feature) => (
-        <li>
-          <h3>{feature.title}</h3>
-          <p>{feature.body}</p>
+          {(project.repo || project.demo) && (
+            <p class="project-links">
+              {project.repo && (
+                <a href={project.repo} target="_blank" rel="noopener noreferrer">
+                  <IconGithub width="18" height="18" /> Source on GitHub
+                </a>
+              )}
+              {project.demo && (
+                <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                  <IconExternal width="16" height="16" /> Live demo
+                </a>
+              )}
+            </p>
+          )}
         </li>
       ))}
     </ul>
-
-    <p class="stack label"><span>Stack</span> {sellwise.stack.join(' / ')}</p>
   </div>
 </section>
 
-<script>
-  const map = document.querySelector<HTMLElement>('[data-sysmap]');
-  const toggle = map?.querySelector<HTMLButtonElement>('[data-sysmap-toggle]');
-  const status = map?.querySelector<HTMLElement>('[data-sysmap-status]');
-  const state = map?.querySelector<HTMLElement>('[data-sysmap-state]');
-
-  const copy = {
-    up: {
-      button: 'Stop the forecast service',
-      state: 'Online',
-      status: 'Prophet predicts 30 days of demand from 90 days of sales. Results are cached in SQL Server for 24 hours.',
-    },
-    down: {
-      button: 'Restart the forecast service',
-      state: 'Offline',
-      status: 'The failed call is logged and the app replays the last 14 days of sales, so the dashboard still shows a forecast.',
-    },
-  };
-
-  toggle?.addEventListener('click', () => {
-    const next = map?.dataset.ml === 'up' ? 'down' : 'up';
-    if (map) map.dataset.ml = next;
-    toggle.textContent = copy[next].button;
-    toggle.setAttribute('aria-pressed', String(next === 'down'));
-    if (state) state.textContent = copy[next].state;
-    if (status) status.textContent = copy[next].status;
-  });
-</script>
-
 <style lang="scss">
   .work-head {
+    margin-bottom: var(--spacing-xxl);
+  }
+
+  .project-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-    gap: var(--spacing-xxl) var(--spacing-huge);
-    align-items: end;
-    margin-bottom: var(--spacing-huge);
-
-    .section-title {
-      font-size: clamp(4.5rem, 13vw, 10rem);
-      color: var(--color-primary);
-    }
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-lg);
   }
 
-  .work-summary {
-    font-size: 1.25rem;
-    line-height: 1.4;
-    font-weight: 500;
-    margin: 0 0 var(--spacing-lg);
-  }
-
-  .work-repo {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    min-height: 44px;
-    font-weight: 600;
-  }
-
-  .work-credit {
-    margin: var(--spacing-xs) 0 0;
-    color: var(--color-ink-mute);
-  }
-
-  /* System map */
-  .sysmap {
-    margin: 0 0 var(--spacing-huge);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--rounded-xl);
-    overflow: hidden;
-  }
-
-  .sysmap-bar {
+  .project {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+    min-height: 220px;
+  }
+
+  .is-placeholder {
+    background: var(--color-subtle);
+    border-style: dashed;
+    border-color: var(--color-border-strong);
+  }
+
+  .project-top {
+    display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--spacing-md);
-    padding: var(--spacing-md) var(--spacing-xl);
-    border-bottom: 1px solid var(--color-border);
-    color: var(--color-ink-mute);
   }
 
-  .sysmap-toggle {
-    min-height: 44px;
-    padding: 8px 16px;
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
+  .project-name {
+    margin: 0;
+    font-size: 1.375rem;
     font-weight: 600;
-    color: var(--color-ink);
-    background: transparent;
-    border: 1.5px solid var(--color-ink);
+    line-height: 1.2;
+  }
+
+  .badge {
+    flex-shrink: 0;
+    padding: 2px 10px;
+    color: var(--color-ink-secondary);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: var(--rounded-pill);
-    cursor: pointer;
-    touch-action: manipulation;
-    transition: background-color 0.15s ease, color 0.15s ease;
-
-    &:hover {
-      background: var(--color-ink);
-      color: var(--color-bg);
-    }
   }
 
-  .sysmap-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 84px minmax(0, 1.2fr) 84px minmax(0, 1fr);
-    grid-template-rows: auto 56px auto;
-    grid-template-areas:
-      'browser wbrowser web wdb db'
-      '.       .        wml .   .'
-      '.       .        ml  .   .';
-    align-items: center;
-    padding: var(--spacing-xxl) var(--spacing-xl);
-  }
-
-  .node-browser { grid-area: browser; }
-  .node-web { grid-area: web; }
-  .node-db { grid-area: db; }
-  .node-ml { grid-area: ml; }
-  .wire-browser { grid-area: wbrowser; }
-  .wire-db { grid-area: wdb; }
-  .wire-ml { grid-area: wml; }
-
-  .node {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-    height: 100%;
-    padding: var(--spacing-lg);
-    background: var(--color-bg);
-    border: 1.5px solid var(--color-ink);
-    border-radius: var(--rounded-lg);
-    transition: border-color 0.2s ease, opacity 0.2s ease;
-  }
-
-  .node-name {
-    font-family: var(--font-display);
-    font-size: 1.625rem;
-    font-weight: 800;
-    line-height: 1.05;
-    text-transform: uppercase;
-  }
-
-  .node-note {
+  .project-summary {
+    margin: 0;
     color: var(--color-ink-secondary);
   }
 
-  .node-web {
-    background: var(--field);
-    border-color: var(--field);
-    color: var(--on-field);
-
-    .node-note {
-      color: var(--on-field-mute);
-    }
-  }
-
-  .wire {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: stretch;
-
-    span {
-      position: relative;
-      z-index: 1;
-      padding: 2px 4px;
-      font-size: 0.6875rem;
-      background: var(--color-surface);
-      color: var(--color-ink-mute);
-      white-space: nowrap;
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 50%;
-      border-top: 2px solid var(--color-ink);
-    }
-  }
-
-  .wire-ml::before {
-    left: 50%;
-    right: auto;
-    top: 0;
-    bottom: 0;
-    border-top: 0;
-    border-left: 2px solid var(--color-ink);
-  }
-
-  .node-ml {
-    max-width: none;
-
-    [data-sysmap-state]::before {
-      content: '';
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      margin-right: 8px;
-      border-radius: 50%;
-      background: var(--color-up);
-    }
-  }
-
-  .sysmap[data-ml='down'] {
-    .wire-ml::before {
-      border-left: 2px dashed var(--color-down);
-    }
-
-    .node-ml {
-      border-style: dashed;
-      border-color: var(--color-down);
-      background: transparent;
-
-      [data-sysmap-state] {
-        color: var(--color-down);
-      }
-
-      [data-sysmap-state]::before {
-        background: var(--color-down);
-      }
-    }
-  }
-
-  .sysmap-status {
+  .project-role {
     margin: 0;
-    padding: var(--spacing-lg) var(--spacing-xl);
-    min-height: 3.5em;
-    font-size: 1rem;
-    font-weight: 500;
-    background: var(--color-surface-tint);
-    border-top: 1px solid var(--color-border);
+    color: var(--color-ink-mute);
   }
 
-  /* Features */
-  .features {
+  .highlights {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--spacing-xxl);
-    margin-bottom: var(--spacing-huge);
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
 
-    h3 {
-      font-size: 1.0625rem;
+    h4 {
+      margin: 0 0 2px;
+      font-size: 1rem;
       font-weight: 600;
-      margin: 0 0 var(--spacing-xs);
     }
 
     p {
-      font-size: 0.9875rem;
-      color: var(--color-ink-secondary);
       margin: 0;
+      font-size: 0.9375rem;
+      color: var(--color-ink-secondary);
     }
   }
 
   .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: auto;
+
+    li {
+      padding: 4px 10px;
+      color: var(--color-ink-secondary);
+      background: var(--color-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--rounded-sm);
+    }
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xl);
     margin: 0;
-    padding-top: var(--spacing-lg);
-    color: var(--color-ink-secondary);
-    border-top: 1px solid var(--color-border);
 
-    span {
-      color: var(--color-primary);
-      margin-right: var(--spacing-sm);
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      min-height: 44px;
+      font-weight: 600;
     }
   }
 
-  @media (max-width: 1000px) {
-    .features {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (max-width: 860px) {
-    .work-head {
+  @media (max-width: 760px) {
+    .project-grid {
       grid-template-columns: minmax(0, 1fr);
-      gap: var(--spacing-lg);
-    }
-
-    /* SQL Server and the forecast service both hang off the web app */
-    .sysmap-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-template-rows: none;
-      grid-template-areas:
-        'browser browser'
-        'wbrowser wbrowser'
-        'web web'
-        'wdb wml'
-        'db ml';
-      column-gap: var(--spacing-md);
-      padding: var(--spacing-xl) var(--spacing-lg);
-    }
-
-    .wire {
-      min-height: 40px;
-
-      &::before {
-        left: 50%;
-        right: auto;
-        top: 0;
-        bottom: 0;
-        border-top: 0;
-        border-left: 2px solid var(--color-ink);
-      }
-    }
-  }
-
-  @media (max-width: 560px) {
-    .features {
-      grid-template-columns: minmax(0, 1fr);
-      gap: var(--spacing-xl);
-    }
-
-    .sysmap-bar {
-      padding-inline: var(--spacing-lg);
-    }
-
-    .sysmap-toggle {
-      width: 100%;
-    }
-
-    .sysmap-status {
-      padding-inline: var(--spacing-lg);
-      min-height: 6em;
     }
   }
 </style>

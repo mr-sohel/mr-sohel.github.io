@@ -2,8 +2,9 @@
 import { education, person } from '../data/profile';
 ---
 
-<section id="education" class="block">
-  <h2 class="section-title">Education</h2>
+<section id="education" class="block card">
+  <span class="eyebrow">Education</span>
+  <h2 class="section-title">Degree</h2>
 
   <h3 class="degree">{education.degree}</h3>
   <p class="school">{person.university}</p>
@@ -25,12 +26,16 @@ import { education, person } from '../data/profile';
 </section>
 
 <style lang="scss">
+  .block {
+    padding: var(--spacing-xxl);
+  }
+
   .section-title {
     margin-bottom: var(--spacing-xl);
   }
 
   .degree {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
     line-height: 1.3;
     margin: 0;

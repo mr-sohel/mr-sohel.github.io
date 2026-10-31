@@ -64,22 +64,22 @@ const sections = [
 
 <style lang="scss">
   .nav {
-    --focus: var(--on-field);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 100;
-    padding: var(--spacing-md) var(--gutter);
-    padding-top: calc(var(--spacing-md) + env(safe-area-inset-top, 0px));
-    color: var(--on-field);
-    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    padding: var(--spacing-sm) var(--gutter);
+    padding-top: calc(var(--spacing-sm) + env(safe-area-inset-top, 0px));
+    color: var(--color-ink);
+    background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+    -webkit-backdrop-filter: blur(12px) saturate(1.4);
+    backdrop-filter: blur(12px) saturate(1.4);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
 
     &.scrolled {
-      --focus: var(--color-primary);
-      background: var(--color-surface);
-      color: var(--color-ink);
-      box-shadow: 0 1px 0 var(--color-border);
+      border-bottom-color: var(--color-border);
     }
   }
 
@@ -93,12 +93,22 @@ const sections = [
   }
 
   .nav-logo {
-    font-family: var(--font-display);
-    font-size: 1.75rem;
-    font-weight: 900;
-    line-height: 1;
-    color: inherit;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    font-family: var(--font-mono);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-on-primary);
+    background: var(--color-primary);
+    border-radius: var(--rounded-md);
     text-decoration: none;
+
+    &:hover {
+      color: var(--color-on-primary);
+      background: var(--color-primary-deep);
+    }
   }
 
   .nav-links {
@@ -106,38 +116,27 @@ const sections = [
 
     @media (min-width: 1024px) {
       display: flex;
-      gap: var(--spacing-xl);
+      gap: var(--spacing-xs);
     }
   }
 
   .nav-link {
-    position: relative;
-    padding: 4px 0;
+    padding: 6px 12px;
     font-size: 0.9375rem;
     font-weight: 500;
-    color: inherit;
+    color: var(--color-ink-secondary);
+    border-radius: var(--rounded-md);
     text-decoration: none;
-
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 2px;
-      background: currentColor;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.15s ease;
-    }
+    transition: color 0.15s ease, background-color 0.15s ease;
 
     &:hover,
     &.active {
-      color: inherit;
+      color: var(--color-ink);
+      background: var(--color-subtle);
+    }
 
-      &::after {
-        transform: scaleX(1);
-      }
+    &.active {
+      color: var(--color-primary);
     }
   }
 
@@ -150,19 +149,19 @@ const sections = [
   .nav-cv-btn {
     display: none;
     align-items: center;
-    min-height: 40px;
-    padding: 8px 16px;
+    min-height: 38px;
+    padding: 6px 14px;
     font-size: 0.875rem;
     font-weight: 600;
-    color: inherit;
-    border: 1.5px solid currentColor;
-    border-radius: var(--rounded-pill);
+    color: var(--color-ink);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--rounded-md);
     text-decoration: none;
-    transition: background-color 0.15s ease;
+    transition: border-color 0.15s ease;
 
     &:hover {
-      color: inherit;
-      background: rgba(127, 127, 160, 0.18);
+      color: var(--color-ink);
+      border-color: var(--color-ink);
     }
 
     @media (min-width: 560px) {
@@ -182,12 +181,13 @@ const sections = [
     background: none;
     border: 0;
     border-radius: var(--rounded-md);
-    color: inherit;
+    color: var(--color-ink-secondary);
     cursor: pointer;
     touch-action: manipulation;
 
     &:hover {
-      background: rgba(127, 127, 160, 0.18);
+      color: var(--color-ink);
+      background: var(--color-subtle);
     }
   }
 
@@ -223,7 +223,7 @@ const sections = [
   .mobile-menu-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(23, 18, 58, 0.6);
+    background: rgba(10, 12, 23, 0.55);
     opacity: 0;
     transition: opacity 0.25s ease;
   }
@@ -255,14 +255,15 @@ const sections = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--spacing-md) var(--spacing-xl);
+    padding: var(--spacing-sm) var(--spacing-xl);
     border-bottom: 1px solid var(--color-border);
   }
 
   .mobile-logo {
-    font-family: var(--font-display);
-    font-size: 1.75rem;
-    font-weight: 900;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-primary);
   }
 
   .mobile-close-btn {
@@ -279,17 +280,14 @@ const sections = [
 
   .mobile-link {
     padding: 14px var(--spacing-xl);
-    font-family: var(--font-display);
-    font-size: 1.75rem;
-    font-weight: 800;
-    line-height: 1;
-    text-transform: uppercase;
+    font-size: 1.125rem;
+    font-weight: 500;
     color: var(--color-ink);
     text-decoration: none;
 
     &:hover {
       color: var(--color-ink);
-      background: var(--color-surface-hover);
+      background: var(--color-subtle);
     }
 
     &.active {
@@ -311,7 +309,7 @@ const sections = [
     background: var(--color-primary);
     color: var(--color-on-primary);
     font-weight: 600;
-    border-radius: var(--rounded-pill);
+    border-radius: var(--rounded-md);
     text-decoration: none;
 
     &:hover {

@@ -1,11 +1,4 @@
 @font-face {
-  font-family: 'Big Shoulders Display';
-  src: url('/fonts/big-shoulders-display.woff2') format('woff2');
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'IBM Plex Sans';
   src: url('/fonts/ibm-plex-sans-400.woff2') format('woff2');
   font-weight: 400;
@@ -41,18 +34,11 @@
 }
 
 :root {
-  /* Brand: the .NET violet, always used flat */
+  /* Brand: the .NET violet, used flat */
   --color-primary: #512bd4;
   --color-primary-deep: #4120b3;
-  --color-primary-press: #331991;
-  --color-primary-soft: rgba(81, 43, 212, 0.09);
+  --color-primary-soft: rgba(81, 43, 212, 0.08);
   --color-on-primary: #ffffff;
-
-  /* The violet poster bands stay the same in both themes */
-  --field: #512bd4;
-  --on-field: #f4f1ff;
-  --on-field-mute: #d6cefa;
-  --field-line: rgba(244, 241, 255, 0.28);
 
   /* ICPC balloons. Each color encodes the level of a contest. */
   --balloon-international: #2e9bff;
@@ -60,35 +46,37 @@
   --balloon-inter: #19c6a4;
   --balloon-intra: #ffc233;
 
-  /* Scoreboard band */
-  --board-bg: #17123a;
-  --board-ink: #f3f1fc;
-  --board-mute: #b1aad6;
-  --board-line: #38306b;
-
   /* Surfaces */
-  --color-bg: #f6f5fb;
+  --color-bg: #ffffff;
   --color-surface: #ffffff;
-  --color-surface-hover: #eeecf8;
-  --color-surface-tint: #eeecf8;
-  --color-border: #d8d4ea;
-  --color-border-light: #e7e4f3;
+  --color-subtle: #f6f7fb;
+  --color-border: #e3e5ee;
+  --color-border-strong: #c9ccdb;
 
   /* Text */
-  --color-ink: #17123a;
-  --color-ink-secondary: #45406a;
-  --color-ink-mute: #5c577f;
+  --color-ink: #0e1224;
+  --color-ink-secondary: #3d4358;
+  --color-ink-mute: #5d647b;
 
   /* Status */
-  --color-up: #0b7a63;
+  --color-up: #0a7d5e;
   --color-down: #c4283a;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(23, 18, 58, 0.06);
-  --shadow-md: 0 8px 24px -12px rgba(23, 18, 58, 0.22);
-  --shadow-lg: 0 24px 48px -20px rgba(23, 18, 58, 0.5);
+  /* The code editor stays dark in both themes */
+  --code-bg: #0f1226;
+  --code-bar: #171a35;
+  --code-line: #262a4c;
+  --code-ink: #d7dbf0;
+  --code-mute: #6e7599;
+  --code-keyword: #b3a4ff;
+  --code-type: #5fd4ff;
+  --code-string: #7be0b3;
+  --code-number: #ffc233;
 
-  /* Spacing */
+  --shadow-sm: 0 1px 2px rgba(14, 18, 36, 0.06);
+  --shadow-md: 0 1px 2px rgba(14, 18, 36, 0.05), 0 12px 32px -16px rgba(14, 18, 36, 0.18);
+  --shadow-lg: 0 2px 4px rgba(14, 18, 36, 0.08), 0 32px 64px -24px rgba(40, 24, 110, 0.4);
+
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 12px;
@@ -98,49 +86,44 @@
   --spacing-huge: 48px;
   --spacing-massive: 96px;
 
-  /* Rounded */
   --rounded-sm: 4px;
-  --rounded-md: 6px;
-  --rounded-lg: 8px;
-  --rounded-xl: 12px;
+  --rounded-md: 8px;
+  --rounded-lg: 12px;
+  --rounded-xl: 16px;
   --rounded-pill: 9999px;
 
-  /* Type */
-  --font-display: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
   --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
 
-  --gutter: clamp(16px, 4vw, 40px);
-  --measure: 1200px;
+  --gutter: clamp(20px, 4vw, 40px);
+  --measure: 1120px;
 }
 
 :root[data-theme='dark'] {
   --color-primary: #a99bff;
-  --color-primary-deep: #bdb2ff;
-  --color-primary-press: #d0c8ff;
-  --color-primary-soft: rgba(169, 155, 255, 0.14);
-  --color-on-primary: #17123a;
+  --color-primary-deep: #c0b6ff;
+  --color-primary-soft: rgba(169, 155, 255, 0.13);
+  --color-on-primary: #0e1224;
 
-  --board-bg: #271f63;
-  --board-line: #4a4090;
+  --color-bg: #0a0c17;
+  --color-surface: #11142a;
+  --color-subtle: #0e1124;
+  --color-border: #23284a;
+  --color-border-strong: #343a66;
 
-  --color-bg: #0f0c26;
-  --color-surface: #1a1540;
-  --color-surface-hover: #241e52;
-  --color-surface-tint: #161136;
-  --color-border: #3a3270;
-  --color-border-light: #2a2458;
-
-  --color-ink: #f3f1fc;
-  --color-ink-secondary: #cdc8e8;
-  --color-ink-mute: #aaa4cc;
+  --color-ink: #eceef8;
+  --color-ink-secondary: #bcc2d9;
+  --color-ink-mute: #8f97b3;
 
   --color-up: #3fdcbc;
   --color-down: #ff8592;
 
+  --code-bg: #0e1124;
+  --code-bar: #141831;
+
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 8px 24px -12px rgba(0, 0, 0, 0.7);
-  --shadow-lg: 0 24px 48px -20px rgba(0, 0, 0, 0.8);
+  --shadow-md: 0 12px 32px -16px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 32px 64px -24px rgba(0, 0, 0, 0.8);
 }
 
 *,
@@ -159,9 +142,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.65;
   color: var(--color-ink);
   background-color: var(--color-bg);
   overflow-x: clip;
@@ -194,15 +176,21 @@ ol {
   list-style: none;
 }
 
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+}
+
 :focus-visible {
-  outline: 2px solid var(--focus, var(--color-primary));
+  outline: 2px solid var(--color-primary);
   outline-offset: 3px;
   border-radius: var(--rounded-sm);
 }
 
 ::selection {
-  background: var(--balloon-intra);
-  color: #17123a;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
 }
 
 /* Section frame */
@@ -215,15 +203,40 @@ ol {
   margin: 0 auto;
 }
 
+.section-alt {
+  background: var(--color-subtle);
+  border-block: 1px solid var(--color-border);
+}
+
+/* A section opens with a mono eyebrow, then a plain sentence-case heading. */
+.eyebrow {
+  display: block;
+  margin: 0 0 var(--spacing-sm);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-primary);
+}
+
 .section-title {
-  font-family: var(--font-display);
-  font-size: clamp(3.25rem, 8vw, 6rem);
-  font-weight: 800;
-  line-height: 0.92;
-  letter-spacing: 0.005em;
-  text-transform: uppercase;
-  color: inherit;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.15;
   margin: 0;
+}
+
+.section-lede {
+  max-width: 44em;
+  margin: var(--spacing-md) 0 0;
+  font-size: 1.0625rem;
+  color: var(--color-ink-secondary);
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--rounded-lg);
 }
 
 /* A small mono caption. Used for labels and data, never for prose. */
@@ -232,7 +245,7 @@ ol {
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.4;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 @media (max-width: 768px) {

@@ -1,6 +1,7 @@
 import { expect, test, beforeAll } from 'vitest';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import Projects from './Projects.astro';
+import { projects } from '../data/profile';
 
 let container;
 
@@ -8,15 +9,24 @@ beforeAll(async () => {
   container = await AstroContainer.create();
 });
 
-test('Projects shows SellWise with its real repo and interactive map', async () => {
+test('Projects renders one card per project in the data file', async () => {
   const result = await container.renderToString(Projects);
-  expect(result).toContain('SellWise');
-  expect(result).toContain('https://github.com/mr-sohel/SellWise');
-  expect(result).toContain('data-sysmap-toggle');
+  expect(result).toContain('id="projects"');
+  const cards = result.match(/class="project card/g) ?? [];
+  expect(cards).toHaveLength(projects.length);
 });
 
-test('Projects describes the code, not the outdated resume wording', async () => {
+test('Placeholder projects are marked in progress and carry no links or stack', async () => {
   const result = await container.renderToString(Projects);
-  expect(result).not.toMatch(/redis|ewma/i);
-  expect(result).toContain('24-hour forecast cache');
+  for (const project of projects.filter((p) => p.placeholder)) {
+    expect(project.repo).toBeUndefined();
+    expect(project.demo).toBeUndefined();
+    expect(project.stack).toHaveLength(0);
+  }
+  expect(result).toContain('In progress');
+});
+
+test('SellWise is no longer shown', async () => {
+  const result = await container.renderToString(Projects);
+  expect(result).not.toMatch(/sellwise/i);
 });

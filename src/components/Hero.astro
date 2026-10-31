@@ -1,17 +1,15 @@
 ---
 import Nav from './Nav.astro';
 import Button from './Button.astro';
-import { person, links } from '../data/profile';
+import { person, links, ratings, results, totals } from '../data/profile';
 
-// One balloon per contest result, matching the Standings table.
-// Strings all meet at the badge's lanyard slot (210, 330 in the SVG).
-const heroBalloons = [
-  { level: 'international', x: 214, y: 58, delay: '-1.2s' },
-  { level: 'regional', x: 128, y: 96, delay: '-4.1s' },
-  { level: 'regional', x: 300, y: 104, delay: '-2.6s' },
-  { level: 'inter', x: 48, y: 170, delay: '-5.4s' },
-  { level: 'intra', x: 214, y: 182, delay: '-0.4s' },
-  { level: 'intra', x: 372, y: 190, delay: '-3.3s' },
+const rating = (platform: string) => ratings.find((r) => r.platform === platform)?.rating;
+const regionals = results.filter((r) => r.level === 'regional').length;
+
+const stats = [
+  { value: totals.problems, label: 'problems solved' },
+  { value: totals.contests, label: 'contests' },
+  { value: totals.students, label: 'students mentored' },
 ];
 ---
 
@@ -20,19 +18,25 @@ const heroBalloons = [
 <section class="hero" id="hero">
   <div class="hero-inner">
     <div class="hero-content">
-      <h1 class="hero-name">Md. Sohel <span>Rana</span></h1>
+      <p class="status">
+        <img src="/images/profile-kvvoya.jpg" alt={`Portrait of ${person.name}`} width="40" height="40" fetchpriority="high" />
+        <span class="label"><i class="dot" aria-hidden="true"></i>Open to work from {person.graduation}</span>
+      </p>
+
+      <h1 class="hero-name">{person.name}</h1>
 
       <p class="hero-tagline">
         {person.headline[0].toUpperCase() + person.headline.slice(1)} and competitive programmer.
         Final-year CSE student at {person.universityShort}, graduating {person.graduation}.
       </p>
       <p class="hero-detail">
-        I build web apps and REST APIs with C#, ASP.NET Core, EF Core and SQL Server.
+        I build web apps and REST APIs with C#, ASP.NET Core, EF Core and SQL Server, and I think
+        in algorithms because I train on them every week.
       </p>
 
       <div class="hero-actions">
-        <Button href={person.resume} download={person.resumeFilename} variant="accent">Download resume</Button>
-        <Button href="#contact" variant="ghost">Contact me</Button>
+        <Button href={person.resume} download={person.resumeFilename} variant="primary">Download resume</Button>
+        <Button href="#contact" variant="secondary">Contact me</Button>
       </div>
 
       <ul class="hero-links label">
@@ -42,81 +46,126 @@ const heroBalloons = [
       </ul>
     </div>
 
-    <figure class="lift">
-      <svg class="lift-balloons" viewBox="0 0 420 336" aria-hidden="true">
-        {heroBalloons.map((b) => (
-          <g class="drift" style={`--delay: ${b.delay};`}>
-            <path class="tether" d={`M${b.x} ${b.y + 62} Q ${(b.x + 210) / 2 + (b.x - 210) * 0.12} ${b.y + 150} 210 336`} />
-            <g transform={`translate(${b.x} ${b.y})`} style={`--balloon: var(--balloon-${b.level});`}>
-              <path class="knot" d="M-6 56 L0 45 L6 56 Z" />
-              <path class="body" d="M0 -48 C 28 -48 42 -24 42 -4 C 42 22 16 40 0 48 C -16 40 -42 22 -42 -4 C -42 -24 -28 -48 0 -48 Z" />
-              <ellipse class="shine" cx="-17" cy="-22" rx="6.5" ry="12" transform="rotate(24 -17 -22)" />
-            </g>
-          </g>
-        ))}
-      </svg>
-
-      <div class="badge">
-        <span class="badge-slot" aria-hidden="true"></span>
-        <img src="/images/profile-kvvoya.jpg" alt={`Portrait of ${person.name}`} width="600" height="600" fetchpriority="high" />
-        <p class="badge-name">{person.name}</p>
-        <p class="badge-team label">Team {person.team}</p>
+    <figure class="editor" aria-label="Profile summary written as a C# object">
+      <div class="editor-bar">
+        <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="editor-tab label">Engineer.cs</span>
       </div>
-
-      <figcaption class="lift-caption label">
-        Six balloons, six contest results. <a href="#cp">See the standings</a>
-      </figcaption>
+      <pre class="code" tabindex="0"><code><span class="ln"><span class="c">// Final-year CSE, graduating {person.graduation}</span></span>
+<span class="ln"><span class="k">var</span> sohel = <span class="k">new</span> <span class="t">Engineer</span></span>
+<span class="ln">{'{'}</span>
+<span class="ln">    Name = <span class="s">"{person.name}"</span>,</span>
+<span class="ln">    Role = <span class="s">".NET backend developer"</span>,</span>
+<span class="ln">    Stack = [<span class="s">"C#"</span>, <span class="s">"ASP.NET Core"</span>, <span class="s">"EF Core"</span>, <span class="s">"SQL Server"</span>],</span>
+<span class="ln">    Based = <span class="s">"{person.location}"</span>,</span>
+<span class="ln">    Codeforces = <span class="n">{rating('Codeforces')}</span>,</span>
+<span class="ln">    CodeChef = <span class="n">{rating('CodeChef')}</span>,</span>
+<span class="ln">    LeetCode = <span class="n">{rating('LeetCode')}</span>,</span>
+<span class="ln">    IcpcRegionals = <span class="n">{regionals}</span>,</span>
+<span class="ln">    OpenToWork = <span class="k">true</span>,</span>
+<span class="ln">{'};'}</span></code></pre>
     </figure>
   </div>
+
+  <ul class="stats">
+    {stats.map((s) => (
+      <li>
+        <span class="stat-value">{s.value}</span>
+        <span class="stat-label">{s.label}</span>
+      </li>
+    ))}
+  </ul>
 </section>
 
 <style lang="scss">
   .hero {
-    --focus: var(--on-field);
     position: relative;
-    background: var(--field);
-    color: var(--on-field);
-    padding: 112px var(--gutter) 72px;
+    padding: 128px var(--gutter) 72px;
+    background:
+      linear-gradient(color-mix(in srgb, var(--color-border) 45%, transparent) 1px, transparent 1px) 0 0 / 100% 56px,
+      var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
     overflow: clip;
-  }
 
-  .hero-inner {
-    max-width: var(--measure);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 400px);
-    gap: var(--spacing-huge);
-    align-items: end;
-  }
-
-  .hero-name {
-    font-family: var(--font-display);
-    font-size: clamp(6rem, 12.4vw, 11.25rem);
-    font-weight: 900;
-    line-height: 0.86;
-    letter-spacing: 0.002em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    margin: 0 0 var(--spacing-xl);
-
-    span {
-      display: block;
-      color: var(--balloon-intra);
+    /* Fade the faint ruled lines out toward the bottom */
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 30%, var(--color-bg) 92%);
+      pointer-events: none;
     }
   }
 
+  .hero-inner,
+  .stats {
+    position: relative;
+    z-index: 1;
+    max-width: var(--measure);
+    margin: 0 auto;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: var(--spacing-huge);
+    align-items: center;
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin: 0 0 var(--spacing-xl);
+    padding: 4px 16px 4px 4px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-pill);
+    box-shadow: var(--shadow-sm);
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: 50% 20%;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      color: var(--color-ink-secondary);
+    }
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-up);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-up) 22%, transparent);
+  }
+
+  .hero-name {
+    font-size: clamp(2.5rem, 6vw, 4.25rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    margin: 0 0 var(--spacing-lg);
+  }
+
   .hero-tagline {
-    font-size: clamp(1.25rem, 2.1vw, 1.5rem);
+    font-size: clamp(1.125rem, 1.8vw, 1.3125rem);
     font-weight: 500;
-    line-height: 1.35;
+    line-height: 1.45;
     max-width: 30em;
     margin: 0 0 var(--spacing-md);
   }
 
   .hero-detail {
-    font-size: 1.0625rem;
-    color: var(--on-field-mute);
-    max-width: 40em;
+    color: var(--color-ink-secondary);
+    max-width: 36em;
     margin: 0 0 var(--spacing-xxl);
   }
 
@@ -124,7 +173,7 @@ const heroBalloons = [
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-md);
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
   }
 
   .hero-links {
@@ -135,151 +184,160 @@ const heroBalloons = [
     a {
       display: inline-block;
       padding-block: 8px;
-      color: var(--on-field);
+      color: var(--color-ink-secondary);
 
       &:hover {
-        color: var(--balloon-intra);
+        color: var(--color-primary);
       }
     }
   }
 
-  /* Six balloons holding up a contest badge */
-  .lift {
+  /* The signature: the profile as a typed object in a code editor */
+  .editor {
     margin: 0;
-    width: 100%;
-    max-width: 400px;
-    justify-self: end;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .lift-balloons {
-    display: block;
-    width: 100%;
-    overflow: visible;
-    margin-bottom: -6px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .drift {
-    transform-box: view-box;
-    transform-origin: 210px 336px;
-    animation: drift 7s ease-in-out infinite alternate;
-    animation-delay: var(--delay);
-  }
-
-  @keyframes drift {
-    from { transform: rotate(-2.2deg); }
-    to { transform: rotate(2.2deg); }
-  }
-
-  .tether {
-    fill: none;
-    stroke: var(--on-field);
-    stroke-width: 1.5;
-    opacity: 0.7;
-  }
-
-  .body,
-  .knot {
-    fill: var(--balloon);
-  }
-
-  .shine {
-    fill: #fff;
-    opacity: 0.42;
-  }
-
-  .badge {
-    position: relative;
-    width: min(250px, 66%);
-    padding: 28px 14px 16px;
-    background: #fff;
-    color: #17123a;
-    border-radius: var(--rounded-xl);
+    min-width: 0;
+    background: var(--code-bg);
+    border: 1px solid var(--code-line);
+    border-radius: var(--rounded-lg);
     box-shadow: var(--shadow-lg);
-    transform: rotate(-1.5deg);
+    overflow: hidden;
+  }
 
-    img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      object-position: 50% 20%;
-      border-radius: var(--rounded-md);
+  .editor-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-lg);
+    background: var(--code-bar);
+    border-bottom: 1px solid var(--code-line);
+  }
+
+  .lights {
+    display: flex;
+    gap: 6px;
+
+    i {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--code-line);
     }
   }
 
-  .badge-slot {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    width: 44px;
-    height: 8px;
-    margin-left: -22px;
-    border-radius: var(--rounded-pill);
-    background: var(--field);
+  .editor-tab {
+    padding: 10px 14px;
+    color: var(--code-ink);
+    border-bottom: 2px solid var(--code-keyword);
+    margin-bottom: -1px;
   }
 
-  .badge-name {
-    font-family: var(--font-display);
-    font-size: 1.75rem;
-    font-weight: 800;
-    line-height: 1;
-    text-transform: uppercase;
-    margin: 12px 0 2px;
-  }
-
-  .badge-team {
+  .code {
     margin: 0;
-    color: #45406a;
-  }
+    padding: var(--spacing-lg) 0;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.85;
+    color: var(--code-ink);
+    counter-reset: line;
 
-  .lift-caption {
-    margin-top: var(--spacing-xl);
-    text-align: center;
-    color: var(--on-field-mute);
+    code {
+      display: block;
+      min-width: max-content;
+      font-family: inherit;
+      /* Each .ln is its own block, so the source newlines must not add blank lines */
+      white-space: normal;
+    }
 
-    a {
-      color: var(--on-field);
-      white-space: nowrap;
+    .ln {
+      display: block;
+      padding-right: var(--spacing-xl);
+      white-space: pre;
 
-      &:hover {
-        color: var(--balloon-intra);
+      &::before {
+        counter-increment: line;
+        content: counter(line);
+        display: inline-block;
+        width: 3.25em;
+        padding-right: 1.5em;
+        text-align: right;
+        color: var(--code-mute);
+        user-select: none;
       }
     }
+
+    .k { color: var(--code-keyword); }
+    .t { color: var(--code-type); }
+    .s { color: var(--code-string); }
+    .n { color: var(--code-number); }
+    .c { color: var(--code-mute); }
   }
 
-  @media (max-width: 900px) {
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: var(--spacing-massive);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-lg);
+    box-shadow: var(--shadow-sm);
+
+    li {
+      display: flex;
+      align-items: baseline;
+      gap: var(--spacing-md);
+      padding: var(--spacing-xl);
+    }
+
+    li + li {
+      border-left: 1px solid var(--color-border);
+    }
+  }
+
+  .stat-value {
+    font-family: var(--font-mono);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .stat-label {
+    color: var(--color-ink-mute);
+    font-size: 0.9375rem;
+  }
+
+  @media (max-width: 960px) {
     .hero {
-      padding-top: 96px;
+      padding-top: 104px;
     }
 
     .hero-inner {
       grid-template-columns: minmax(0, 1fr);
-      gap: 56px;
+      gap: var(--spacing-xxl);
     }
 
-    .hero-name {
-      font-size: 23vw;
-    }
-
-    .lift {
-      justify-self: center;
+    .stats {
+      margin-top: var(--spacing-huge);
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
+    .stats {
+      grid-template-columns: minmax(0, 1fr);
+
+      li + li {
+        border-left: 0;
+        border-top: 1px solid var(--color-border);
+      }
+
+      li {
+        padding: var(--spacing-lg);
+      }
+    }
+
     .hero-actions :global(.btn) {
       flex: 1 1 100%;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .drift {
-      animation: none;
     }
   }
 </style>

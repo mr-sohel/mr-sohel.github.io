@@ -1,6 +1,6 @@
 ---
 import '../styles/global.scss';
-import { education, links, person, ratings, results, sellwise, skills, totals } from '../data/profile';
+import { education, links, person, ratings, results, projects, skills, totals } from '../data/profile';
 
 interface Props {
   title: string;
@@ -136,10 +136,6 @@ const faqSchema = {
       `${person.name} is pursuing a ${education.degree} at ${person.university} (${person.universityShort}) in Dhaka, with expected graduation in ${person.graduation}.`
     ),
     faq(
-      `What has ${person.name} built?`,
-      `${person.name} co-built ${sellwise.name}, a sales analytics and inventory SaaS for small retailers, with ASP.NET Core MVC, EF Core, SQL Server, and a FastAPI and Meta Prophet forecasting service.`
-    ),
-    faq(
       "What are Sohel Rana's ICPC results?",
       "Sohel Rana earned an Honorable Mention at the ICPC Asia Dhaka Regional 2025 and placed 157th at the ICPC Asia Dhaka Regional 2024, both with team BUBT Mudbloods."
     ),
@@ -150,25 +146,25 @@ const faqSchema = {
   ]
 };
 
-const projectsSchema = {
+const publishedProjects = projects.filter((p) => !p.placeholder);
+
+const projectsSchema = publishedProjects.length === 0 ? null : {
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": `Projects by ${person.name}`,
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "item": {
-        "@type": "SoftwareApplication",
-        "name": sellwise.name,
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "author": { "@type": "Person", "name": person.name },
-        "description": sellwise.summary,
-        "url": sellwise.repo
-      }
+  "itemListElement": publishedProjects.map((project, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "SoftwareApplication",
+      "name": project.name,
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "author": { "@type": "Person", "name": person.name },
+      "description": project.summary,
+      ...(project.repo ? { "url": project.repo } : {})
     }
-  ]
+  }))
 };
 
 const educationSchema = {
@@ -218,7 +214,6 @@ const keywords = [
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="manifest" href="/manifest.json" />
-    <link rel="preload" href="/fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="generator" content={Astro.generator} />
 
@@ -254,7 +249,7 @@ const keywords = [
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={ogAlt} />
 
-    <script type="application/ld+json" set:html={safeJsonLd([personSchema, websiteSchema, faqSchema, profilePageSchema, projectsSchema, educationSchema, breadcrumbSchema])} />
+    <script type="application/ld+json" set:html={safeJsonLd([personSchema, websiteSchema, faqSchema, profilePageSchema, projectsSchema, educationSchema, breadcrumbSchema].filter(Boolean))} />
 
     <script is:inline>
       (() => {
@@ -295,8 +290,8 @@ const keywords = [
     left: 16px;
     z-index: 9999;
     padding: 8px 16px;
-    background: var(--balloon-intra);
-    color: #17123a;
+    background: var(--color-primary);
+    color: var(--color-on-primary);
     border-radius: var(--rounded-md);
     font-weight: 600;
     font-size: 14px;

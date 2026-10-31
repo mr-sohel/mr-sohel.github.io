@@ -6,7 +6,7 @@
  * Source: Fresher_CV_for_Software_Engineer/mainResume after DevSkill course.pdf
  * Exceptions, each checked against the live source on 2026-10-31:
  * - CodeChef rating and LeetCode percentile use the live profile values.
- * - SellWise details describe the code in github.com/mr-sohel/SellWise.
+ * - Projects are described from the code in each repo, never from the resume.
  */
 
 export const person = {
@@ -31,7 +31,6 @@ export const links = {
   codolio: 'https://codolio.com/profile/mr_sohel',
   icpc: 'https://icpc.global/ICPCID/33QGYTL4FV6Q',
   cpCommunity: 'https://www.facebook.com/CPBUBT',
-  sellwise: 'https://github.com/mr-sohel/SellWise',
 };
 
 export const totals = {
@@ -133,44 +132,38 @@ export const skills = [
   },
 ];
 
-export const sellwise = {
-  name: 'SellWise',
-  summary:
-    'A sales analytics and inventory SaaS for small retailers: point of sale, stock alerts, customer segments and 30-day demand forecasts.',
-  credit: 'Built with one collaborator. 86 of 121 commits are mine.',
-  repo: links.sellwise,
-  stack: [
-    'C#',
-    'ASP.NET Core MVC',
-    'EF Core',
-    'SQL Server',
-    'Docker',
-    'Python',
-    'FastAPI',
-    'Meta Prophet',
-    'Bootstrap',
-    'Chart.js',
-    'QuestPDF',
-  ],
-  features: [
-    {
-      title: 'Multi-tenant by store',
-      body: 'Queries are scoped to the active store and membership is checked per store, with Owner, Manager and Salesman roles.',
-    },
-    {
-      title: 'ACID checkout',
-      body: 'Walk-in, online, delivery and phone orders validate and deduct stock inside one database transaction, so a failed order rolls back.',
-    },
-    {
-      title: 'Retail reporting',
-      body: 'RFM customer segments, expense tracking, inventory alerts, printable invoices, and PDF sales, inventory and audit reports.',
-    },
-    {
-      title: 'Containerized',
-      body: 'Docker Compose runs the web app, the forecast service, SQL Server and a Caddy reverse proxy.',
-    },
-  ],
-};
+export interface Project {
+  name: string;
+  summary: string;
+  /** What I personally built. Leave out until it is true. */
+  role?: string;
+  stack: string[];
+  highlights?: { title: string; body: string }[];
+  repo?: string;
+  demo?: string;
+  /** Placeholder card. Remove this flag once the project has real details. */
+  placeholder?: boolean;
+}
+
+/**
+ * To publish a project, replace the placeholder: set the name, summary and
+ * stack, add highlights, a repo and a demo link, and delete `placeholder`.
+ * Describe what the code does. Placeholders are left out of the structured data.
+ */
+export const projects: Project[] = [
+  {
+    name: 'Project one',
+    summary: 'In progress. Details will cover the problem, my role, the stack and what I would improve.',
+    stack: [],
+    placeholder: true,
+  },
+  {
+    name: 'Project two',
+    summary: 'In progress. Details will cover the problem, my role, the stack and what I would improve.',
+    stack: [],
+    placeholder: true,
+  },
+];
 
 export const instructor = {
   role: 'Competitive Programming Instructor',

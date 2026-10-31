@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest';
-import { links, ratings, results, sellwise } from './profile';
+import { links, ratings, results, projects } from './profile';
 
 const urls = [
   ...Object.values(links),
   ...ratings.map((r) => r.href),
   ...results.flatMap((r) => (r.proof ? [r.proof.href] : [])),
-  sellwise.repo,
+  ...projects.flatMap((p) => [p.repo, p.demo].filter((u): u is string => Boolean(u))),
 ];
 
 describe('profile data', () => {
@@ -22,7 +22,7 @@ describe('profile data', () => {
     }
   });
 
-  test('awards six balloons, matching the hero caption', () => {
+  test('awards six balloons, one per contest result in the standings table', () => {
     expect(results.reduce((sum, row) => sum + row.balloons, 0)).toBe(6);
   });
 });

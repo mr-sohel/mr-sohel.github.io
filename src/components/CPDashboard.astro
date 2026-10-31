@@ -1,17 +1,22 @@
 ---
 import Balloon from './Balloon.astro';
+import IconExternal from './icons/IconExternal.astro';
 import { levelLabels, links, person, ratings, results, totals, type Level } from '../data/profile';
 
 const levels = Object.entries(levelLabels) as [Level, string][];
 let balloonIndex = 0;
 ---
 
-<section id="cp" class="board">
+<section id="cp" class="section section-alt">
   <div class="section-inner">
     <header class="board-head">
-      <h2 class="section-title">Standings</h2>
-      <p>
-        {totals.problems} algorithmic problems solved and {totals.contests} online contests.
+      <div>
+        <span class="eyebrow">Competitive programming</span>
+        <h2 class="section-title">Problem-solving record</h2>
+      </div>
+      <p class="section-lede">
+        {totals.problems} algorithmic problems solved across {totals.contests} online contests. The same
+        habits I bring to backend work: read the constraints, pick the right data structure, test the edge cases.{' '}
         <a href={links.codolio} target="_blank" rel="noopener noreferrer">See all stats on Codolio</a>
       </p>
     </header>
@@ -19,8 +24,11 @@ let balloonIndex = 0;
     <ul class="ratings">
       {ratings.map((r) => (
         <li>
-          <a href={r.href} target="_blank" rel="noopener noreferrer">
-            <span class="rating-platform label">{r.platform}</span>
+          <a class="card" href={r.href} target="_blank" rel="noopener noreferrer">
+            <span class="rating-top">
+              <span class="rating-platform label">{r.platform}</span>
+              <IconExternal width="14" height="14" />
+            </span>
             <span class="rating-value">{r.rating}</span>
             <span class="rating-standing label">{r.standing}</span>
           </a>
@@ -28,39 +36,41 @@ let balloonIndex = 0;
       ))}
     </ul>
 
-    <table class="standings" data-standings>
-      <caption class="sr-only">Contest results</caption>
-      <thead class="label">
-        <tr>
-          <th scope="col"><span class="sr-only">Balloons</span></th>
-          <th scope="col">Contest</th>
-          <th scope="col">Result</th>
-          <th scope="col">Field</th>
-          <th scope="col"><span class="sr-only">Proof</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        {results.map((row) => (
+    <div class="table-card card">
+      <table class="standings" data-standings>
+        <caption class="sr-only">Contest results</caption>
+        <thead class="label">
           <tr>
-            <td class="cell-balloons">
-              {Array.from({ length: row.balloons }, () => (
-                <span class="rise" style={`--i: ${balloonIndex++};`}>
-                  <Balloon level={row.level!} size={24} />
-                </span>
-              ))}
-            </td>
-            <th scope="row" class="cell-event">{row.event}</th>
-            <td class="cell-result">{row.result}</td>
-            <td class="cell-field label">{row.field}</td>
-            <td class="cell-proof label">
-              {row.proof && (
-                <a href={row.proof.href} target="_blank" rel="noopener noreferrer">{row.proof.label}</a>
-              )}
-            </td>
+            <th scope="col"><span class="sr-only">Level</span></th>
+            <th scope="col">Contest</th>
+            <th scope="col">Result</th>
+            <th scope="col">Field</th>
+            <th scope="col"><span class="sr-only">Proof</span></th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {results.map((row) => (
+            <tr>
+              <td class="cell-balloons">
+                {Array.from({ length: row.balloons }, () => (
+                  <span class="rise" style={`--i: ${balloonIndex++};`}>
+                    <Balloon level={row.level!} size={22} />
+                  </span>
+                ))}
+              </td>
+              <th scope="row" class="cell-event">{row.event}</th>
+              <td class="cell-result">{row.result}</td>
+              <td class="cell-field label">{row.field}</td>
+              <td class="cell-proof label">
+                {row.proof && (
+                  <a href={row.proof.href} target="_blank" rel="noopener noreferrer">{row.proof.label}</a>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
 
     <div class="board-foot">
       <p>
@@ -70,7 +80,7 @@ let balloonIndex = 0;
       </p>
       <ul class="legend label">
         {levels.map(([level, name]) => (
-          <li><Balloon level={level} size={13} /> {name}</li>
+          <li><Balloon level={level} size={12} /> {name}</li>
         ))}
       </ul>
     </div>
@@ -94,127 +104,109 @@ let balloonIndex = 0;
 </script>
 
 <style lang="scss">
-  .board {
-    --focus: var(--board-ink);
-    padding: var(--spacing-massive) var(--gutter);
-    background: var(--board-bg);
-    color: var(--board-ink);
-
-    a {
-      color: var(--board-ink);
-
-      &:hover {
-        color: var(--balloon-intra);
-      }
-    }
-  }
-
   .board-head {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
     gap: var(--spacing-lg) var(--spacing-huge);
     align-items: end;
     margin-bottom: var(--spacing-huge);
 
-    p {
+    .section-lede {
       margin: 0;
-      font-size: 1.125rem;
-      color: var(--board-mute);
-
-      a {
-        display: inline-block;
-        font-weight: 500;
-      }
     }
   }
 
   .ratings {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    border: 1px solid var(--board-line);
-    border-radius: var(--rounded-xl);
-    margin-bottom: var(--spacing-huge);
-
-    li + li {
-      border-left: 1px solid var(--board-line);
-    }
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
 
     a {
       display: flex;
       flex-direction: column;
-      padding: var(--spacing-xl);
-      text-decoration: none;
       height: 100%;
-      transition: background-color 0.15s ease;
+      padding: var(--spacing-xl);
+      color: var(--color-ink);
+      text-decoration: none;
+      transition: border-color 0.15s ease, transform 0.15s ease;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.05);
-        color: var(--board-ink);
+        border-color: var(--color-primary);
+        color: var(--color-ink);
+        transform: translateY(-2px);
       }
     }
   }
 
-  .rating-platform,
-  .rating-standing {
-    color: var(--board-mute);
+  .rating-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-ink-mute);
   }
 
   .rating-value {
-    font-family: var(--font-display);
-    font-size: clamp(4rem, 9vw, 6.5rem);
-    font-weight: 800;
-    line-height: 1;
+    font-family: var(--font-mono);
+    font-size: clamp(2.5rem, 5vw, 3.25rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
     font-variant-numeric: tabular-nums;
-    margin: var(--spacing-xs) 0;
+    margin: var(--spacing-md) 0 var(--spacing-xs);
+  }
+
+  .rating-standing {
+    color: var(--color-up);
+  }
+
+  .table-card {
+    padding: var(--spacing-xs) var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    overflow-x: auto;
   }
 
   .standings {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: var(--spacing-xxl);
 
     thead th {
-      padding: 0 var(--spacing-md) var(--spacing-sm);
+      padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm);
       text-align: left;
       font-weight: 500;
-      color: var(--board-mute);
+      color: var(--color-ink-mute);
     }
 
     tbody tr {
-      border-top: 1px solid var(--board-line);
+      border-top: 1px solid var(--color-border);
     }
 
     tbody td,
     tbody th {
-      padding: var(--spacing-lg) var(--spacing-md);
+      padding: var(--spacing-md);
       text-align: left;
       vertical-align: middle;
     }
   }
 
   .cell-balloons {
-    width: 84px;
+    width: 64px;
     padding-left: 0 !important;
     white-space: nowrap;
-    color: var(--board-mute);
+    color: var(--color-ink-mute);
   }
 
   .cell-event {
-    font-size: 1.0625rem;
     font-weight: 500;
   }
 
   .cell-result {
-    font-family: var(--font-display);
-    font-size: 1.625rem;
-    font-weight: 800;
-    line-height: 1.05;
-    text-transform: uppercase;
+    font-weight: 600;
     white-space: nowrap;
   }
 
   .cell-field {
-    color: var(--board-mute);
+    color: var(--color-ink-mute);
     white-space: nowrap;
   }
 
@@ -232,14 +224,14 @@ let balloonIndex = 0;
 
   .will-rise .rise {
     opacity: 0;
-    transform: translateY(44px);
+    transform: translateY(32px);
   }
 
   .will-rise.risen .rise {
     opacity: 1;
     transform: none;
-    transition: transform 0.9s cubic-bezier(0.2, 0.9, 0.25, 1.1), opacity 0.3s ease;
-    transition-delay: calc(var(--i) * 110ms);
+    transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.25, 1.1), opacity 0.3s ease;
+    transition-delay: calc(var(--i) * 100ms);
   }
 
   .board-foot {
@@ -252,7 +244,7 @@ let balloonIndex = 0;
       margin: 0;
       max-width: 40em;
       font-size: 0.9375rem;
-      color: var(--board-mute);
+      color: var(--color-ink-mute);
     }
   }
 
@@ -260,7 +252,7 @@ let balloonIndex = 0;
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: var(--spacing-xs) var(--spacing-xl);
-    color: var(--board-mute);
+    color: var(--color-ink-mute);
 
     li {
       display: flex;
@@ -271,13 +263,36 @@ let balloonIndex = 0;
   }
 
   @media (max-width: 860px) {
-    .board {
-      padding-block: 64px;
-    }
-
     .board-head,
     .board-foot {
       grid-template-columns: minmax(0, 1fr);
+    }
+
+    .ratings {
+      grid-template-columns: minmax(0, 1fr);
+
+      a {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+          'top value'
+          'standing value';
+        align-items: center;
+        padding: var(--spacing-md) var(--spacing-lg);
+      }
+    }
+
+    .rating-top { grid-area: top; align-self: end; }
+    .rating-standing { grid-area: standing; align-self: start; }
+
+    .rating-value {
+      grid-area: value;
+      font-size: 2.25rem;
+      margin: 0;
+    }
+
+    .table-card {
+      padding-inline: var(--spacing-lg);
     }
 
     .standings {
@@ -300,6 +315,10 @@ let balloonIndex = 0;
         padding: var(--spacing-lg) 0;
       }
 
+      tbody tr:first-child {
+        border-top: 0;
+      }
+
       tbody td,
       tbody th {
         padding: 0 !important;
@@ -315,36 +334,6 @@ let balloonIndex = 0;
       grid-area: balloons;
       width: auto;
       text-align: right;
-    }
-  }
-
-  @media (max-width: 620px) {
-    .ratings {
-      grid-template-columns: minmax(0, 1fr);
-
-      li + li {
-        border-left: 0;
-        border-top: 1px solid var(--board-line);
-      }
-
-      a {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        grid-template-areas:
-          'platform value'
-          'standing value';
-        align-items: center;
-        padding: var(--spacing-md) var(--spacing-lg);
-      }
-    }
-
-    .rating-platform { grid-area: platform; align-self: end; }
-    .rating-standing { grid-area: standing; align-self: start; }
-
-    .rating-value {
-      grid-area: value;
-      font-size: 3.5rem;
-      margin: 0;
     }
   }
 

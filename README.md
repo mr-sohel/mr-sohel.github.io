@@ -42,4 +42,4 @@ Push to `main` triggers GitHub Actions, building the Astro site and deploying to
 
 - Single-page layout built for a recruiter's 30-second scan
 - `src/data/profile.ts` holds every fact, and the structured data reads from it too
-- The newest resume PDF is the content source; SellWise details follow the code
+- The newest resume PDF is the content source; project details follow the code
