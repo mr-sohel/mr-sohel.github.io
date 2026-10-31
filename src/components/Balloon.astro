@@ -1,0 +1,49 @@
+---
+import type { Level } from '../data/profile';
+
+interface Props {
+  level: Level;
+  size?: number;
+}
+
+const { level, size = 22 } = Astro.props;
+---
+
+<svg
+  class="balloon"
+  aria-hidden="true"
+  width={size}
+  height={Math.round(size * 1.4)}
+  viewBox="-40 -46 80 112"
+  style={`--balloon: var(--balloon-${level});`}
+>
+  <path class="balloon-string" d="M0 52 C -4 58 4 60 0 66" />
+  <path class="balloon-knot" d="M-6 52 L0 43 L6 52 Z" />
+  <path class="balloon-body" d="M0 -44 C 26 -44 38 -22 38 -4 C 38 20 14 38 0 44 C -14 38 -38 20 -38 -4 C -38 -22 -26 -44 0 -44 Z" />
+  <ellipse class="balloon-shine" cx="-16" cy="-20" rx="6" ry="11" transform="rotate(24 -16 -20)" />
+</svg>
+
+<style>
+  .balloon {
+    display: inline-block;
+    flex-shrink: 0;
+    overflow: visible;
+  }
+
+  .balloon-body,
+  .balloon-knot {
+    fill: var(--balloon);
+  }
+
+  .balloon-shine {
+    fill: #fff;
+    opacity: 0.4;
+  }
+
+  .balloon-string {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    opacity: 0.55;
+  }
+</style>

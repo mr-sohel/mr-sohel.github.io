@@ -1,5 +1,6 @@
 ---
 import '../styles/global.scss';
+import { education, links, person, ratings, results, projects, skills, totals } from '../data/profile';
 
 interface Props {
   title: string;
@@ -8,17 +9,22 @@ interface Props {
 
 const {
   title,
-  description = "Md. Sohel Rana (also known as Sohel Rana, Mr Sohel, mrsohel, mr-sohel) is a final-year CSE student at BUBT (Bangladesh University of Business & Technology), Dhaka. ASP.NET Core & C# backend developer, 3× ICPC Asia Dhaka Regionalist, Codeforces Specialist, and competitive programmer with 1500+ problems solved. Actively seeking Software Engineer and .NET Developer roles."
+  description = `${person.name} (also known as Sohel Rana, Mr Sohel, mrsohel, mr-sohel) is a final-year CSE student at BUBT, Dhaka, building web apps and REST APIs with C#, ASP.NET Core, EF Core and SQL Server. ICPC Asia Dhaka Regional finalist and Codeforces Specialist with ${totals.problems} problems solved. Looking for a first full-time .NET or backend role.`
 } = Astro.props;
 
 const siteUrl = "https://mr-sohel.github.io";
 const ogImage = `${siteUrl}/og-preview.jpg`;
+const ogAlt = `${person.name}, .NET backend developer and final-year CSE student at BUBT`;
+const lastUpdated = "2026-10-31T00:00:00+06:00";
+
+const allSkills = skills.flatMap((group) => group.items);
+const codeforces = ratings.find((r) => r.platform === 'Codeforces');
 
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": "#sohel-rana",
-  "name": "Md. Sohel Rana",
+  "name": person.name,
   "alternateName": [
     "Sohel",
     "Sohel Rana",
@@ -29,7 +35,6 @@ const personSchema = {
     "Sohel CSE",
     "Sohel Developer",
     "Sohel Programmer",
-    "Sohel Software Engineer",
     "mr_sohel",
     "mr-sohel",
     "mrsohel",
@@ -41,78 +46,49 @@ const personSchema = {
   "familyName": "Rana",
   "url": siteUrl,
   "image": ogImage,
-  "jobTitle": "Software Engineer",
+  "jobTitle": ".NET Backend Developer",
   "description": description,
-  "email": "mailto:mrsohelcse@gmail.com",
-  "address": { "@type": "PostalAddress", "addressCountry": "BD" },
-  "birthPlace": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "BD" } },
+  "email": `mailto:${person.email}`,
+  "address": { "@type": "PostalAddress", "addressLocality": "Dhaka", "addressCountry": "BD" },
   "nationality": { "@type": "Country", "name": "Bangladesh" },
   "alumniOf": [
     {
       "@type": "CollegeOrUniversity",
-      "name": "Bangladesh University of Business & Technology (BUBT)",
+      "name": `${person.university} (${person.universityShort})`,
       "sameAs": "https://www.bubt.edu.bd/"
-    },
-    {
-      "@type": "CollegeOrUniversity",
-      "name": "Sylhet Polytechnic Institute",
-      "sameAs": "https://spi.edu.bd/"
     }
   ],
-  "award": [
-    "3× ICPC Asia Dhaka Regional Contest Participant",
-    "ICPC Asia Dhaka Regional Contest 2024 — Rank 157",
-    "ICPC Asia Dhaka Regional Contest 2023 — Honorable Mention",
-    "Meta Hacker Cup 2025 — Round 2 Qualifier",
-    "BUBT Intra University Champion 2022, 2024",
-    "UAP Inter University Programming Contest — 2nd Runner-up",
-    "UIU Inter University Programming Contest 2025 — Participant",
-    "BACS High School Programming Contest 2018 — 2nd Runner-up, Rajshahi Region",
-    "SPI Tech Festival 2018 — Champion"
-  ],
-  "knowsAbout": [
-    "Full Stack Development", "ASP.NET Core", "Web API", "Entity Framework Core", "LINQ", "SignalR", "JWT",
-    "Angular", "React", "TypeScript", "Bootstrap", "Kendo UI",
-    "SQL Server", "MySQL", "PostgreSQL", "MongoDB", "Redis",
-    "Docker", "Azure", "CI/CD", "GitHub Actions", "Linux",
-    "Clean Architecture", "Microservices", "Design Patterns", "CQRS",
-    "Backend Engineering", "Competitive Programming",
-    "C#", "Python", "C++", "Java", "REST APIs", "OOP", "SOLID Principles", "System Design", "Computer Networking"
-  ],
+  "award": results
+    .filter((r) => r.balloons > 0)
+    .map((r) => `${r.event} — ${r.result}`),
+  "knowsAbout": [...allSkills, "Competitive Programming"],
   "knowsLanguage": [
     { "@type": "Language", "name": "Bengali" },
     { "@type": "Language", "name": "English" }
   ],
-  "hasCredential": [
-    { "@type": "EducationalOccupationalCredential", "name": "Problem Solving (Intermediate)", "issuedBy": { "@type": "Organization", "name": "HackerRank", "sameAs": "https://www.hackerrank.com/" } },
-    { "@type": "EducationalOccupationalCredential", "name": "Problem Solving (Basic)", "issuedBy": { "@type": "Organization", "name": "HackerRank", "sameAs": "https://www.hackerrank.com/" } },
-    { "@type": "EducationalOccupationalCredential", "name": "NDG Linux Unhatched", "issuedBy": { "@type": "Organization", "name": "Cisco Networking Academy", "sameAs": "https://www.netacad.com/" } }
-  ],
   "sameAs": [
-    "https://github.com/mr-sohel",
-    "https://www.linkedin.com/in/mrsohel/",
-    "https://codeforces.com/profile/mr_sohel",
-    "https://leetcode.com/u/mr_sohel/",
-    "https://www.hackerrank.com/profile/taalpatar_shepai",
-    "https://www.codechef.com/users/mr_sohel",
-    "https://codolio.com/profile/mr_sohel"
+    links.github,
+    links.linkedin,
+    links.codeforces,
+    links.leetcode,
+    links.codechef,
+    links.codolio
   ]
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Md. Sohel Rana — Portfolio",
+  "name": `${person.name} — Portfolio`,
   "url": siteUrl,
   "description": description,
   "datePublished": "2025-06-01T00:00:00+06:00",
-  "dateModified": "2026-06-30T00:00:00+06:00",
-  "author": { "@type": "Person", "name": "Md. Sohel Rana", "url": siteUrl },
-  "about": { "@type": "Person", "name": "Md. Sohel Rana" },
-  "keywords": "Md. Sohel Rana, Sohel Rana, Sohel, Mr Sohel, mrsohel, mr_sohel, me sohel, Md Sohel Rana, Sohel BUBT, Sohel CSE, Sohel Developer, Sohel Programmer, Sohel Software Engineer, software engineer portfolio, backend developer, .NET developer, ASP.NET Core, competitive programmer, ICPC, C#, React, Angular, Bangladesh, BUBT, frontend developer, problem solving, algorithms",
+  "dateModified": lastUpdated,
+  "author": { "@type": "Person", "name": person.name, "url": siteUrl },
+  "about": { "@type": "Person", "name": person.name },
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": [".hero-name", ".hero-tagline", "[itemprop='description']"]
+    "cssSelector": [".hero-name", ".hero-tagline"]
   }
 };
 
@@ -120,148 +96,87 @@ const profilePageSchema = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   "dateCreated": "2025-06-01T00:00:00+06:00",
-  "dateModified": "2026-06-30T00:00:00+06:00",
+  "dateModified": lastUpdated,
   "mainEntity": {
     "@id": "#sohel-rana",
     "@type": "Person",
-    "name": "Md. Sohel Rana",
+    "name": person.name,
     "url": siteUrl
   }
 };
+
+const faq = (question: string, answer: string) => ({
+  "@type": "Question",
+  "name": question,
+  "acceptedAnswer": { "@type": "Answer", "text": answer }
+});
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Who is Md. Sohel Rana?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Md. Sohel Rana is a final-year CSE student at BUBT, a competitive programmer (3× ICPC Regionalist), and a backend developer specializing in C# / .NET. He has solved 1500+ algorithmic problems and built projects spanning computer vision and deep learning."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What technologies does Md. Sohel Rana use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Md. Sohel Rana works with C#, .NET, ASP.NET Core, Docker, PostgreSQL, Python, PyTorch, YOLOv8, and C++ for competitive programming."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Md. Sohel Rana available for software engineering roles?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, Md. Sohel Rana is actively seeking full-time Software Engineer and .NET Developer roles, starting after graduation in December 2026."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is Sohel Rana's Codeforces rating?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Md. Sohel Rana (Codeforces handle: mr_sohel) is a Specialist on Codeforces,  He has participated in 140+ online contests and solved 1500+ algorithmic problems across platforms."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Where did Sohel Rana study?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sohel Rana is pursuing a B.Sc. in Computer Science & Engineering (CSE) at Bangladesh University of Business & Technology (BUBT), Dhaka, with an expected graduation in December 2026. He previously studied at Sylhet Polytechnic Institute."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What projects has Md. Sohel Rana built?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Md. Sohel Rana has built a Real-Time Fruit Quality Detection system using YOLOv8 and ESP32-CAM; and a Facial Emotion Recognition model for Autism using Swin Transformer that outperformed 14 published baselines."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are Sohel Rana's ICPC achievements?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sohel Rana is a 3× ICPC Asia Dhaka Regional participant. He achieved Rank 157 in the 2024 Regional and an Honorable Mention in 2023. He also qualified for Meta Hacker Cup 2025 Round 2 and has been a 2× BUBT Intra University Programming Champion."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How to contact Md. Sohel Rana?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can contact Md. Sohel Rana via email at mrsohelcse@gmail.com, through LinkedIn at linkedin.com/in/mrsohel, or on GitHub at github.com/mr-sohel."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What programming languages does Sohel Rana know?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sohel Rana is proficient in C#, C++, Python, and Java. He specializes in backend development with ASP.NET Core, and uses C++ for competitive programming. He also works with TypeScript, Angular, and React for frontend development."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Sohel Rana a competitive programmer?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, Md. Sohel Rana (also known as mr_sohel, Mr Sohel) is an active competitive programmer with 5+ years of experience. He is a Codeforces Specialist, 3× ICPC Regionalist, and has solved over 1500 problems across Codeforces, LeetCode, CodeChef, and HackerRank."
-      }
-    }
+    faq(
+      `Who is ${person.name}?`,
+      `${person.name} is a final-year CSE student at ${person.universityShort}, a .NET backend developer and a competitive programmer with ${totals.problems} problems solved.`
+    ),
+    faq(
+      `What technologies does ${person.name} use?`,
+      `${person.name} builds web apps and REST APIs with C#, ASP.NET Core, EF Core and SQL Server, and uses C++ for competitive programming.`
+    ),
+    faq(
+      `Is ${person.name} available for software engineering roles?`,
+      `Yes. ${person.name} is looking for a first full-time .NET or backend role, starting after graduating in ${person.graduation}.`
+    ),
+    faq(
+      "What is Sohel Rana's Codeforces rating?",
+      `${person.name} (Codeforces handle: Mr_Sohel) has a Codeforces rating of ${codeforces?.rating}, which is ${codeforces?.standing}.`
+    ),
+    faq(
+      "Where did Sohel Rana study?",
+      `${person.name} is pursuing a ${education.degree} at ${person.university} (${person.universityShort}) in Dhaka, with expected graduation in ${person.graduation}.`
+    ),
+    faq(
+      "What are Sohel Rana's ICPC results?",
+      "Sohel Rana earned an Honorable Mention at the ICPC Asia Dhaka Regional 2025 and placed 157th at the ICPC Asia Dhaka Regional 2024, both with team BUBT Mudbloods."
+    ),
+    faq(
+      `How can I contact ${person.name}?`,
+      `Email ${person.email}, or reach out on LinkedIn at linkedin.com/in/mrsohel or GitHub at github.com/mr-sohel.`
+    )
   ]
 };
 
-const projectsSchema = {
+const publishedProjects = projects.filter((p) => !p.placeholder);
+
+const projectsSchema = publishedProjects.length === 0 ? null : {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "Projects by Md. Sohel Rana",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "item": {
-        "@type": "SoftwareApplication",
-        "name": "Real-Time Fruit Quality Detection",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Web",
-        "author": { "@type": "Person", "name": "Md. Sohel Rana" },
-        "description": "End-to-end IoT + ML system that detects fresh vs rotten fruit using ESP32-CAM and a cloud-hosted YOLOv8 model.",
-        "programmingLanguage": ["Python", "YOLOv8", "FastAPI"],
-        "url": "https://github.com/mr-sohel/fruit-quality-detection"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "SoftwareApplication",
-        "name": "Facial Emotion Recognition for Autism",
-        "applicationCategory": "EducationalApplication",
-        "operatingSystem": "Web",
-        "author": { "@type": "Person", "name": "Md. Sohel Rana" },
-        "description": "Swin Transformer model classifying 7 facial emotions in autistic individuals, outperforming 14 published baselines.",
-        "programmingLanguage": ["Python", "PyTorch", "Swin Transformer"],
-        "url": "https://github.com/mr-sohel/fer-autism"
-      }
+  "name": `Projects by ${person.name}`,
+  "itemListElement": publishedProjects.map((project, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "SoftwareApplication",
+      "name": project.name,
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "author": { "@type": "Person", "name": person.name },
+      "description": project.summary,
+      ...(project.repo ? { "url": project.repo } : {})
     }
-  ]
+  }))
 };
 
 const educationSchema = {
   "@context": "https://schema.org",
   "@type": "EducationalOccupationalCredential",
   "credentialCategory": "degree",
-  "name": "B.Sc. in Computer Science & Engineering (CSE)",
+  "name": education.degree,
   "educationalLevel": "Bachelor's",
   "about": "Computer Science & Engineering",
   "recognizedBy": {
     "@type": "CollegeOrUniversity",
-    "name": "Bangladesh University of Business & Technology (BUBT)",
+    "name": `${person.university} (${person.universityShort})`,
     "sameAs": "https://www.bubt.edu.bd/"
   }
 };
@@ -274,6 +189,13 @@ const breadcrumbSchema = {
   ]
 };
 const safeJsonLd = (data: any) => JSON.stringify(data).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
+
+const keywords = [
+  person.name, "Sohel Rana", "Md Sohel Rana", "md-sohel-rana", "mr-sohel", "mrsohel", "mrsohelcse", "mr_sohel", "Taalpatar_Shepai",
+  "Backend Developer", ".NET Developer", "ASP.NET Core Developer", "C# Developer", "Junior Software Engineer", "Entry Level SWE",
+  "Competitive Programmer", "ICPC", "Codeforces", "BUBT", "BUBT CSE", "Dhaka", "Bangladesh",
+  ...allSkills
+].join(", ");
 ---
 
 <!doctype html>
@@ -281,7 +203,7 @@ const safeJsonLd = (data: any) => JSON.stringify(data).replace(/</g, '\\u003c').
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#fafaf9" />
+    <meta name="theme-color" content="#0a0a0a" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="format-detection" content="telephone=no" />
 
@@ -292,19 +214,20 @@ const safeJsonLd = (data: any) => JSON.stringify(data).replace(/</g, '\\u003c').
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="manifest" href="/manifest.json" />
+    <link rel="preload" href="/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="author" content="Md. Sohel Rana" />
+    <meta name="author" content={person.name} />
     <meta name="google-site-verification" content="x0yS52AZbrOXKragN9i9imUy3F-XxivvV4ZUtEA5ovk" />
-    <meta name="keywords" content="Md. Sohel Rana, Sohel Rana, Md Sohel Rana, md-sohel-rana, mr-sohel, mrsohel, mrsohelcse, mr_sohel, Taalpatar_Shepai, Sohel Rana Software Engineer, Sohel Rana competitive programming, md-sohel-rana github, mrsohel github, Software Engineer, Full Stack Developer, Backend Developer, .NET Developer, ASP.NET Core Developer, C# Developer, Frontend Developer, React Developer, Competitive Programmer, software engineer Dhaka, React developer Bangladesh, algorithmic developer Bangladesh, ASP.NET Core, C#, .NET, Web API, Entity Framework Core, Angular, React, TypeScript, SQL Server, MySQL, Docker, Azure, Microservices, Clean Architecture, REST APIs, LINQ, SignalR, BUBT, BUBT CSE, Bangladesh, Dhaka, ICPC Regionalist, ICPC, Problem Solving, Data Structures, Algorithms, Codeforces, computer science student, BUBT CSE portfolio, Final Year CSE, Junior Software Engineer, Entry Level SWE, Hire .NET Developer, Backend Developer Portfolio, github-pages, c-plus-plus, frontend-developer, competitive-programming, software-engineer, cse, bubt" />
+    <meta name="keywords" content={keywords} />
     <link rel="canonical" href={siteUrl} />
-    <link rel="me" href="https://github.com/mr-sohel" />
-    <link rel="me" href="https://www.linkedin.com/in/mrsohel/" />
-    <link rel="me" href="https://codeforces.com/profile/mr_sohel" />
-    <link rel="me" href="https://leetcode.com/u/mr_sohel/" />
+    <link rel="me" href={links.github} />
+    <link rel="me" href={links.linkedin} />
+    <link rel="me" href={links.codeforces} />
+    <link rel="me" href={links.leetcode} />
 
     <meta property="og:type" content="profile" />
     <meta property="profile:first_name" content="Md. Sohel" />
@@ -316,34 +239,30 @@ const safeJsonLd = (data: any) => JSON.stringify(data).replace(/</g, '\\u003c').
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Md. Sohel Rana (Sohel Rana) — Software Engineer, CSE student at BUBT, ICPC Regionalist" />
-    <meta property="og:site_name" content="Md. Sohel Rana" />
+    <meta property="og:image:alt" content={ogAlt} />
+    <meta property="og:site_name" content={person.name} />
     <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@mrsohel" />
-    <meta name="twitter:creator" content="@mrsohel" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="Md. Sohel Rana (Sohel Rana) — Software Engineer, CSE student at BUBT, ICPC Regionalist" />
+    <meta name="twitter:image:alt" content={ogAlt} />
 
-    <script type="application/ld+json" set:html={safeJsonLd([personSchema, websiteSchema, faqSchema, profilePageSchema, projectsSchema, educationSchema, breadcrumbSchema])} />
-
+    <script type="application/ld+json" set:html={safeJsonLd([personSchema, websiteSchema, faqSchema, profilePageSchema, projectsSchema, educationSchema, breadcrumbSchema].filter(Boolean))} />
 
     <script is:inline>
-      const theme = (() => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
-        }
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      (() => {
+        let stored = null;
+        try {
+          stored = localStorage.getItem('theme');
+        } catch {}
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
       })();
-      document.documentElement.setAttribute('data-theme', theme);
-      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#0c0a09' : '#fafaf9');
     </script>
   </head>
   <body>
-    <div class="scroll-progress"></div>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <main id="main-content">
@@ -351,44 +270,15 @@ const safeJsonLd = (data: any) => JSON.stringify(data).replace(/</g, '\\u003c').
     </main>
 
     <script>
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
+        let stored = null;
+        try {
+          stored = localStorage.getItem('theme');
+        } catch {}
+        if (!stored) {
           document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
         }
       });
-
-      const progressBar = document.querySelector('.scroll-progress');
-      if (progressBar) {
-        let ticking = false;
-        let documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-
-        window.addEventListener('resize', () => {
-          documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        }, { passive: true });
-
-        window.addEventListener('scroll', () => {
-          if (!ticking) {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const scrolled = documentHeight > 0 ? (winScroll / documentHeight) * 100 : 0;
-            window.requestAnimationFrame(() => {
-              progressBar.style.width = scrolled + '%';
-              ticking = false;
-            });
-            ticking = true;
-          }
-        }, { passive: true });
-      }
     </script>
   </body>
 </html>
@@ -401,23 +291,12 @@ const safeJsonLd = (data: any) => JSON.stringify(data).replace(/</g, '\\u003c').
     z-index: 9999;
     padding: 8px 16px;
     background: var(--color-primary);
-    color: #fff;
+    color: var(--color-on-primary);
     border-radius: var(--rounded-md);
     font-weight: 600;
     font-size: 14px;
 
     &:focus { top: 16px; }
-  }
-
-  .scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: var(--color-primary);
-    z-index: 9999;
-    transition: width 0.1s ease-out;
   }
 
   .sr-only {

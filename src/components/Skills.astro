@@ -1,102 +1,73 @@
 ---
-const sections = [
-  {
-    label: "Languages",
-    skills: ["C#", "C++", "Python", "SQL"]
-  },
-  {
-    label: "Frontend",
-    skills: ["HTML", "CSS", "JavaScript"]
-  },
-  {
-    label: "Databases",
-    skills: ["MySQL", "SQL Server", "PostgreSQL"]
-  },
-  {
-    label: "Tools",
-    skills: ["Git", "Linux"]
-  },
-  {
-    label: "Core CS",
-    skills: ["Data Structures", "Algorithms", "Object-Oriented Programming (OOP)", "Database Management Systems", "Operating Systems", "Computer Networks"]
-  }
-];
+import { skills } from '../data/profile';
 ---
 
-<section id="skills" class="section section-alt">
+<section id="skills" class="section">
   <div class="section-inner">
-    <span class="section-title-sm">Skills</span>
-    <h2 class="section-title">Tools &amp; technologies</h2>
+    <header class="skills-head">
+      <span class="eyebrow">Toolbox</span>
+      <h2 class="section-title">Skills</h2>
+    </header>
 
-    <div class="skills-list">
-      {sections.map((s) => (
-        <div class="skill-row reveal">
-          <span class="skill-label">{s.label}</span>
-          <div class="skill-chips">
-            {s.skills.map((skill) => (
-              <span class="chip">{skill}</span>
-            ))}
-          </div>
+    <dl class="skills-list">
+      {skills.map((group) => (
+        <div class="skill-row card">
+          <dt class="label">{group.label}</dt>
+          <dd>
+            <ul class="chips">
+              {group.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </dd>
         </div>
       ))}
-    </div>
+    </dl>
   </div>
 </section>
 
 <style lang="scss">
+  .skills-head {
+    margin-bottom: var(--spacing-xxl);
+  }
+
   .skills-list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--spacing-lg);
+    margin: 0;
   }
 
   .skill-row {
-    display: flex;
-    align-items: baseline;
-    gap: var(--spacing-xl);
-    padding: var(--spacing-lg);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--rounded-xl);
-    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-xl);
 
-    @media (max-width: 640px) {
-      flex-direction: column;
-      gap: var(--spacing-sm);
+    dt {
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-md);
     }
 
-    @media (max-width: 400px) {
-      padding: var(--spacing-md);
+    dd {
+      margin: 0;
     }
   }
 
-  .skill-label {
-    flex-shrink: 0;
-    width: 160px;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: var(--color-primary);
-
-    @media (max-width: 640px) {
-      width: auto;
-    }
-  }
-
-  .skill-chips {
+  .chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: var(--spacing-sm);
+
+    li {
+      padding: 5px 12px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--color-ink);
+      background: var(--color-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--rounded-md);
+    }
   }
 
-  .chip {
-    font-size: 13px;
-    font-weight: 500;
-    padding: 5px 14px;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--rounded-pill);
-    color: var(--color-ink-secondary);
+  @media (max-width: 760px) {
+    .skills-list {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
 </style>

@@ -4,20 +4,22 @@ interface Props {
   href?: string;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
+  download?: string;
 }
 
 const {
   variant = 'primary',
   href,
   className = '',
-  type = 'button'
+  type = 'button',
+  download
 } = Astro.props;
 
 const classes = `btn btn-${variant} ${className}`.trim();
 ---
 
 {href ? (
-  <a href={href} class={classes}>
+  <a href={href} class={classes} download={download}>
     <slot />
   </a>
 ) : (
@@ -31,26 +33,22 @@ const classes = `btn btn-${variant} ${className}`.trim();
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
+    gap: var(--spacing-sm);
+    min-height: 46px;
+    padding: 12px 20px;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
     font-weight: 600;
     line-height: 1;
-    padding: 12px 24px;
-    border-radius: var(--rounded-pill);
+    border: 1px solid transparent;
+    border-radius: var(--rounded-md);
     cursor: pointer;
     touch-action: manipulation;
-    transition: all 0.2s ease;
-    border: none;
     text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 
     &:active {
-      transform: scale(0.97);
-    }
-
-    &:disabled,
-    &[aria-disabled="true"] {
-      opacity: 0.4;
-      cursor: not-allowed;
-      pointer-events: none;
+      transform: translateY(1px);
     }
   }
 
@@ -67,11 +65,11 @@ const classes = `btn btn-${variant} ${className}`.trim();
   .btn-secondary {
     background: var(--color-surface);
     color: var(--color-ink);
-    border: 1px solid var(--color-border);
+    border-color: var(--color-border-strong);
 
     &:hover {
-      border-color: var(--color-primary);
-      color: var(--color-primary);
+      border-color: var(--color-ink);
+      color: var(--color-ink);
     }
   }
 </style>

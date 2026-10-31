@@ -1,0 +1,170 @@
+\documentclass{resume}
+
+\usepackage{enumitem}
+\usepackage[left=0.4in,top=0.3in,right=0.4in,bottom=0.3in]{geometry}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage[hidelinks]{hyperref}
+
+% Global spacing tuned for single-column ATS-friendly layout — tight for 1 page.
+\setlist[itemize]{leftmargin=1.5em, nosep, itemsep=1pt, parsep=0pt, topsep=2pt}
+\setlength{\emergencystretch}{2em}
+
+\def\addressskip{\vspace{2pt}}
+\def\nameskip{\vspace{2pt}}
+\def\sectionskip{\vspace{4pt}}
+\def\sectionlineskip{\vspace{2pt}}
+
+\newcommand{\sellwiseRepo}{https://github.com/mr-sohel/SellWise}
+
+\newcommand{\projecttitle}[2]{%
+    \textbf{#1}\hfill{\footnotesize\href{#2}{Repo/Demo}}%
+}
+
+\newcommand{\hrefWithoutArrow}[2]{\href{#1}{#2}}
+\newcommand{\AND}{\unskip\hfil}
+
+\name{Md. Sohel Rana}
+
+\address{%
+\mbox{\hrefWithoutArrow{tel:+8801787962459}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}+88 01787962459}}%
+\kern 0.25 cm%
+\AND%
+\kern 0.25 cm%
+\mbox{\hrefWithoutArrow{mailto:mrsohelcse@gmail.com}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}mrsohelcse@gmail.com}}%
+\kern 0.25 cm%
+\AND%
+\kern 0.25 cm%
+\mbox{\hrefWithoutArrow{https://www.linkedin.com/in/mrsohel/}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}linkedin.com/in/mrsohel}}%
+\kern 0.25 cm%
+\AND%
+\kern 0.25 cm%
+\mbox{\hrefWithoutArrow{https://github.com/mr-sohel}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}github.com/mr-sohel}}%
+\kern 0.25 cm%
+\AND%
+\kern 0.25 cm%
+\mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}Dhaka, Bangladesh}%
+}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+% PROFESSIONAL SUMMARY
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Professional Summary}
+
+Final-year CSE student (1500+ problems, ICPC Regional Finalist) with hands-on experience building multi-tenant SaaS backends with ASP.NET Core, SQL Server, and ML-assisted forecasting.
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+% EDUCATION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Education}
+
+{\bf BSc in Computer Science \& Engineering} \hfill{\bf CGPA: 3.52/4.00} \\
+Bangladesh University of Business and Technology - BUBT\hfill {\bf Expected Graduation: December 2026} \\
+{\footnotesize Coursework: Data Structures, Algorithms, OOP, DBMS, Machine Learning}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+% SKILLS
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Skills}
+
+\textbf{Languages:} C\#, Python, C/C++, SQL, JavaScript
+\newline
+\textbf{Backend \& Data:} ASP.NET Core MVC, EF Core, FastAPI, REST APIs, SQL Server, Redis
+\newline
+\textbf{Testing \& DevOps:} xUnit, Git, Docker, GitHub Actions, Linux
+\newline
+\textbf{CS Fundamentals:} DSA, OOP, SOLID, Design Patterns, ACID
+\newline
+\textbf{Frontend \& Reporting:} Razor Views, Bootstrap 5
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+% PROJECTS
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Projects}
+
+\projecttitle{SellWise --- AI Sales Analytics \& Inventory SaaS}{\sellwiseRepo}
+\vspace{2pt}
+\begin{itemize}
+    \item Architected a multi-tenant retail SaaS with store-isolated data access, RBAC (Owner, Manager, Salesman), and ACID POS transactions across 4 sales channels using ASP.NET Core MVC, EF Core, and SQL Server 2022 (Docker).
+    \item Designed RFM customer segmentation, expense tracking, and printable invoice generation to streamline retail analytics.
+    \item Integrated a FastAPI + Meta Prophet microservice for 30-day demand forecasting from 90-day sales history with 24-hour Redis caching and EWMA fallback.
+    \item Automated inventory Critical/Warning alerts with self-resolution on restock; generated on-demand sales, inventory, and audit PDF reports via QuestPDF.
+    \item {\bf Stack:} C\#, ASP.NET Core MVC, EF Core, SQL Server, Docker, Python, FastAPI, Meta Prophet, Bootstrap, Chart.js, QuestPDF.
+\end{itemize}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+% PROBLEM SOLVING
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Problem Solving Activities}
+
+\begin{itemize}
+    \item Codeforces: \href{https://codeforces.com/profile/mr_sohel}{Mr\_Sohel} | {\bf Rating: 1422} ({\bf Specialist}, Top {\bf 15\%})
+    \item CodeChef: \href{https://www.codechef.com/users/mr_sohel}{Mr\_Sohel} | {\bf Rating: 1623} ({\bf 3 Star Coder}, Top {\bf 7\%})
+    \item LeetCode: \href{https://leetcode.com/mr_sohel/}{Mr\_Sohel} | {\bf Rating: 1653} (Top {\bf 17.43\%})
+\end{itemize}
+
+\vspace{2pt}
+Solved over {\bf 1500} algorithmic problems and participated in {\bf 140+} online contests.
+\href{https://codolio.com/profile/mr_sohel}{[Problem Solving Statistics]}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+% ACHIEVEMENTS & AWARDS
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Achievements \& Awards}
+
+{\bf International \& Regional}
+\begin{itemize}
+    \item \textbf{Meta Hacker Cup 2025, Round 2} --- Advanced to Round 2 among 13,779 global participants.
+    \hfill \href{https://www.facebook.com/codingcompetitions/hacker-cup/2025/certificate/24835990539367561}{Standings}
+    \item \textbf{ICPC Asia Dhaka Regional 2025} --- Team: BUBT Mudbloods; onsite finalist among 1800+ teams; received \textbf{Honorable Mention}.
+    \hfill \href{https://bapsoj.org/contests/icpc-dhaka-onsite-2025/standings}{Standings}
+    \item \textbf{ICPC Asia Dhaka Regional 2024} --- Team: BUBT Mudbloods; Ranked 157th nationally in ICPC onsite finals.
+    \hfill \href{https://bapsoj.org/contests/icpc-asia-dhaka-regional-contest-2024-onsite-round/standings}{Standings}
+\end{itemize}
+
+\vspace{2pt}
+{\bf University Contests}
+\begin{itemize}
+    \item \textbf{UAP Inter University Programming Contest} --- Team: BUBT Mudbloods; Ranked \textbf{2nd Runner-up} among 80+ teams.
+    \hfill \href{https://toph.co/c/uap-inter-university-collaborative-1-0-junior/standings}{Standings}
+    \item \textbf{BUBT IUPC (On Campus)} --- Team: BUBT Mudbloods; \textbf{2-Time Champion (2023, 2024)} among 100+ teams.
+\end{itemize}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+% LEADERSHIP
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Volunteer \& Leadership}
+
+\textbf{Competitive Programming Instructor},
+\href{https://www.facebook.com/CPBUBT}{BUBT CP Community}
+\hfill August 2024 -- April 2026
+\vspace{2pt}
+\begin{itemize}
+    \item Mentored 50+ students in C and C++ programming, data structures, and algorithms, focusing on optimization techniques for ICPC-style problem solving.
+    \item Organized coding contests for junior members on virtual judge platforms.
+\end{itemize}
+
+\end{rSection}
+
+\end{document}

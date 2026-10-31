@@ -8,32 +8,22 @@ const handleThemeToggle = () => {
   const next = current === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
-  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'dark' ? '#0c0a09' : '#fafaf9');
 };
 
 const handleScroll = () => {
   const nav = document.querySelector('.nav');
-  const navActions = document.querySelector('.nav-actions');
-  let lastScrollY = window.scrollY;
   let ticking = false;
 
+  const update = () => {
+    nav?.classList.toggle('scrolled', window.scrollY > 20);
+    ticking = false;
+  };
+
+  update();
+
   window.addEventListener('scroll', () => {
-    const currentScrollY = window.scrollY;
-
     if (!ticking) {
-      window.requestAnimationFrame(() => {
-        nav?.classList.toggle('scrolled', currentScrollY > 20);
-
-        if (navActions) {
-          if (currentScrollY > lastScrollY && currentScrollY > 100) {
-            navActions.classList.add('cv-hidden');
-          } else if (currentScrollY < lastScrollY) {
-            navActions.classList.remove('cv-hidden');
-          }
-        }
-        lastScrollY = currentScrollY;
-        ticking = false;
-      });
+      window.requestAnimationFrame(update);
       ticking = true;
     }
   }, { passive: true });
@@ -58,7 +48,7 @@ export const initNav = () => {
           updateActiveSection(entry.target.id);
         }
       });
-    }, { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' });
+    }, { rootMargin: '-45% 0px -50% 0px' });
 
     sections.forEach(s => sectionObserver.observe(s));
   }
@@ -100,6 +90,7 @@ export const openMenu = () => {
 
   if (!menu || !menuBtn) return;
   menu.setAttribute('aria-hidden', 'false');
+  menu.removeAttribute('inert');
   menuBtn.setAttribute('aria-expanded', 'true');
   menuBtn.classList.add('menu-open');
   document.body.style.overflow = 'hidden';
@@ -111,6 +102,7 @@ export const closeMenu = () => {
 
   if (!menu || !menuBtn) return;
   menu.setAttribute('aria-hidden', 'true');
+  menu.setAttribute('inert', '');
   menuBtn.setAttribute('aria-expanded', 'false');
   menuBtn.classList.remove('menu-open');
   document.body.style.overflow = '';

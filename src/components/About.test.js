@@ -8,8 +8,10 @@ beforeAll(async () => {
   container = await AstroContainer.create();
 });
 
-test('About component renders stats and content', async () => {
+test('About states current study, learning and job search', async () => {
   const result = await container.renderToString(About);
-  expect(result).toContain('About');
-  expect(result).toContain('class="about-stat');
+  expect(result).toContain('id="about"');
+  expect(result).toContain('DevSkill');
+  expect(result).toContain('December 2026');
+  expect(result).toContain('class="now-item');
 });
